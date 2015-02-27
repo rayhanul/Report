@@ -1,0 +1,707 @@
+     
+\documentclass[12pt]{report}
+
+\usepackage{cite}
+\usepackage{graphicx}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{amssymb,amsmath}
+\usepackage{tabularx,ragged2e,booktabs,caption}
+\usepackage{setspace}
+\usepackage[a4paper,margin=1in,footskip=.5cm]{geometry}
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true
+  tabsize=3
+}
+
+\graphicspath{ {images/} }
+
+\newcolumntype{C}[1]{>{\Centering}m{#1}}
+\renewcommand\tabularxcolumn[1]{C{#1}}
+
+\begin{document}
+\doublespacing
+
+\title{ A new Package Based Clustering for Enhancing Software Defect Prediction Accuracy}
+\date{}
+\maketitle
+%\IEEEcompsoctitleabstractindextext{%
+%
+%\begin{abstract}
+%
+%Software defect prediction models considering clustering are to combine related features to enhance the probability of predicting defects. Aggregating related and similar classes is the main challenge in software clustering. An efficient clustering approach named as Package Based Clustering has been proposed to group the software for predicting defects. It uses Object Oriented classes' relationships and similarities to group the software into multiple clusters. To segregate a software project into multiple clusters, it performs textual analysis to identify all Object Oriented classes from the software project. Then it uses package information of each class to divide those into clusters. To analyze the proposed clustering algorithm, the linear regression model is used which learns from clusters of related and similar classes. The experiment has been conducted on JEdit 3.2 and shows that the prediction model using Package Based Clustering is  $54\%$, $71\%$, $90\%$ better than the prediction models built on BorderFlow, k-means and the entire system respectively. 
+%
+%
+ %\end{abstract}
+%
+%\begin{IEEEkeywords}
+%\textbf{keywords} - Software engineering, Software testing, Software defect prediction, Package Based Clustering.
+%\end{IEEEkeywords}}
+%
+%
+%\IEEEpeerreviewmaketitle
+\chapter{Introduction}
+Software defect prediction is a ..........................
+\chapter{Background Study and Discussion}
+\section{Introduction}
+\section{Defect Prediction}
+\section{Software Defect Prediction Model}
+\subsection{Regression Analysis}
+In statistics, regression analysis is a statistical process for estimating the relationships among the variables. It helps to understand how the values of the dependent variables change when any one of the independent variables is varied, while the other independent variables are held fixed. Most commonly, regression analysis estimates the conditional expectation of the dependent variable given the independent variables – that is, the average value of the dependent variable when the independent variables are fixed. In all cases, the estimation target is a function of the independent variables called the regression function. In regression analysis, it is also of interest to characterize the variation of the dependent variable around the regression function which can be described by a probability distribution.
+
+Many techniques for carrying out regression analysis have been developed. The most common method are such as linear regression and ordinary least squares regression, logistic regression, step wise regression,Nonparametric regression etc. 
+The performance of regression analysis methods in practice depends on the form of the data generating process, and how it relates to the regression approach being used. Since the true form of the data-generating process is generally not known, regression analysis often depends to some extent on making assumptions about this process.
+These assumptions are sometimes testable if a sufficient quantity of data is available. Regression models for prediction are often useful even when the assumptions are moderately violated, although they may not perform optimally. However, in many applications, especially with small effects or questions of causality based on observational data, regression methods can give misleading results.
+
+\subsubsection{Linear Regression Analysis}
+Linear regression analysis is the process of analyzing the relationships between variables, usually the variables are divided into dependent and independent variables.  Let Y denote the dependent variable whose values you wish to predict, and let $X_{1}$,...,$X_{k}$ denote the independent variables. The linear regression analysis predicts the value of dependent variable (Y) by analyzing the independent variables ($X_{1}$,...,$X_{k}$). Then the equation for computing the predicted value of $Y$ is:
+\begin{equation}
+\label{eq:linear_regression_analysis}
+ Y=b_{1}X_{1}+b_{2}X_{2}+b_{3}X_{3}+...+b_{n}X_{n}+c
+\end{equation}}
+This formula has the property that the prediction for Y is a straight-line function of each of the X variables, holding the others fixed, and the contributions of different X variables to the predictions are additive.  The slopes of their individual straight-line relationships with Y are the constants $b_{1}$, $b_{2}$,..., $b_{k}$, the so-called coefficients of the variables. That is, $b_{i}$ is the change in the predicted value of Y per unit of change in $X_{i}$, other things being equal.  The additional constant c, the so-called intercept, is the prediction that the model would make if all the X’s were zero (if that is possible).   The coefficients and intercept are estimated by least squares, i.e., setting them equal to the unique values that minimize the sum of squared errors within the sample of data to which the model is fitted.
+
+
+\subsubsection{Logistic Regression Analysis}
+
+\subsection{Machine learning Model}
+\section{Code Metrics}
+\label{Code_Metrics_section}
+A software metric is a quantitative measure of a software system. There are lots of software metrics that have been used for defect prediction to improve software quality. Some of these code metrics are method level, class level, component level, process level, Cyclomatic complexity etc. The software code metrics have multidimensional usage in software industry such as schedule and budget planning, cost estimation, quality testing, software debugging, software performance optimization etc.
+
+ %The methods level metrics are widely used for defect prediction for structured programming and Object oriented programming paradigm and The class level metrics are only used for Object oriented programs. All of the metrics properties are not significant for all cases. To analyze these, many reseaches have already been carried out to identify best set of metrics for defect prediction.
+
+\subsection{Object Oriented Design Metrics}
+When the  object-oriented software development paradigm became popular, a lot of researches have been conducted to find the most important code metrics for Object Oriented (OO) design. Chidamber and Kemerer firstly proposed six code metrics for OO systems, popularly known as CK metrics \cite{chidamber1994metrics}. In addition to Ck metrics, there are also other metrics suite such as MOOD \cite{bansiya2002hierarchical}, QMOOD, L\&K etc. Among all the OO design metrics, the CK metrics is the most popular code metrics than others and widely used when OO system is used. The class interaction of some classes in a OO system is illustrated in Figure \ref{interaction_of_classes_in_a_OO_system}. 
+\begin{figure}[h!]
+  \centering
+    \includegraphics[angel=0,height= 60mm,width=80mm \linewidth]{images/literature/Code_metricAnalysis.eps}
+		\caption{The interaction of classes in a OO system}
+		\label{interaction_of_classes_in_a_OO_system}
+\end{figure}
+
+Depth of Inheritance Tree (DIT) :
+The Depth in Inheritance Tree (DIT) means the number of ancestor classes, a class have. The greater value of DIT means that the class inherits greater number of methods which makes a class complicated and complex. To the object oriented programing point of view, a class should follow the single responsibility principle. When a class inherits a lot of class, its violates this principle. The greater value of DIT also creates the design complexity of a class. The DIT will be the maximum length from the node to the root of the tree.  In Java where all classes inherit Object the minimum value of DIT is 1. 
+From this Figure \ref{dit_codeMetrics}, the DIT value of different class are given below:
+\begin{itemize}
+	\item DIT ($C_{0}$) = 0
+\item DIT ($C_{1}$) = 0
+\item DIT ($C_{2}$) = 1
+\item  DIT ($C_{3}$) = 2
+\item DIT ($C_{4}$) = 3
+\item DIT ($C_{5}$) = 4
+\end{itemize}
+
+Number of Children:
+
+The Number of Children (NOC) simply counts the immediate sub-classes of a class in the class hierarchy. It was first introduced by Chidamber and Kemerer \cite{chidamber1994metrics}. It relates to the notion of scope of properties of a class. Another point of view, It is a measure of how many sub-classes are going to inherit the methods of a particular parent class.
+
+
+The number of children gives an idea of the potential influence a class has on the design. The high number of children means the greater possibility of the reuse, since inheritance is a form of reuse. It may also be a case of misuse of sub-classing, when a class has greater number of NOC value. If a class has a large number of children, it may require more testing of the methods in that class.
+
+
+
+Response for a Class:
+ 
+The Response for Class (RFC) metric is the total number of methods that can potentially be executed in response to a message received by an object of a class.  This number is the sum of the methods of the class, and all distinct methods are invoked directly within the class methods. 
+If a large number of methods can be invoked in response to a message, the testing and debugging of the class becomes more complicated since it requires a greater level of understanding required on the part of the tester.
+The larger the number of methods that can be invoked from a class, the greater the complexity of the class.
+A worst case value for possible responses will assist in appropriate allocation of testing time.
+
+
+Coupling between Objects: 
+The Coupling between Objects (CBO) simply counts the number of classes to which one single class is connected. It has been introduced by Chidamber and Kemerer. A class can be coupled to other classes through parameters passing, shared variables, common database access or direct method calling etc. From the example in Figure \ref{}, the coupling value of those classes are listed below: 
+
+\begin{itemize}
+	\item CBO($C_{0}$)=3.
+\end{itemize}
+
+The High value of CBO is always detrimental to modular design and prevents reuse of the classes. When an class has high CBO value, it means that the class has high dependency to the other classes. So, the corresponding class has high possibility of having defects than others and needs more testing compared to others. On the contrary, the low value of CBO indicates the simplicity of the class and it is easy to reuse in another application. 
+
+
+Lack of Cohesion of Method (LCOM): 
+Cohesion measures how well the methods in a class are connected to each others. It actually means the number of methods that do not share common fields like methods, properties etc. A class is called cohesive class if it performs only one function. So, the lack of Cohesion means that the class performs more that one responsibility. From the OOP point of view, a class should performs only one responsibility.The LCOM value is used to determine whereas the software violates the single responsibility principle or not. 
+
+LCOM= 1 means that the class is cohesive class and LCOM \gt= 2 means that the class has more that one responsibility and should be split to make the design simple. High cohesion among the methods is always desirable because it helps to achieve encapsulation. Low cohesion indicates the inappropriate design and high complexity which leads to create fault prone software.   
+
+%The metric calculates whether the fields in an object are used across the method and properties or whether there is a split. A split means that some methods access some fields and some access other fields. That means that there is no interaction among these methods and so they should be in different classes. 
+\begin{figure}[h!]
+  \centering
+    \includegraphics[angel=0,width=70mm \linewidth]{images/literature/lcom2.eps}
+		\caption{Lack of Cohesion}
+		\label{lcom2}
+\end{figure}
+A class consists of methods A through E and variables x and y. A calls B and B accesses x. Both C and D access y. D calls E, but E doesn't access any variables. This class has 2 unrelated components. The class can be split into the follow components such as {A, B, x} and {C, D, E, y}. So, it will be good, if the class is split into two classes. For this class, the LCOM value is 2. 
+\begin{figure}[h!]
+  \centering
+    \includegraphics[angel=0,width=70mm \linewidth]{images/literature/lcom1.eps}
+		\caption{Lack of Cohesion}
+		\label{lcom1}
+\end{figure}
+In the example on the right, we made C access x to increase cohesion. Now the class consists of a single component (LCOM4=1). each and every variables and methods are connected to each others. So the LCOM value for this class is 1. It is a cohesive class. 
+
+
+\chapter{Literature Review}
+\section{Introduction}
+\section{Code Metrics}
+%A software metric is a quantitative measure of a software system to define the quality of a software. There are lots of software metrics Such as method level, class level, component level, process level code metrics etc. The method level metrics is widely used in structured programming and Object oriented programming paradigm and the class level code metrics is only used for Object Oriented Programing (OOP) paradigm. This experiment deals with OO designed system, so, the class level metrics is matter of concern in this thesis.  Many researches have already been performed to find the best metric suite for OOP paradigm. This thesis only uses these premises to select best set of metrics in defect prediction. Some of these researches are described below: 
+%Hence, this experiment has been conducted on OOP paradigm,
+%There are lots of metrics suite in class level code metrics such as CK metrics, MOOD, QMOOD, L\&K metrics etc.
+    
+A software metric is a quantitative measure of a software system to define the quality of a software. There are lots of software metrics that have been used for defect prediction to improve software quality. Some of these code metrics are method level, class level, component level, process level, Cyclomatic complexity etc. The software code metrics have multidimensional usage in software industry such as schedule and budget planning, cost estimation, quality testing, software debugging, software performance optimization etc. The method level metrics is widely used in structured programming and Object oriented programming paradigm and the class level code metrics is only used for Object Oriented Programing (OOP) paradigm. All of the metrics properties are not significant for all cases. To analyze these, many researches have already been carried out to identify best set of metrics for defect prediction. Some of these researches are described below:
+ 
+
+Cyclomatic complexity \cite{mccabe1976complexity} is well known software metrics to measure the complexity of the source codes. It was first attempt to measure the software code metrics by Thomas J. McCabe Sr. in 1976. The Cyclomatic complexity, ($M$) of a program can be calculated by using the following equation:  
+	\[M = E − N + 2P\], where
+E = the number of edges of the graph.
+N = the number of nodes of the graph.
+P = the number of connected components.
+It computes the complexity of a program by measuring linearly independent execution paths from the source codes. It draws the control flow graph of a program by considering each instruction as node and data flow among nodes as directed edge. It suggests that the cyclomatic complexity of a program should be smaller than 10. In the then time, It was widely used for test case generation and defect prediction. 
+
+
+Halstead Code Metrics \cite{halstead1977elements} is another way to measure the complexity of a program's source code. It measures the complexity and difficulty of source codes using the number of distinct operators ($n_{1}$), the number of distinct operands ($n_{2}$), the total number of operators ($N_{1}$), the total number of operands ($N_{2}$). It uses $n_{1}$, $n_{2}$, $N_{1}$, $N_{2}$ to calculate the following measures: 
+
+\begin{itemize}
+	\item Program vocabulary: \eta = $\eta_1$ + $\eta_2$ \,
+	\item Program length: N = $N_1$ +$N_2$ \,
+	\item Calculated program length: \hat{N} = $\eta_1$ $\log_2$ $\eta_1$ + $\eta_2$ $\log_2$ $\eta_2$ \, 
+	\item Volume: V = N $\times$ $\log_2$ $\eta$ \,
+	\item Difficulty : D = { $\eta_1$ \over 2  } $\times$ { $N_2$ $\over$ $\eta_2$ } \,
+	\item Effort: E =  D $\times$ V \,
+	\item program’s execution time, T = {E $\over$ 18}\,
+	\item delivered bugs, B = {V \over 3000} \,
+\end{itemize}
+
+
+Chidamber and Kemerer \cite{chidamber1994metrics} proposed the most important software metrics for Object Oriented system to help the designers and managers and to give them the design details of a OO systems. He identified six  important code metrics, popularly known as CK metrics by inspecting the relationship among different classes in OO system. These are WMC (Weighted Methods per Class), DIT (Depth Inheritance Tree), NOC (Number of Children), CBO (Coupling between Object classes), RFC (Response for Class), and LCOM (Lack of Cohesion in Methods). These metrics are widely employed in fault prediction to improve the quality of a OO system. The details description of these metrics is given in section \ref{Code_Metrics_section}. 
+
+Basili et al. performed an experiments to analyze the impact of CK metrics, introduced by Chidamber and Kemerer \cite{chidamber1994metrics} in defect prediction \cite{basili1996validation}. It uses logistic regression to explore the relationship between the CK metrics and the fault-proneness of the classes. To perform the experiments, it collects eight software projects, developed by C++, from the eight groups of students at University of Maryland. The results showed that the code metrics, such as RFC, NOC, DIT are very significant in defect prediction. The CBO, WMC are significant specially in UI level classes and LCOM seems to be significant at all cases.  
+
+Due to the incapacity of traditional approaches in class level metrics, Bansiya et al. proposed a class level metrics, named as QMOOD, a hierarchical quality model dedicated to the assessment of object oriented design quality \cite{bansiya2002hierarchical}. It assigns OOD Metrics to OOD Properties such as Number of classes to Design size, direct class coupling to coupling, number of methods to complexity etc. It also links OOD Properties to Quality Attributes such as Reusability, flexibility, functionality etc. It also identifies the specific design properties for the object-oriented paradigm, for example, polymorphism, data abstraction, hierarchies. The main limitation of this paper is the unclear mapping from the components to the metrics. 
+
+ %The paper also introduces a very interesting set of new object oriented metrics. But the major drawback is that QMOOD
+%still relates design properties directly with metrics, in the same manner criteria are mapped to metrics in the FCM model. Thus, again design characteristics are related explicitly to “raw numbers” (i.e., metrics), while the rules and principles of good-design that determined the mapping remain implicit.
+
+Gyimothy et al. performed an study to analyze how CK metrics can be calculated and validated for fault-proneness detection of the open source software \cite{gyimothy2005empirical}. For this purpose, it applies statistical methods, for example, logistic and linear regression and machine learning algorithms, for example, decision tree and neural network to the open source software. To perform the experiments, it collects a open source software, named as Mozilla and its bug report from Bugzilla database \cite{BugzillaforMozilla}. After that, it applies the statistical methods and machine learning algorithms to the Mozilla. The results showed that CBO is the best metric and WMC, RFC,LOC are most significant metrics, while DIT, LCOM are less significant and NOC seems unimportant in defect prediction.
+
+The usefulness of object oriented design metrics such as Chidamber and kemerer suite \cite{chidamber1994metrics}, in fault prediction was also investigated by Zhou et al. \cite{zhou2006empirical}. It focuses on how accurately the six CK metrics can predict defects when taking fault severity into account. Each of these metrics have been tested using logistic regression and three machine learning algorithms such as naive Bayes, random forest and NNge, on a public NASA dataset such as KC1. The findings of this experiments showed that the CK metrics work well in low severity of defects rather than high severity. It also showed that the CBO, WMC, RFC and LCOM metrics are statistically significant in both high or low fault severity. The DIT is not significant at any severity level while NOC is only significant at low fault severity. 
+%The main limitation of this experiments is the accuracy of fault severity ratings in KC1. 
+   
+Catal investigated 90 software defect prediction papers published between 1990 and 2009 \cite{catal2009systematic}. He categorized these papers and reviewed each paper from the perspectives of metrics, learning algorithms, data sets, performance evaluation metrics. According to this review, the method level metrics are most dominant matrices in software defect prediction and suggests to use class level metrics for object oriented programs.  It also shows that the CK metrics is mostly used class level metrics. 
+ 
+Radjenovi´c et al. \cite{radjenovic2013software} classified 106 papers on defect prediction according to metrics and context properties. It concluded the proportions of object-oriented metrics, traditional source code metrics, and process metrics were $49\%$, $27\%$, and $24\%$, respectively. Among all of metrics, CK \cite{chidamber1994metrics} metrics are most frequently used in defect prediction. The Ck metrics has been reported to be more successful than traditional size and complexity metrics. 
+
+Okutan et al. performed an experiments to identify the most effective set of matrices in the defect prediction \cite{okutan2014software}. For this purpose, it uses Bayesian networks to determine the probabilistic influential relationships among the software code metrics. It introduces two new code metrics such as number of developers (NOD) and source code quality (LOCQ). An experiments have been conducted on the nine open source Promise Repository \cite{promise12} datasets. The results show that response for class (RFC), lines of codes (LOC) and lack of coding quality (LOCQ) are the most significant and effective metrics and lack of cohesion of methods (LCOM), weighted method per class (WMC),  coupling between objects (CBO) are less effective metrics in the defect prediction. In addition, it also showed that number of children (NOC) and depth of inheritance tree (DIT) are not effective metrics in defect prediction. 
+
+Peng He et al. \cite{he2015empirical} performed an experiments on 34 release on 10 open source software projects to find out the most effective set of code metrics in defect prediction. It also identifies the most suitable defect prediction model that works well in both within project and cross project defect prediction. The proposed technique uses greedy step wise search algorithm by using forward or backward approach for finding the best of code metrics. It identifies the top k-code metrics that are CBO, LOC, RFC, LCOM, CE (efferent coupling), NPM, CBM, WMC etc. Among all the metrics, it lists CBO, LOC and LCOM as the most significant and influential metrics in defect prediction. It also shows that the success of any prediction model depends on the training data.
+
+The above discussions on the software code metrics show the class level metrics, especially CK metrics suite, is the most popular and widely used metrics in software defect prediction. Among the CK metrics, the CBO, RFC, LCOM, WMC are seem to be most significant and NOC and DIT are less significant metrics. The widely used size metrics LOC and NPM are also significant in defect prediction. Many researches also show that the other metrics such as CE and CBM have positive impact in defect prediction. So, To incorporate all the previously investigated experiments, the CK metrics along with CE and LOC, NPM are used as selected code metrics in defect prediction.     
+
+ %CK metrics are not significant.to use class level metrics to predict defects. At the same time, numerous comparisons among different software metrics have also been made to select metric or combination of metrics that perform better in defect prediction.
+\chapter{PBC}
+
+\section{Introduction}
+
+Software defect prediction models use software code metrics and knowledge from previous projects to predict software defects. Early estimating the faultiness of a software can help practitioners to assess their current project status, as well as it reduces the software development cost. To predict defects before software testing process, many researches have been conducted different defect prediction models, for example Neural network, Naive bayes, Regression modeling and Decision tree etc. \cite{catal2009systematic}. Most of those models perform software defect prediction by considering the entire system. Due to variability in software data, prediction models considering the entire system do not always provide the desired results \cite{bettenburg2012think}. So, if software defects are predicted by partitioning the software into multiple clusters, it may produce better results than those \cite{scanniello2013class}.
+
+Software clustering can be accomplished by using different clustering algorithms such as BorderFlow \cite{}, K-means \cite{}, subtractive \cite{} clustering etc. Those clustering algorithms use software code metrics, for example, Class level, Method level, process level etc. or source code dependencies, for example, class reference, to form clusters from the software. Although clustering algorithms help defect prediction models to improve the prediction results, all of those cannot always provide the best results because of the inefficiency of algorithms to group the software.
+
+In recent years, several software defect prediction models have been developed to predict software defects. Menzies et al. \cite{menzies2013local,menzies2011local} proposed that learning from software clusters with similar characteristics is better than learning from the entire system, because it may falsify the data used by the prediction model. It performs clustering by using principle component analysis which only considers the code metrics and learning treatment from pairs of neighboring clusters. Giusepps Scaniello et al.\cite{scanniello2013class} proposed a defect prediction model using clustering where it considers step wise linear regression model to predict defects. It uses BorderFlow algorithm to form clusters among the related classes by using references between methods and attributes. Sidhu et al. \cite{sidhu2010subtractive} proposed a software fault prediction model which uses subtractive clustering algorithm and fuzzy inference system for early detection of faults. To predict the faults, Zimmermann et al.\cite{zimmermann2007predicting}  proposed the use of package or components for grouping software metrics because the likelihood to fail of a component or package is dependent on its problem domain.
+
+In this dissertation, a new ways to group the source codes for defect prediction is proposed to improve the software defect prediction accuracy by using Package Based Clustering (PBC) rather than the entire system.
+PBC groups the software, implemented by java, into a number of clusters using package information of each OO classes. To find clusters, PBC lists out all OO classes by using textual analysis of source codes. It then reads those classes to extract the package information to form clusters. If the number of OO classes of a cluster is smaller than the number software code metrics characteristics which are considered the explanatory variables used in the defect prediction model, it combines small clusters to make those enable to apply prediction model.
+
+To validate the proposed clustering algorithm, an experiment has been conducted on an open source software named as JEdit 3.2 from promise repository \cite{promise12}. At the beginning of the experiment, the selected software is partitioned into multiple clusters using PBC algorithm. Then the linear regression model has been applied to each cluster to find out predicted defects. Finally, results of the PBC are compared with two prominent clustering schemas, named as Border Flow and K-means and the entire system, to show the importance and effectiveness of the proposed PBC. In this context, by considering the OO classes' relationships and similarities, PBC performs better than BorderFlow and K-means clustering algorithm to enhance the prediction accuracy.
+
+\section{Related work}
+
+The literature in defect prediction focused on predicting software defect by establishing relationships between software defects and code metrics. Existing software defect prediction techniques use different types of prediction models (e.g. statistical inference and machine learning model) and dataset (e.g. Promise repository and NASA dataset) to predict defects. Some prediction models predict defects considering the entire system and others use clustering of software to predict defects. 
+ 
+%Catal et al. performed a study on software defect prediction with respect to metrics, method and dataset \cite{catal2009systematic}. It summarizes that most of the defect predictors use machine learning algorithms or statistical inferences to predict defects. It also shows that method and class level metrics are most dominant metrics in software defect prediction and suggested to perform more researches on component and package level defect predictions.
+\subsection{Clustering Based Defect prediction}
+The clustering based defect prediction model applies clustering algorithms on the source codes to group into multiple clusters for training the prediction model more accurately. The performance and accuracy of a defect prediction model depends on the training dataset. The software engineering datasets always contain a lots of variabilities such as heterogeneity among the code metrics. These variabilities cause the poor fit of machine learning algorithms or statistical inferences to the dataset. So, if the variablities among the datasets can be minimized, it will increase the probability of fitting the data to the machine learning algorithms or statistical inferences. Many researchers have already been tried to group the software engineering dataset for predicting the defects. Some of these experiments are described below:
+
+ %Software development is complicated, brainstorming and error prone task. In the large software development, The development teams work on concurrently on different parts of the software. As a result, there exists high probability of producing errors in the last product. If the software bugs or defects can be predicted, it will be beneficial for the project manager and other stakeholders. To resolve this problem, many researchers have already identified many defect prediction approaches for early estimating the defects in a system.
+
+Schroter et al. proposed a defect prediction model that uses program's import dependencies to predict defect for a Object Oriented (OO) class \cite{schroter2006predicting}. For each OO file, it groups its imported classes and packages to form a cluster and maps the past failure history of these imported classes and packages to the selected OO class. It then predicts the failure-prone possibility of the OO class by using four prediction techniques based on linear regression model, Ridge regression, Regression tree and Support vector machine respectively. The proposed model has been implemented on $52$ eclipse plug-ins. The results showed that the design and past failure history of a software can be used in defect prediction. It was the first experiment which tries to group the program's dependencies for predicting defects. Although it works well, the main drawbacks of this experiment is: it only considered import dependencies by ignoring the impact of other dependencies such as call dependencies, data dependencies etc. 
+
+
+%Zimmermann et al.\cite{zimmermann2007predicting} proposed a technique to predict defects at the design time considering program dependencies. It is actually the extension of Schröter et al. \cite{schroter2006predicting} which considers only import dependencies while analyzing the dependencies among different parts of the software. On the other hand, this technique considers call dependencies, data dependencies, and Windows specific dependencies such as shared registry entries. This paper tries to find the answer of how dependencies predict post-release defects. To perform the experiments, it collects dependencies of binaries, such as executable files (COM, EXE, etc.) and dynamic-link files (DLL), for Windows Server $2003$. It then applies Support Vector Machine (SVM) to predict the post release defects at design time with precision ranged between $0.58$ and $0.73$. It concludes that the defect proneness of a software can be predicted by using the dependencies among all binaries. 
+To resolve the above problems, Zimmermann et al. proposed a technique to predicts defect at the design time by considering call dependencies, data dependencies, and Windows specific dependencies such as shared registry entries \cite{zimmermann2007predicting}. It uses Support Vector Machine (SVM) to predict the post release defects at design time with precision ranged between $0.58$ and $0.73$. To perform the experiments, it collects the dependencies of all binaries such as executable files (COM, EXE, etc.) and dynamic-link files (DLL), for Windows Server $2003$.  It concludes that the software's defect proneness can be predicted by using the dependencies among all binaries. These usage of codes' dependencies indicate the importance of using clustering technique in defect prediction. 
+
+Tan et al. proposed a defect prediction method based on functional clustering of the program to improve the performance\cite{tan2011assessing}. For finding clusters, it uses Latent Semantic Indexing (LSI) to group the software into multiple clusters. It uses the linear regression and logistic regression for building the prediction models. It selects two-thirds of the dataset to train the prediction models and the remaining part for test. The prediction capability is justified by using Pearson and Spearman correlation coefficients of predictive and actual defects. To assess the effectiveness of the proposed model, an experiment has been conducted on a software built by Java with a high fault probability. The results showed that the predictive model built on clustering performs better than class based models in terms of precision and recall. It is another important hypothesis to use the clustering technique in defect prediction.
+%However, the used clustering technique was not automatic.
+
+The usage of the subtractive clustering algorithm and the fuzzy inference system for early detection of faults was proposed by Sidhu et al. \cite{sidhu2010subtractive}. This approach has been tested with defect datasets of NASA software projects named as PC1 and CM1. It used the combined model of requirements metrics and code based metrics from the dataset. Results showed that the accuracy of this model is better than other models considering accuracy, mean square error and root mean square error. Although this approach performs well, there is no defined rules to find the sufficient number of clusters using subtractive clustering algorithm and when to stop executing the algorithm. The prediction model's accuracy shows more researches are needed to perform on source codes' clustering for defect prediction. 
+
+%Sidhu et al. \cite{sidhu2010subtractive} proposed a software fault prediction model which uses the subtractive clustering algorithm and the fuzzy inference system for early detection of faults. This approach had been tested with defect datasets of NASA software projects named as PC1 and CM1. It used the combined model of requirements metrics and code based metrics from the dataset. Results showed that the accuracy of this model is better than other models in accuracy, mean square error and root mean square error. Though this approach performs well but the most unclear things in this algorithm are: how to find sufficient number of clusters using subtractive clustering algorithm or when to stop executing it.
+
+ 
+To resolve the variabilities among the dataset, Menzies et al. proposed a software defect prediction model that learns from software clusters with similar characteristics \cite{menzies2013local,menzies2011local}. It shows learning from software clusters is better than learning from the entire system because it may falsify the data used by the prediction model. It performs clustering by using Principle Component Analysis (PCA) technique that considers only the code metrics and learning treatment using pairs of neighboring clusters. It also generates rules to reduce the number of defects from the local learning but there also exists the conclusion instability. It advises that empirical software engineering should focus on ways to find the best local lessons for groups of related projects. It also shows that global context is often obsolete for particular local contexts in defect prediction. This premise also shows the importance of using the clustering in defect prediction, so that the prediction model gets the accurate dataset for learning.
+
+Bettenburg et al. \cite{bettenburg2012think} proposed three kinds of predictors; those were $(i)$ global models which trains using the entire dataset; $(ii)$ local models which trains using the subsets of the dataset, and $(iii)$ multivariate adaptive regression which splines a global model with local consideration. The third model is the hybrid between global and local models. The proposed three kinds of predictors use linear regression as prediction model. To perform experiments, it collects the dataset from Promise Repository \cite{promise12} and then it applies Correlation Analysis (CA) and Variance Inflation (VI) factors analysis on the dataset to find out the potential multi-collinearity between the source code metrics. In the case of Local model, dataset are partitioned into regions by a clustering algorithm, named as MCLUST, based on software code metrics. To avoid over-fitting in the Global and Local models, the appropriate subset of the independent variables are selected by using Bayesian Information Criterion (BIC). It solves the problems of over-fitting by defining penalty term for each prediction variable entering into the model. Finally it uses $10$-fold cross validation to get more stable and robust results. Results showed that the local model is better than the global model and the global model with local consideration outperforms both the global and local models in all cases. This is also another implication of using clustering in defect prediction. 
+ 
+Scaniello et al. \cite{scanniello2013class} proposed a defect prediction model which predicts defects using step wise linear regression (SWLR) that uses clustering of the source codes rather than the entire system. It considers references between methods and attributes to form clusters among the related classes using BorderFlow algorithm \cite{ngomo2010low}. The BorderFlow clustering algorithm performs clustering by maximizing the flow from the border to center and minimizing the flow from border to outside of the cluster. Then it applies the SWLR model on each cluster and produces better results than other models that perform prediction considering the entire system. It focuses on clustering using source code whereas Menzies et al. \cite{menzies2013local,menzies2011local} focuses on clustering using code metrics. It forms clusters considering only related classes which means it only uses coupling information among the classes to form the clusters. So, the other code metrics' impacts are needed to analyze for defect prediction.  
+
+In a nutshell, a general overview of defect prediction using clustering emphasizes to group the software source codes by applying different clustering approaches to train the prediction model more perfectly. All of the above discussed clustering algorithms such as BorderFlow \cite{scanniello2013class}, LSI \cite{tan2011assessing}, Subtractive clustering algorithm \cite{sidhu2010subtractive} use software code metrics, source code dependencies or code similarities etc. to group the source codes. Some approaches use PCA to reduce the dimension of the dataset before applying the different clustering algorithms \cite{menzies2011local,menzies2013local,sidhu2010subtractive}. None of those methods work perfectly in all Promise Repository's datasets \cite{promise12}. So, further researches are needed to perform on clustering of source codes for defect prediction.
+
+
+%To perform different clustering algorithms on the dataset, the dimensions of the dataset are needed to reduce to fit the data for those clustering algorithms. Hence, Software code metrics directly relate to the defect., so the dimension of the dataset should be reduced based on the impact of these dimension to software defect.  
+
+%All of the above discussed clustering algorithms such as BorderFlow, LSI, Subtractive clustering algorithm use either software code metrics, source code dependencies or code similarities etc. to group the source codes. Some approaches use PCA to reduce the dimension of dataset before applying the different clustering algorithms. In the defect prediction, 
+
+ %Hence, the prediction models' accuracy totally depends on its training data, so the clustering approach to group the dataset for predicting defects will be helpful to improve the performance of the models.  
+
+
+%To predict defects, all of the above discussed clustering algorithms such as BorderFlow, LSI, Subtractive clustering algorithm use either software code metrics, source code dependencies or code similarities etc. to group the source codes. None of those methods consider the code relationships and similarities together to group the software into clusters. Some approaches use PCA  However, the combined usage of the code relationships and similarities in clustering may enhance the software defect prediction accuracy.
+
+
+\section{Existing clustering algorithms}
+
+For software defect prediction, many prominent clustering algorithms have been used to group software into multiple clusters. To validate the new clustering algorithm, the comparison needs to be accomplished among the proposed and existing clustering techniques. In this section, the existing clustering algorithms that are considered to compare results with the proposed clustering algorithm are described.
+
+\subsection{BorderFlow}
+BorderFlow clustering algorithm is successfully implemented in \cite{scanniello2011clustering,scanniello2013class} to group the software into multiple clusters. It treats the whole software as a collection of nodes to represent the whole software as a graph. It maximizes the flow from the border of each cluster to the nodes within the cluster, while minimizing the flow from cluster to the nodes outside.  In this context, the goal of this algorithm is to find groups of tightly coupled classes which are likely to implement a set of related features.
+
+Let, a cluster X, is a subset of V, $b(X)$ is the set of border nodes of X, and $n(X)$ is a function used to identify the set of direct neighbors of X. $\Omega$ is a function that assigns the total number of the edges (i.e., dependencies) from a subset to another subsets using the \emph{equation (\ref{eq:function})}. Then borderFlow ratio can be measured by using the equation \emph{(\ref{eq:ration})}.
+
+\begin{equation}
+\label{eq:function}
+\Omega(X,Y)=\sum e(c_{i},c_{j})| c_{i} \varepsilon X and c_{j} \varepsilon Y
+\end{equation}}
+\begin{equation}
+\label{eq:ration}
+ F(x)=\frac{\Omega(b(X),X)}{\Omega(b(X),n(X))}}
+\end{equation}
+ 
+To find group of related classes, this algorithm iteratively selects nodes from $n(X)$ and inserts  nodes in $X$ until $F(X)$ is maximized. The iterative selection of nodes ends when $n(X)$ equals to $0$ for each set of nodes.
+
+\subsection{K-means}
+K-means clustering algorithm divides a dataset into k clusters using an objective function called Residual Sum of Squares (RSS) \cite{July2014Online}. The RSS function is measured by using \emph{equation \ref{eq:k-means}}. If $\mid $x$_{i}^j-c_{j}\mid^2$ is a chosen distance measure between a data point $x_{i}^j$ and the cluster center $c_{j}$, the K-means minimizes the distance from $n$ data points to their respective cluster centers by using the \emph{equation (\ref{eq:k-means})}. 
+
+\begin{equation}
+\label{eq:k-means}
+J=\sum\limits_{j=0}^k\sum \limits_{i=0}^n \mid x_{i}^j-c_{j}\mid^2
+\end{equation}}
+
+This algorithm iteratively runs and computes RSS value to find clusters. In each iteration, it moves the cluster centers to minimize RSS value. This process continues until cluster centers do not move anymore.
+
+\section{Simple overview of the Java Project}
+As the experiment is based on the OO software built by Java, so this section provides the description of Java project hierarchy. Normally, a Java project consists of some Packages, classes, interfaces etc. For more clarification, the inner details of Package and Class are given below: 
+ 
+\subsection{Package}
+Packages in Java are used to organize source code files and prevent namespace conflicts.
+ %To create a package is a simply easy by adding a package command in the beginning of Java source code file. Any classes declared within this file will belong to that package.
+The package command declares a place where the classes will be stored. If package is not declared for a class, the class file will be stored in default package. This is the general form of the package statement:
+
+Package pkg;
+
+Here, pkg is the name of the package. For example, the following statement create a package named myPackage.
+ 
+Package myPackage; 
+
+Java uses file system directory just like a computer’s file system directory. More than one file can have same package name. The source file that are declared must be stored in a directory named the package name that is declared in the beginning of the file. 
+In the case of nested package, a package may contain inner package. In that case the package naming structure can be expressed as follows 
+Package pkg1[.pkg2[.pkg3]]; 
+A short example of Java Package is given below:
+
+\begin{lstlisting}
+Package myPackage;
+	class Calculator{
+		int numberA, numberB;
+			
+		int Sum(int numberA, int numberB) {
+			return numberA+ number;
+		}
+		
+		Int multiply(int numberA, int numberB) ) {
+			return numberA* number;
+		}
+	}
+
+\end{lstlisting}
+\begin{lstlisting}
+// Hello.java
+import javax.swing.JApplet;
+import java.awt.Graphics;
+
+public class Hello extends JApplet {
+    public void paintComponent(Graphics g) {
+        g.drawString("Hello, world!", 65, 95);
+    }    
+}
+\end{lstlisting}
+
+\subsection{Class}
+A class is building block of all functionality in the object oriented concept. When a class is declared, it actually creates a new data type which is then used to create object of that type. Thus, a class is a template for an object, and an object is an instance of a class. 
+
+
+When a class is declared, we need to declare its functionalities by specifying the data. A class may contain only data or only some functionalities, but most real world classes contain both. A class is declared by use of the class keyword. The classes that have been used up to this point are actually very limited examples of its complete form. Classes can get much more complex. The general form of a class definition is shown here:
+
+\begin{lstlisting}
+
+class classname {
+type instance-variable1;
+type instance-variable2;
+// ...
+type instance-variableN;
+type methodname1(parameter-list) {
+// body of method
+}
+type methodname2(parameter-list) {
+// body of method
+Chapter 6: Introducing Classes 131
+THE JAVA LANGUAGE
+}
+// ...
+type methodnameN(parameter-list) {
+// body of method
+}
+}
+
+\end{lstlisting}
+
+The data, or variables, defined within a class are called instance variables because each instance of the class contains its own copy of these variables. Thus, the data for one object is separate and unique from the data for another. We. The code is contained within methods. The methods and variables defined within a class are called members of the class. The instance variable are often used by the method and it decides how the instance variable will be used.  
+
+\section{Proposed Package Based Clustering (PBC) algorithm}
+
+Existing clustering techniques consider a number of source code characteristics, for example, source code dependencies or similarity, LSI, code metrics, lexical similarity to group the software into clusters. To the best of our knowledge, no such technique yet considers both code relationship and similarity to group the source codes. In this paper, a new Package Based Clustering (PBC) algorithm is proposed to group the software. 
+
+A package is a group of related types, for example, classes, interfaces, enumerations and annotations, which provides access protection to its elements. Programmers can define their own packages to resolve naming conflicts, to prevent access, to group related and similar OO classes together. Some of the existing packages in Java are $java.lang.$ and $java.io$ etc. A Java project hierarchy to represent project, packages and classes is depicted in Figure \ref{JavaStructure}.
+
+\begin{figure}[h!]
+\centering
+      \includegraphics[angel=0,width=70mm, height=60mm \linewidth]{javaheirarchy2.eps}
+			\caption{Java project hierarchy}
+			\label{JavaStructure}
+\end{figure}
+
+
+\subsection{Software Defect Prediction Model}
+To implement the proposed PBC, a prediction model is required. We consider the linear regression model \cite{draper1981applied} to predict defects as it has been successfully implemented in \cite{tan2011assessing,basili1996validation}. The graphical representation of the proposed defect prediction model is depicted in {Figure \ref{defectPModel}. It explores the relationship between a dependent variable such as software defects and one or more independent variables such as WMC, DIT, NOC etc.(see Table \ref{ExplanatoryVariable}) providing with a model by a linear \textit{equation (\ref{eq:defectPModel}}) 
+\begin{equation}
+\label{eq:defectPModel}
+ Y=b_{1}x_{1}+b_{2}x_{2}+b_{3}x_{3}+...+b_{n}x_{n}+c
+\end{equation}}
+Where $Y$ is a dependent variable, $x_{1}...x_{n}$, are the independent variables, $b_{i}$ is the coefficient that represents the amount response variable $Y$ which changes when explanatory variables $x_{i}$ changes 1 unit and $c$ is the intercept.
+
+\begin{figure}[h!]
+\center
+      \includegraphics[angel=0,width=90mm, height=50mm \linewidth]{model3.eps}
+		\caption{Software defect prediction model using Package Based Clustering (PBC)}
+		\label{defectPModel}	
+\end{figure}
+
+
+
+\subsection{Selected Explanatory variables}
+
+Software defect prediction models relate the code metrics to defect proneness of a software. Hence PBC adopts some selected explanatory variables, which are the same as Basili et al. \cite{basili1996validation,di2011genetic}, identified eight significant object oriented code metrics, listed in Table \ref{defectPModel}. The first six metrics are proposed by Chidamber and Kemerer, popularly known as CK metrics \cite{chidamber1994metrics} and the next two are well known size metrics. In this paper, those eight code metrics are considered as explanatory variables for predicting defects (used in \textit{equation \ref{eq:defectPModel}}).
+
+\begin{center}
+\captionof{table}{Selected Explanatory variables}
+
+\label{ExplanatoryVariable}
+    \begin{tabular}{| p{6cm}  |p{9cm}|}
+    \hline
+    Weighted Methods per classes (WMC) & It is the sum of all methods in a class. \\ \hline
+    Depth of Inheritance Tree (DIT) &  It is the length of the longest path from a given class to the root class in the inheritance hierarchy. \\ \hline
+    Number of Children (NOC)  & It simply measures the number of immediate descendants of a class. \\ \hline
+    Coupling between object classes (CBO) & It counts the number of other classes to which a given class is coupled. \\
+    \hline
+		Response for classes (RFC) & The RFC metric measures the number of different methods that can be executed when an object of that class receives a message.\\ \hline
+		Lack of Cohesion in Methods (LCOM) & It is the measure of counting the total number of methods in a class that are not related through the sharing of some of the class fields.\\ \hline
+		Number of Public Method (NPM) & The NPM metric simply counts all the methods in a class that are declared as public.\\ \hline
+		Lines of Codes (LOC)& It simply counts the total number of instructions in a class. \\ \hline 
+    \end{tabular}
+	\end{center}
+
+
+\subsection{PBC Clustering Technique with Joint Cluster}
+
+In the Java programing convention, a package is a namespace that organizes a set of related and similar classes and interfaces. Conceptually, packages are similar to different folders in a computer. A package allows a developer to group classes (and interfaces) together. These classes are related in some way that they might perform a specific set of tasks. As our goal is to group related and similar classes, so clustering using PBC, described in  Algorithm \ref{PackageLevel}, can easily meet our purpose.
+
+The proposed PBC algorithm groups a software into multiple clusters using related and similar OO classes. The functionality of PBC can be classified as OO class identification, Cluster formation, Cluster validation.
+
+\subsubsection{OO class identification}
+
+At the beginning of the clustering process, the proposed algorithm lists down all files from a software project and then it identifies potential files that will be considered for constructing clusters.  In our context, the software project is built using Java, so the proposed algorithm performs searching by considering the file extension with $.java$. 
+The overall OO class identification process for PBC algorithm is illustrated below:   
+\begin{algorithm}
+%\caption{OO class identification}
+\label{OO_class_identification}
+\begin{algorithmic}[1]
+%\REQUIRE  $ PackageName = 0$, $ ProgramClassList = 0$
+
+	\FOR{\textbf{each} $file$}
+		\IF{$fileNameExtention = .Java$}
+				\STATE Add file to $programClassList$
+		\ENDIF
+	\ENDFOR
+
+\end{algorithmic}
+\end{algorithm}
+
+
+\subsubsection{ Package Identification \&  Cluster formation}
+
+After the identification of the OO classes, the PBC finds out the Package Name of each class. To identify package information of a Java file, it reads the file and retrieve the package name by matching the pattern structure, for example, $package$ $packageName;$. At the end of the successfully identification of the package name, it groups the files into multiple clusters based on the package name. For each distinct package name, it creates an array to store the file's name those are under the same package. if package name already considered, it adds OO class to the existing array of that package otherwise it creates array for the new package to add it's OO class.
+
+The Package Identification and Cluster formation process is performed by using followings steps.  
+\begin{algorithm}
+%\caption{Package Identification and Cluster formation}
+\label{Package_Identification_and_Cluster_formation}
+\begin{algorithmic}[1]
+%\REQUIRE $PackageContainer = 0$, $ PackageName = 0$, $ ProgramClassList = 0$, $NumberOfVaribale = 0$, $PackageSize = 0$
+
+\FOR{\textbf{each} $programClassList$ }
+			\STATE $Read Program File$ 
+			\STATE $Search Each File For PackageName $  
+			\IF{$packageName Contains In  PackageContainer$}
+				\STATE $Add File To packageName$
+			\ELSE{ $Add New PackageName To PackageContainer$ }
+			\ENDIF
+	\ENDFOR
+	
+
+\end{algorithmic}
+\end{algorithm}
+In a word, the PBC finds out the Package Name of each class and lists all package name from the source codes as shown in line $1-2$. If package name already considered as cluster, it adds OO class to the existing package using line $4-5$ otherwise it creates a new cluster to add OO class as shown in line $6-7$.     
+
+
+\subsubsection{Cluster validation} Packages may contain different number of classes. Some packages may have a lot of classes and other may have only few classes. Our software defect prediction model uses eight explanatory variables, listed in Table \ref{ExplanatoryVariable}. So if number of classes in a package is less than the explanatory variables used in the prediction model, it would fail to predict defects. In this case, to make defect prediction model successful, small packages are combined to form a joint cluster applying the following lines. 
+
+\begin{algorithm}
+%\caption{Package based Clustering (PBC)}
+\label{PackageLevel}
+\begin{algorithmic}[1]
+%\REQUIRE $PackageContainer = 0$, $ ProgramClassList = 0$, $NumberOfVaribale = 0$, $PackageSize = 0$
+	
+	\FOR {\textbf{each} $Package$ in $packageContainer$}
+		\IF{ $NumberOfClassInPackage$ \textless $NumberOfVaribale$}
+			\STATE $Add To Joint Cluster$
+		\ENDIF
+	\ENDFOR
+\end{algorithmic}
+\end{algorithm}
+
+In a nutshell, the PBC algorithm groups a software project based on package information as package is a collection of similar and related classes. The whole PBC algorithm is illustrated in the Algorithm \ref{PackageLevel}.
+
+\begin{algorithm}
+\caption{Package based Clustering with Joint Cluster(PBC)}
+\label{PackageLevel}
+\begin{algorithmic}[1]
+\REQUIRE $PackageContainer = 0$, $ PackageName = 0$, $ ProgramClassList = 0$, $NumberOfVaribale = 0$, $PackageSize = 0$
+
+	\FOR{\textbf{each} $file$}
+		\IF{$fileNameExtention = .Java$}
+				\STATE Add file to $programClassList$
+		\ENDIF
+	\ENDFOR
+\FOR{\textbf{each} $programClassList$ }
+			\STATE $Read Program File$ 
+			\STATE $Search Each File For PackageName $  
+			\IF{$packageName Contains In  PackageContainer$}
+				\STATE $Add File To packageName$
+			\ELSE{ $Add New PackageName To PackageContainer$ }
+			\ENDIF
+	\ENDFOR
+	
+	\FOR {\textbf{each} $Package$ in $packageContainer$}
+		\IF{ $NumberOfClassInPackage$ \textless $NumberOfVaribale$}
+			\STATE $Add To Joint Cluster$
+		\ENDIF
+	\ENDFOR
+\end{algorithmic}
+\end{algorithm}
+ 
+
+\section{Experimental Results and Analysis }
+
+In this section, the experimental environment setup and the results analysis of the PBC along with two prominent clustering algorithms are analyzed. Finally, the effectiveness of the proposed PBC is measured by taking the mean, variance and standard deviation of absolute residuals. 
+
+To perform data analysis, a tool based on the above description of the proposed technique was implemented.The prominent clustering algorithms such as BorderFlow and K-means was implemented by using Java and R language respectively. The linear regression model was built by using the R statistical environment. An open source software named as JEdit 3.2 was collected from promise repository \cite{promise12} to use in the experiment.
+
+To perform the experiment, three clustering algorithms such as BorderFlow, K-means and the proposed PBC algorithm was applied on the dataset JEdit 3.2. These three clustering algorithms divided the selected software into multiple clusters using their approach. The BorderFlow clustering algorithm was implemented as mentioned in \cite{scanniello2013class}. To find out the number of clusters using k-means, the center (n) value was iteratively changed to minimize the RSS. The proposed PBC was implemented as described in Algorithm \ref{PackageLevel} by using Java to classify all OO classes into multiple clusters.
+
+%
+%We implement three clustering algorithms such as BorderFlow, K-means and the proposed PBC algorithm on the dataset JEdit 3.2. The BorderFlow clustering algorithm is implemented as mentioned in \cite{scanniello2013class}. To find out the number of clusters using k-means, we iteratively change the center value (n) to minimize the RSS. The proposed PBC described in Algorithm \ref{PackageLevel}, is implemented by using Java. It takes a software project implemented by using Java, then it identifies all OO classes. It reads all OO classes and searches for package name in the OO class. After finding package name from the OO class, it classifies all OO classes into multiple clusters.
+
+To analyze the quality of the prediction model obtained with the Linear Regression (see \textit{equation (\ref{eq:defectPModel})}), the k-fold cross validation was used. It is widely used to assess how accurately a predictive model will perform. It splitted each round dataset into training and test sets. The training set was used to train the prediction model and test set was used to assess how accurate the model can predict. 
+ 
+To assess the quality of clustering algorithms, the Linear Regression model was applied on each cluster, obtained by using different clustering algorithms. It predicted the number of defects that contain in a OO class. It used Pearson and Spearman correlation coefficient to calculate the residual value of each OO class by taking the difference of predicted defect and actual defect. This process was conducted $50$ times to get stable residual value. The mean, variance and standard deviation of absolute residuals were then calculated to compare different clustering algorithms.
+
+
+\begin{center}
+\centering
+\captionof{table}{The list of clusters obtained from different clustering algorithms }
+ \label{tab:title} 
+    \begin{tabular}{ | p{4cm} | p{4cm} | p{4cm} |}
+			\hline
+					Algorithm & Cluster & Joint cluster \\ \hline
+					Entire System &	1 &	0\\ \hline
+					K-means &	4	& 0\\ \hline
+					BorderFlow	& 3 &	1\\ \hline
+					Package Based &	7 &	1\\ 
+			\hline
+    \end{tabular}
+	\end{center}
+\newpage
+
+Table \ref{tab:title} puts in a nutshell the experimental clustering results obtained from the experiments. The BorderFlow clustering algorithm finds $3$ clusters with $1$ joint cluster. The k-means finds $4$ clusters from the dataset with no joint cluster. The proposed PBC clustering algorithm finds $7$ clusters with $1$ joint cluster from the selected dataset.
+
+\begin{center}
+\centering
+\captionof{table}{The mean, Variance and Standard deviation of absolute residual} \label{results} 
+    \begin{tabular}{ | p{3cm} | p{3cm} | p{3cm} |p{3cm}|}
+			\hline
+				Algorithm &	Mean	& Variance &	Standard deviation \\ \hline
+				Entire System&	1.248088 &	2.947011 &	1.716686\\ \hline
+				K-means	& 1.058155 &	2.627515 &	1.620961 \\ \hline
+				BorderFlow &	0.8904873	& 2.054801	& 1.433458 \\ \hline
+				Package Based &	0.3404931 &	0.4378411 &	0.6616956\\ 
+			\hline
+    \end{tabular}
+\end{center}
+
+Table \ref{results} summarizes the mean, variance and standard deviation of absolute residuals obtained in the experiments. From the regression model, it is well established that the better the prediction model is, the smaller residual value will be \cite{draper1981applied}. Hence the prediction model's success depends on clustering algorithms, so clustering algorithm can improve the accuracy of a prediction model by grouping software properly. From the TABLE \ref{results}, It is obvious that the prediction model predicts the minimum value of mean, variance and standard deviation of absolute residual for the PBC clustering algorithm. So it is obvious that software defect prediction based on package based clustering algorithm is better than the prediction model considering the BorderFlow, K-means and entire system.
+ 
+ \begin{figure}[h!]
+  \centering
+    \includegraphics[angel=0,width=90mm \linewidth]{standard_deviation.eps}
+		\caption{Comparison of the standard deviation of absolute residual}
+		\label{StandardDeviation}
+\end{figure}
+
+
+\begin{figure}[h!]
+\centering
+     \includegraphics[angel=0,width=90mm\linewidth]{mean.eps}
+		 \caption{Comparison of the mean of absolute residual}
+		\label{MeanAbsoluteResidual}
+\end{figure}
+
+%Figure \ref{StandardDeviation} demonstrates the comparison of the Standard Deviation (SD) of absolute residuals. The SD refers the dispersion of sample value from mean. It is calculated to analyze how much better the calculated mean is. Comparing SD values obtained by using different clustering algorithms, Figure \ref{StandardDeviation} shows that the SD value is minimum for PBC clustering algorithm because prediction model performs better using this algorithm. It means that the dispersion of residual values are least for PBC. So, PBC outperforms than other clustering algorithms in defect prediction.   
+%
+%Figure \ref{MeanAbsoluteResidual} illustrates the comparison of mean values of the proposed PBC clustering algorithm along with others, for example, BorderFlow, K-means and the Entire system. It visualizes the importance of the PBC algorithm on defect predictions. After comparing mean value of PBC, BorderFlow, k-means and the Entire system, we concludes that defect prediction model considering PBC can significantly minimize the residual values because defect prediction model using PBC can accurately predict defects. In this context, prediction model using the proposed PBC minimizes the residual value $54\%$ than the prediction model using BorderFlow. In case of K-means clustering algorithm and the entire system, the PBC also performs $71\%$ and $90\%$ better to reduce the residual value. 
+
+Figure \ref{StandardDeviation} demonstrates the comparison of the Standard Deviation (SD) of absolute residuals. The SD refers the dispersion of sample value from mean. It is calculated to analyze how much better the calculated mean is. Comparing SD values obtained by using different clustering algorithms, Fig. \ref{StandardDeviation} shows that the SD value is minimum for PBC clustering algorithm because prediction model performs better using this algorithm. It means that the dispersion of residual values are least for PBC. So, PBC outperforms other clustering algorithms in defect prediction.   
+
+Figure \ref{MeanAbsoluteResidual} illustrates the comparison of mean values of the proposed PBC clustering algorithm along with others, for example, BorderFlow, K-means and the Entire system. It visualizes the importance of the PBC algorithm on defect predictions. After comparing mean value of PBC, BorderFlow, k-means and the Entire system, the results conclude that defect prediction model considering PBC can significantly minimize the residual values because defect prediction model using PBC can accurately predict defects. In this context, prediction model using the proposed PBC minimizes the residual value $54\%$ than the prediction model using BorderFlow. In case of K-means clustering algorithm and the entire system, the PBC also performs $71\%$ and $90\%$ better than those to reduce the residual value. 
+
+
+\section{Conclusion}
+
+We presented and experimented a new clustering technique for defect prediction using software clustering. The proposed clustering technique named as PBC is based on the related and similar OO classes that form packages in java programing convention. It uses textual analysis on source codes to identify OO classes from a software project and lists out those files. To form clusters, it extract the package information from each OO class by searching the package name. In special case, if the number of OO classes of a cluster is smaller than the number of explanatory variable used in the prediction model, it combines small clusters to make those enable to apply prediction model. Finally the linear regression model considering PBC is conducted on JEdit $3.2$. The experimental results show that the software defect prediction using the proposed PBC outperforms the prediction models considering BorderFlow, K-means and the Entire system because PBS uses source code similarities and relationships to group the software. In this context, the prediction model considering PBS is  $54\%$, $71\%$, $90\%$ better than the prediction models built on BorderFlow, k-means and the entire system respectively. 
+
+As future work, to validate the observations and PBC algorithm, the dataset used by the prediction model needs to be extended and the research can also be extended to measure the quality of a software using different code metrics.  
+
+\chapter{ DbScan}
+\section{Introduction}
+
+\section{DBSCAN}
+ 
+DBSCAN clustering algorithm is a density based clustering algorithm which finds clusters by checking density reachability of different points. A point q is called density reachable to another point, p, if and only if there is a sequence of n points such as $p_{1}$, $p_{2}$… $p_{n}$ with $p_{1}=p$ and $p_{n}=q$ where each   is directly density-reachable from Pi. The clusters, generated from DBSCAN, satisfy the following two property:
+\begin{enumerate}
+	\item {All points within the cluster are mutually density-connected.}
+	\item {If a point is density-reachable from any point of the cluster, it is part of the cluster as well.}
+\end{enumerate}
+	
+DBSCAN algorithm requires two parameters to classify the dataset into different clusters. DBSCAN requires two parameters: ε (eps) and the minimum number of points required to form a dense region (minPts). It starts with an arbitrary starting point that has not been visited. This point's ε-neighborhood is retrieved, and if it contains sufficiently many points, a cluster is started. Otherwise, the point is labeled as noise. Note that this point might later be found in a sufficiently sized ε-environment of a different point and hence be made part of a cluster.
+
+\section{Methodology}
+More or less every machine learning algorithm uses existing knowledge to train the prediction model to predict the next items. Hence this defect prediction model uses statistical inference to predict defects, so its success depends on the knowledge it gathers from existing. 
+
+We have chosen statistical inference such as regression analysis for prediction because [A systematic review of software faults] shows that statistical model outperforms the expert estimations and experts cannot work on vary large datasets. In simple regression analysis, we have a set of independent variables and one dependent variable. Hence, we have some available data, so we first analyze the coefficient values and intercept for the regression equation.
+
+The success of the regression analysis depends on the best fit of the train data. In a research, Menzies et al. show that the prediction model that appears to be useful in global context is often obsolete in local context for defect prediction. So, to avoid conclusion instability, we have proposed an approach to divide the software code metrics into multiple groups. Then the prediction model is applied on each group to predict defects for the new datasets.  
+
+\subsection{Dimension reduction:} 
+To apply different clustering algorithm on the data, the dimensions of the data need to be reduced. In this thesis, the dimension of the data is reduced by using a new approach which is similar to principle component analysis (PCA). To reduce the dimension of the data, it uses the coefficients value of each attribute of the data. 
+
+The coefficients values are calculated by using linear regression which uses the equation. This equation is applied to the existing dataset to find the coefficients values of each attributes in the dataset. The equation, that is used for finding coefficients is given below:   
+\begin{equation}
+\label{eq:coeffModel}
+ Y=b_{1}x_{1}+b_{2}x_{2}+b_{3}x_{3}+...+b_{n}x_{n}+c
+\end{equation}}
+here, Y is dependent variable, $b_{1}$...$b_{n}$ be the coefficient values of independent variables,$x_{1}$...$x{_n}$ respectively and c is intercept point of y-axis. 
+
+ The coefficients values mean the impact of this particular independent to dependent variable.  The coefficients value can be positive or negative based on its impact on the independent variables to the dependent variable.
+ 
+To reduce the dimension of the data, the coefficients values are then multiplied to the corresponding variables values. This produces the new values that might have some positive and negative values. Then the positive and negative values are summed to produce PosValue and NegValue respectively. This produces only two values for each entry in the data. The PosValue and NegValue are calculated by using the following two equations respectively. 
+ 
+ \begin{align}
+PosValue=\sum{$b_{i}$$x_{i}$}
+ \end{align}
+where $b_{i}$ is positive.
+ \begin{align}
+NegValue=\sum{$b_{i}$$x_{i}$}
+ \end{align}
+where $b_{i}$ is negative.
+
+\subsection{Cluster Formation}
+
+The dimension reduction process reduces the attributes of a dataset and makes only two dimensional data which can easily be illustrated in two dimensional plane. Hence the dimension reduction process reduces the dimension based on their impact value such as coefficient value, so the position of any class depends on its impact factor. It is expected that objects with same possibility of having defects get similar PosValue and NegValue value.
+ 
+In the new value, the equal objects locates closer. So if the total software can be grouped based on the distance measure, then the equal objects will belong to same cluster. For this experiments, to group the whole software into multiple groups based on distance, the density based clustering algorithm (DBSCAN) is used.
+ 
+The DBSCAN clustering algorithm groups the whole software based on the distance measurement. To make the algorithm workable, a distance needs to be measured manually. For this experiments, the distance, which is known as eps value for DBSCAN, is calculated using the intercept point generated from prediction model.
+
+The eps value calculation for DBSCAN is most critical and important because the success of this cluttering algorithm depends on eps value. In this experiments the eps value is calculated by summing all intercept value from the prediction model, described in equation \ref{eq:epsGenerationModel}, considering only one independent variable at a time. 
+
+\begin{equation}
+\label{eq:epsGenerationModel}
+ Y=bx+c
+\end{equation}}
+Hence, this experiment only uses eight code metrics, described in (ref{}), so, the eps value is calculated by summing the eight intercept values, generated from considering one independent variable at a time.  
+\begin{align}
+eps=\sum{$b_{i}$}
+ \end{align}
+
+\subsection{Prediction Process}
+
+To perform prediction, 
+The proposed prediction process can be divided into three steps.
+
+\begin{itemize}
+	\item Predicting cluster
+	\item learning from the cluster, the selected object belongs
+	\item predicting defects
+\end{itemize}
+The proposed model tries to find the better way to train the prediction model. 
+1.	Predicting cluster
+When new objects are available to predict defects, its first classify this objects to the existing clusters that have been calculated. Our cluster prediction approach assigns the new items to different clusters using the following algorithms.  
+2.	Learning from this cluster
+The previous step gives us a set of new item and their corresponding clustering information. In this steps, we iteratively select an item and learnt the prediction model from the corresponding dataset. Call the steps 3. 
+3.	Predict defects
+After the completion of learning treatment, it’s time to predict the defects for the datasets that are waiting in the prediction list. 
+
+\chapter{Conclusion and Future Research Direction}
+
+
+\begin{singlespace}
+\bibliography{references}
+\bibliographystyle{IEEEtran}
+\end{singlespace}
+
+\end{document}
+              
