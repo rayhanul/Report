@@ -275,7 +275,9 @@ In a nutshell, a general overview of defect prediction using clustering emphasiz
 
 %To predict defects, all of the above discussed clustering algorithms such as BorderFlow, LSI, Subtractive clustering algorithm use either software code metrics, source code dependencies or code similarities etc. to group the source codes. None of those methods consider the code relationships and similarities together to group the software into clusters. Some approaches use PCA  However, the combined usage of the code relationships and similarities in clustering may enhance the software defect prediction accuracy.
 \subsection{Other Defect Prediction Model }
+A universal defect prediction model that is built from the entire set of diverse projects Zhang et al. proposed a defect prediction model 
 
+Bibi et al. proposed a defect prediction model using Regression via Classification (RvC) to estimate the number of software defects in a project \cite{bibi2006software,bibi2008regression}. the regression models measures the number of faults and classification model identifies the fault-proneness of a class. So, this approach does not only classify a object into defective and non-defective rather it also outputs associated values. RvC has been experimented on two dataset such as pekka dataset and ISBSG dataset \cite{isbsg} using 10-fold cross validation. The results show that RvC gets better regression error than the standard regression error on both dataset.    
 
 
 \section{Existing clustering algorithms}
