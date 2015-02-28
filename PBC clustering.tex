@@ -278,6 +278,8 @@ In a nutshell, a general overview of defect prediction using clustering emphasiz
 
 A universal defect prediction model that is built from the entire set of diverse projects Zhang et al. proposed a defect prediction model 
 
+Turhan et al. proposed a defect prediction model using Naïve bayes technique that uses weighted importance of all features instead of treating equal importance\cite{turhan2007software}. It collects the software metrics and defect information from NASA repository \cite{nasa2007respository}. It uses three heuristics to estimate the weights of the features according to their importance. After that it applies weighted Naive Bayes and the standard Naive Bayes on the collected data. The results show that the proposed approach produces statistically better results for the defect prediction.  
+
 Bibi et al. proposed a defect prediction model using Regression via Classification (RvC) to estimate the number of software defects in a project \cite{bibi2006software,bibi2008regression}. the regression models measures the number of faults and classification model identifies the fault-proneness of a class. So, this approach does not only classify a object into defective and non-defective rather it also outputs associated values. RvC has been experimented on two dataset such as pekka dataset and ISBSG dataset \cite{isbsg} using 10-fold cross validation. The results show that RvC gets better regression error than the standard regression error on both dataset.    
 
 
