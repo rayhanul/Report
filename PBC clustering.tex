@@ -63,7 +63,11 @@
 Software defect prediction is a ..........................
 \chapter{Background Study and Discussion}
 \section{Introduction}
-\section{Defect Prediction}
+\section{Defect }
+The software defect is any flaws, error that produces unexpected results. A software programmer, designer or others associated with the development of a software can make mistakes or error while designing and building the software. These mistakes or errors mean that there are flaws in the software. These are called defects.
+
+
+The perception what a defect varies in different contexts.   
 \section{Software Defect Prediction Model}
 \subsection{Regression Analysis}
 In statistics, regression analysis is a statistical process for estimating the relationships among the variables. It helps to understand how the values of the dependent variables change when any one of the independent variables is varied, while the other independent variables are held fixed. Most commonly, regression analysis estimates the conditional expectation of the dependent variable given the independent variables – that is, the average value of the dependent variable when the independent variables are fixed. In all cases, the estimation target is a function of the independent variables called the regression function. In regression analysis, it is also of interest to characterize the variation of the dependent variable around the regression function which can be described by a probability distribution.
@@ -85,25 +89,31 @@ This formula has the property that the prediction for Y is a straight-line funct
 
 \subsection{Machine learning Model}
 \section{Code Metrics}
-\label{Code_Metrics_section}
+
 A software metric is a quantitative measure of a software system. There are lots of software metrics that have been used for defect prediction to improve software quality. Some of these code metrics are method level, class level, component level, process level, Cyclomatic complexity etc. The software code metrics have multidimensional usage in software industry such as schedule and budget planning, cost estimation, quality testing, software debugging, software performance optimization etc.
 
  %The methods level metrics are widely used for defect prediction for structured programming and Object oriented programming paradigm and The class level metrics are only used for Object oriented programs. All of the metrics properties are not significant for all cases. To analyze these, many reseaches have already been carried out to identify best set of metrics for defect prediction.
 
 \subsection{Object Oriented Design Metrics}
-When the  object-oriented software development paradigm became popular, a lot of researches have been conducted to find the most important code metrics for Object Oriented (OO) design. Chidamber and Kemerer firstly proposed six code metrics for OO systems, popularly known as CK metrics \cite{chidamber1994metrics}. In addition to Ck metrics, there are also other metrics suite such as MOOD \cite{bansiya2002hierarchical}, QMOOD, L\&K etc. Among all the OO design metrics, the CK metrics is the most popular code metrics than others and widely used when OO system is used. The class interaction of some classes in a OO system is illustrated in Figure \ref{interaction_of_classes_in_a_OO_system}. 
+\label{Code_Metrics_background_study}
+When the object oriented software development paradigm became popular, a lot of researches have been conducted to find the most important code metrics for the Object Oriented (OO) design. Chidamber and Kemerer proposed six code metrics for OO systems, popularly known as CK metrics \cite{chidamber1994metrics}. In addition to Ck metrics, there are also other metrics suite such as MOOD \cite{bansiya2002hierarchical}, QMOOD, L\&K etc. Among all the OO design metrics, the CK metrics is the most popular code metrics and widely used to measure the quality of OO designed systems. 
+
+%The DIT will be the maximum length from the node to the root of the tree. 
+\textbf{Weighted Methods per Class:}
+The Weighted Methods per class (WMC) is the sum of all methods by treating equal weights for all methods in a class. It indicates how much effort is required to develop and maintain a particular class. The low value of WMC points to greater polymorphism and the high value of WMC indicates that the class is complex, difficult to maintain and harder to reuse. The Classes with high value of WMC is often refactored into two or more classes too to make the source codes simple, easy to maintain.
+% the WMC value should be smaller than 40. 
+
+\textbf{Depth of Inheritance Tree:}
+The Depth of Inheritance Tree (DIT) simply counts the number of ancestors of a class. The high value of DIT means the class inherits greater number of methods which makes a class complicated and complex. To the Object Oriented programing (OOP) point of view, a class should maintain the single responsibility principle. When a class inherits a lot of classes, it violates the OOP principle. As a result, the designed system become deprived of taking the benefits of OOP principles. The OO designed system's class hierarchy is illustrated in Figure \ref{dit_codeMetrics}. 
 \begin{figure}[h!]
   \centering
-    \includegraphics[angel=0,height= 60mm,width=80mm \linewidth]{images/literature/Code_metricAnalysis.eps}
-		\caption{The interaction of classes in a OO system}
-		\label{interaction_of_classes_in_a_OO_system}
+    \includegraphics[angel=0,height= 60mm,width=70mm \linewidth]{images/literature/Code_metricAnalysis.eps}
+		\caption{The class hierarchy of a OO system}
+		\label{dit_codeMetrics}
 \end{figure}
-
-Depth of Inheritance Tree (DIT) :
-The Depth in Inheritance Tree (DIT) means the number of ancestor classes, a class have. The greater value of DIT means that the class inherits greater number of methods which makes a class complicated and complex. To the object oriented programing point of view, a class should follow the single responsibility principle. When a class inherits a lot of class, its violates this principle. The greater value of DIT also creates the design complexity of a class. The DIT will be the maximum length from the node to the root of the tree.  In Java where all classes inherit Object the minimum value of DIT is 1. 
-From this Figure \ref{dit_codeMetrics}, the DIT value of different class are given below:
+From the above Figure \ref{dit_codeMetrics}, the DIT values of different classes are given below:
 \begin{itemize}
-	\item DIT ($C_{0}$) = 0
+\item DIT ($C_{0}$) = 0
 \item DIT ($C_{1}$) = 0
 \item DIT ($C_{2}$) = 1
 \item  DIT ($C_{3}$) = 2
@@ -111,34 +121,46 @@ From this Figure \ref{dit_codeMetrics}, the DIT value of different class are giv
 \item DIT ($C_{5}$) = 4
 \end{itemize}
 
-Number of Children:
-
-The Number of Children (NOC) simply counts the immediate sub-classes of a class in the class hierarchy. It was first introduced by Chidamber and Kemerer \cite{chidamber1994metrics}. It relates to the notion of scope of properties of a class. Another point of view, It is a measure of how many sub-classes are going to inherit the methods of a particular parent class.
-
-
-The number of children gives an idea of the potential influence a class has on the design. The high number of children means the greater possibility of the reuse, since inheritance is a form of reuse. It may also be a case of misuse of sub-classing, when a class has greater number of NOC value. If a class has a large number of children, it may require more testing of the methods in that class.
-
-
-
-Response for a Class:
- 
-The Response for Class (RFC) metric is the total number of methods that can potentially be executed in response to a message received by an object of a class.  This number is the sum of the methods of the class, and all distinct methods are invoked directly within the class methods. 
-If a large number of methods can be invoked in response to a message, the testing and debugging of the class becomes more complicated since it requires a greater level of understanding required on the part of the tester.
-The larger the number of methods that can be invoked from a class, the greater the complexity of the class.
-A worst case value for possible responses will assist in appropriate allocation of testing time.
-
-
-Coupling between Objects: 
-The Coupling between Objects (CBO) simply counts the number of classes to which one single class is connected. It has been introduced by Chidamber and Kemerer. A class can be coupled to other classes through parameters passing, shared variables, common database access or direct method calling etc. From the example in Figure \ref{}, the coupling value of those classes are listed below: 
+\textbf{Number of Children:}
+The Number of Children (NOC) simply counts the immediate sub-classes of a given class. It provides the scope of properties of a class. Another point of view, It is also a measure of how many sub-classes are going to inherit the methods of a particular parent class. From the Figure \ref{dit_codeMetrics}, the NOC values of different classes are given below:
 
 \begin{itemize}
-	\item CBO($C_{0}$)=3.
+	\item NOC ($C_{0}$) = 1
+\item NOC ($C_{1}$) = 1
+\item NOC ($C_{2}$) = 1
+\item  NOC ($C_{3}$) = 2
+\item NOC ($C_{4}$) = 3
+\item NOC ($C_{5}$) = 4
+\end{itemize}
+
+The NOC value also gives the potential influence of a class on the design. The high NOC value ensures the high usage of the inheritance in a system and the greater possibility of the reusability. Sometimes, it may also be a case of misuse of sub-classing and increase the complexity of the system that requires more testing of the methods to ensure the quality of the software.
+
+\textbf{Response for a Class:} 
+The Response for Class (RFC) metric is the total number of methods that can potentially be executed in response to a message received by a class. It is the sum of the methods of a class and all distinct methods that are invoked directly within the class methods. If a class invokes large number of methods in a response, the testing and debugging of the class becomes more complicated and  the tester requires a greater level of understanding to test the method. 
+
+%The larger the number of methods that can be invoked from a class, the greater the complexity of the class. A worst case value for possible responses will assist in appropriate allocation of testing time.
+
+
+\textbf{Coupling between Objects:}
+The Coupling between Objects (CBO) simply counts the number of classes to which one single class is connected. It has been introduced by Chidamber and Kemerer. A class can be coupled to other classes through parameters passing, shared variables, common database access or direct method calling etc. From the example in Figure \ref{CBO_codeMetrics}, the coupling value of those classes are listed below: 
+\begin{figure}[h!]
+  \centering
+    \includegraphics[angel=0,height= 70mm,width=90mm \linewidth]{images/literature/CBO.eps}
+		\caption{The Class Coupling among different classes in a OO system}
+		\label{CBO_codeMetrics}
+\end{figure}
+
+\begin{itemize}
+	\item CBO(A)=2
+	\item CBO(B)=2
+	\item CBO(C)=3
+	\item CBO(D)=1
 \end{itemize}
 
 The High value of CBO is always detrimental to modular design and prevents reuse of the classes. When an class has high CBO value, it means that the class has high dependency to the other classes. So, the corresponding class has high possibility of having defects than others and needs more testing compared to others. On the contrary, the low value of CBO indicates the simplicity of the class and it is easy to reuse in another application. 
 
 
-Lack of Cohesion of Method (LCOM): 
+\textbf{Lack of Cohesion of Method:} 
 Cohesion measures how well the methods in a class are connected to each others. It actually means the number of methods that do not share common fields like methods, properties etc. A class is called cohesive class if it performs only one function. So, the lack of Cohesion means that the class performs more that one responsibility. From the OOP point of view, a class should performs only one responsibility.The LCOM value is used to determine whereas the software violates the single responsibility principle or not. 
 
 LCOM= 1 means that the class is cohesive class and LCOM \gt= 2 means that the class has more that one responsibility and should be split to make the design simple. High cohesion among the methods is always desirable because it helps to achieve encapsulation. Low cohesion indicates the inappropriate design and high complexity which leads to create fault prone software.   
@@ -159,7 +181,13 @@ A class consists of methods A through E and variables x and y. A calls B and B a
 \end{figure}
 In the example on the right, we made C access x to increase cohesion. Now the class consists of a single component (LCOM4=1). each and every variables and methods are connected to each others. So the LCOM value for this class is 1. It is a cohesive class. 
 
+\subsection{ Other Code Metrics}
+Besides the CK metrics, the Number of Public methods and Number of 
 
+\textbf{Number of Public Methods:}
+
+\textbf{Lines of Codes:}
+The Lines of Codes (LOC) simply counts the total number of lines from the source codes by avoiding pure whitespace and lines containing only comments. It measures the volume of the source codes. It can only be used to compare or estimate projects that use the same language, and is coded using the same coding standards. To change one is to change the volume of code. A better method to compare without regard to direct volume is to measure the complexity of the software. 
 \chapter{Literature Review}
 \section{Introduction}
 \section{Code Metrics Selection}
@@ -167,8 +195,8 @@ In the example on the right, we made C access x to increase cohesion. Now the cl
 %Hence, this experiment has been conducted on OOP paradigm,
 %There are lots of metrics suite in class level code metrics such as CK metrics, MOOD, QMOOD, L\&K metrics etc.
     
-The code or software metric is a quantitative measure to define the quality of a software system . There are lots of software metrics such as method level, class level, component level, process level, cyclomatic complexity etc. 
-It has multidimensional usage in the software industry such as schedule and budget planning, cost estimation, quality testing, software debugging, software performance optimization etc. Apart from this, the software code metrics have been used for defect prediction to improve the software quality. Among the all metrics, the method level metric is widely used in structured programming and Object Oriented Programing (OOP) paradigm and the class level code metric is only used for OOP paradigm. All of the above metrics' properties are not significant for defect prediction \cite{catal2009systematic,pai2007empirical,zhou2006empirical}. To analyze the importance of those metrics, many researches have already been carried out to identify the best set of metrics for defect prediction. Some of these researches are described below:
+The code or software metric is a quantitative measure to define the quality of a software system. There are lots of software metrics such as method level, class level, component level, process level, cyclomatic complexity etc. 
+These software metrics have multidimensional usage in the software industry such as schedule and budget planning, cost estimation, quality testing, software debugging, software performance optimization etc. Apart from these, it have been used for defect prediction to improve the software qualities. Among all the metrics, the method level metric is widely used in structured programming and Object Oriented Programing (OOP) paradigm and the class level code metric is only used for OOP paradigm. All of the above metrics' properties are not significant for defect prediction \cite{catal2009systematic,pai2007empirical,zhou2006empirical}. To analyze the importance of those metrics, many researches have already been carried out to identify the best set of metrics for defect prediction. Some of these researches are described below:
  
 %It was the first attempt to measure the software code metrics by Thomas J. McCabe Sr. in 1976.It is a well known software metrics to measure the complexity of a source codes.
 Cyclomatic complexity is the first attempt to measure the complexity of a software by Thomas J. McCabe Sr. in 1976\cite{mccabe1976complexity}. It computes the complexity of a program by measuring the linearly independent execution paths from the source codes. It draws the control flow graph of a program by considering each instruction as node and data flow among nodes as directed edges. The Cyclomatic complexity, ($M$) of a program can be calculated by using the following equation:  
@@ -176,7 +204,7 @@ Cyclomatic complexity is the first attempt to measure the complexity of a softwa
 E = the number of edges of the graph,
 N = the number of nodes of the graph and 
 P = the number of connected components.
-It suggests that the cyclomatic complexity of a program should be smaller than 10 because the high cyclometic complexity means the high probability of having faults. It is also widely used for test case generation, defect prediction and to measure the quality of the source codes. 
+It suggests that the cyclomatic complexity of a program should be smaller than 10 because the high cyclometic complexity means the high probability of having faults \cite{mccabe1976complexity}. It has been used to measure the quality of source codes. Besides this, it is also widely used for test case generation, defect prediction.
 
 Halstead Code Metrics \cite{halstead1977elements} is another way to measure the complexity of a program's source code. It measures the complexity and difficulty of the source codes using the number of distinct operators ($n_{1}$), the number of distinct operands ($n_{2}$), the total number of operators ($N_{1}$) and the total number of operands ($N_{2}$). It uses $n_{1}$, $n_{2}$, $N_{1}$ and $N_{2}$ to calculate the following measures: 
 
@@ -194,25 +222,25 @@ Halstead Code Metrics \cite{halstead1977elements} is another way to measure the 
 
 %Chidamber and Kemerer \cite{chidamber1994metrics} proposed the most important software code metrics for Object Oriented (OO) system to help the designers and managers by providing the inner design details of a OO system.
 
-The CK metrics, proposed by Chidamber and Kemerer, to help the designers and managers by providing the inner design details of a Object Oriented (OO) system \cite{chidamber1994metrics}. These metrics are calculated by inspecting the relationship among different classes from a OO system. These are Weighted Methods per Class (WMC), Depth Inheritance Tree (DIT), Number of Children (NOC), Coupling between Object classes (CBO), Response for Class (RFC) and Lack of Cohesion in Methods (LCOM). These metrics are widely employed in fault prediction to improve the quality of a OO system. The details description of these metrics are given in section \ref{Code_Metrics_section}. 
+The CK metrics, proposed by Chidamber and Kemerer, to help the designers and managers by providing the inner design details of a Object Oriented (OO) system \cite{chidamber1994metrics}. These metrics are calculated by inspecting the relationship among different classes from a OO system. These are Weighted Methods per Class (WMC), Depth Inheritance Tree (DIT), Number of Children (NOC), Coupling between Object classes (CBO), Response for Class (RFC) and Lack of Cohesion in Methods (LCOM). These metrics are widely employed in fault prediction to improve the quality of a OO system. The details description of these metrics are given in section \ref{Code_Metrics_background_study}. 
 
 To analyze the impact of the CK metrics in defect prediction \cite{chidamber1994metrics}, Basili et al. performed an experiments using logistic regression to explore the relationship between the CK metrics and the fault-proneness of the OO classes \cite{basili1996validation}. To perform the experiments, it collects eight software projects, developed by eight groups of students at University of Maryland using C++. The results show that the code metrics such as RFC, NOC, DIT are very significant in defect prediction. The CBO, WMC are significant specially in user interface (UI) level classes and the remaining metric, the LCOM seems to be significant at all cases.
 
-Due to the incapacity of traditional approaches in class level metrics, Bansiya et al. proposed a class level metrics, named as QMOOD, a hierarchical quality model dedicated to the assessment of Object Oriented Design (OOD) quality \cite{bansiya2002hierarchical}. It assigns OOD metrics to OOD properties such as number of classes to design size, direct class coupling to coupling, number of methods to complexity etc. It also links OOD properties to quality attributes such as reusability, flexibility, functionality etc. It also identifies the specific design properties for the object-oriented paradigm, for example, polymorphism, data abstraction, hierarchies. The main limitation of this paper is the unclear mapping from the components to the metrics. 
+%Due to the inability of traditional approaches in class level metrics, Bansiya et al. proposed a class level metrics, named as QMOOD, a hierarchical quality model dedicated to the assessment of Object Oriented Design (OOD) quality \cite{bansiya2002hierarchical}. It assigns OOD metrics to OOD properties such as number of classes to design size, direct class coupling to coupling, number of methods to complexity etc. It also links OOD properties to quality attributes such as reusability, flexibility, functionality etc. It also identifies the specific design properties for the object-oriented paradigm, for example, polymorphism, data abstraction, hierarchies. The main limitation of this paper is the unclear mapping from the components to the metrics. 
 
  %The paper also introduces a very interesting set of new object oriented metrics. But the major drawback is that QMOOD
 %still relates design properties directly with metrics, in the same manner criteria are mapped to metrics in the FCM model. Thus, again design characteristics are related explicitly to “raw numbers” (i.e., metrics), while the rules and principles of good-design that determined the mapping remain implicit.
 
-Gyimothy et al. performed a study to analyze how CK metrics can be employed for the fault-proneness detection of a open source software \cite{gyimothy2005empirical}. For this purpose, it uses statistical methods, for example, logistic and linear regression and machine learning algorithms such as decision tree and neural network. To perform the experiments, it collects an open source software, named as Mozilla and its bug report from Bugzilla database \cite{BugzillaforMozilla}. After that, it applies the statistical methods and machine learning algorithms to the Mozilla. The results show that the CBO is the best metric and WMC, RFC, LOC are the most significant metrics, while DIT, LCOM are less significant and the NOC seems to be unimportant in defect prediction.
+Gyimothy et al. performed a study to analyze how CK metrics can be employed for the fault-proneness detection of an open source software \cite{gyimothy2005empirical}. For this purpose, it uses statistical methods, for example, logistic and linear regression and machine learning algorithms such as decision tree and neural network. To perform the experiments, it collects an open source software, named as Mozilla and its bug report from Bugzilla database \cite{BugzillaforMozilla}. After that, it applies the statistical methods and the machine learning algorithms to the Mozilla. The results show that the CBO is the best metric and WMC, RFC, LOC are the most significant metrics, while DIT, LCOM are less significant and the NOC seems to be unimportant in defect prediction.
 
 The usefulness of OO metrics such as CK metric \cite{chidamber1994metrics}, in fault prediction was also investigated by Zhou et al. \cite{zhou2006empirical}. It focuses on how accurately the six CK metrics can predict defects when taking the fault severity into account. Each of these metrics have been tested using logistic regression and three machine learning algorithms such as Naive Bayes, random forest and Nearest Neighbor with Generalization (NNge), on a public NASA dataset such as KC1. The findings of this experiments show that the CK metrics work well in low severity of defects rather than the high severity. It also shows that the CBO, WMC, RFC and LCOM metrics are statistically significant in both high or low fault severity. The DIT is not significant at any severity level while NOC is only significant at low fault severity. 
 %The main limitation of this experiments is the accuracy of fault severity ratings in KC1. 
 
-Pai et al. used Bayesian networks to analyze the effects of CK metrics \cite{chidamber1994metrics} on the number of defects and the defect proneness of a class \cite{pai2007empirical}. It uses KC1 project from the NASA metrics data repository. It builds a Bayesian network where parent nodes are the CK metrics \cite{chidamber1994metrics} and child nodes represent the fault content and fault proneness. After the model has been created, it uses  Spearman correlation analysis to check whether the variables of the CK metrics are independent or not. It founds that SLOC, CBO, WMC and RFC are the most significant metrics to determine fault content and fault proneness. It discovers that the correlation coefficients of these metrics such as SLOC, CBO, WMC, and RFC with fault content are 0.56, 0.52, 0.352, and 0.245 respectively. On the other hand, it also finds that both DIT and NOC are not significant and LCOM seems to be significant for determining fault content.
+Pai et al. used Bayesian networks to analyze the effects of CK metrics \cite{chidamber1994metrics} on the number of defects and the defect proneness of a class \cite{pai2007empirical}. It uses KC1 project from the NASA metrics data repository. It builds a Bayesian network where parent nodes are the CK metrics \cite{chidamber1994metrics} and child nodes represent the fault content and fault proneness. After the model has been created, it uses  Spearman correlation analysis \cite{cohen2013applied} to check whether the variables of the CK metrics are independent or not. It founds that SLOC, CBO, WMC and RFC are the most significant metrics to determine fault content and fault proneness. It discovers that the correlation coefficients of these metrics such as SLOC, CBO, WMC, and RFC with fault content are 0.56, 0.52, 0.352, and 0.245 respectively. On the other hand, it also finds that both DIT and NOC are not significant and LCOM seems to be significant for determining fault content.
    
 Catal investigated 90 software defect prediction papers published between 1990 and 2009 \cite{catal2009systematic}. He categorized those papers and reviewed each paper from the perspectives of metrics, learning algorithms and the data sets. According to this review, the method level metrics such as Halstead \cite{halstead1977elements} and McCabe \cite{mccabe1976complexity} matrics are most influential matrices in defect prediction and also suggests to use class level metrics for the OO programs. It also shows that the CK metrics is mostly used class level metrics in the defect prediction. 
  
-Radjenovi´c et al. \cite{radjenovic2013software} classified 106 papers of the software defect prediction according to metrics and context properties. It concludes the proportions of object-oriented metrics, traditional source code metrics, and process metrics are $49\%$, $27\%$, and $24\%$, respectively. Among all of metrics, CK \cite{chidamber1994metrics} metrics are most frequently used in defect prediction. The CK metrics has been reported to be more successful than traditional size and complexity metrics. 
+Radjenovi´c et al. \cite{radjenovic2013software} classified 106 papers of the software defect prediction according to metrics and context properties. It concludes the proportions of object-oriented metrics, traditional source code metrics, and process metrics are $49\%$, $27\%$, and $24\%$, respectively. Among all of metrics, CK \cite{chidamber1994metrics} metrics are the most frequently used in defect prediction. The CK metrics has been reported to be more successful than traditional size and complexity metrics. 
 
 Okutan et al. performed an experiment to identify the most effective set of matrices in the defect prediction \cite{okutan2014software}. For this purpose, it uses Bayesian networks to determine the probabilistic influential relationships among the software code metrics. It introduces two new code metrics such as number of developers (NOD) and lack of coding quality (LOCQ). An experiment has been conducted on the nine open source Promise Repository  datasets \cite{promise12}. The results show that RFC, LOC and LOCQ are the most significant and effective metrics and LCOM, WMC, CBO are less effective metrics in the defect prediction. In addition, it also shows that NOC and DIT are not effective metrics in defect prediction. 
 
@@ -252,7 +280,7 @@ Schroter et al. proposed a defect prediction model that uses program's import de
 %Zimmermann et al.\cite{zimmermann2007predicting} proposed a technique to predict defects at the design time considering program dependencies. It is actually the extension of Schröter et al. \cite{schroter2006predicting} which considers only import dependencies while analyzing the dependencies among different parts of the software. On the other hand, this technique considers call dependencies, data dependencies, and Windows specific dependencies such as shared registry entries. This paper tries to find the answer of how dependencies predict post-release defects. To perform the experiments, it collects dependencies of binaries, such as executable files (COM, EXE, etc.) and dynamic-link files (DLL), for Windows Server $2003$. It then applies Support Vector Machine (SVM) to predict the post release defects at design time with precision ranged between $0.58$ and $0.73$. It concludes that the defect proneness of a software can be predicted by using the dependencies among all binaries. 
 To resolve the above problems, Zimmermann et al. proposed a technique to predicts defect at the design time by considering call dependencies, data dependencies, and Windows specific dependencies such as shared registry entries \cite{zimmermann2007predicting}. It uses Support Vector Machine (SVM) to predict the post release defects at design time with precision ranged between $0.58$ and $0.73$. To perform the experiments, it collects the dependencies of all binaries such as executable files, for example, COM, EXE, etc. and dynamic-link files, for example, DLL, for Windows Server $2003$.  It concludes that the software's defect proneness can be predicted by using the dependencies among all binaries. These usage of codes' dependencies indicate the importance of using clustering technique in defect prediction. 
 
-Tan et al. proposed a defect prediction method based on functional clustering of the program to improve the performance\cite{tan2011assessing}. For finding clusters, it uses Latent Semantic Indexing (LSI) to group the software into multiple clusters. It uses the linear regression and logistic regression for building the prediction models. It selects two-thirds of the dataset to train the prediction models and the remaining part for test. The prediction capability is justified by using Pearson and Spearman correlation coefficients of predictive and actual defects \cite{Sharon2008Lawner}. To assess the effectiveness of the proposed model, an experiment has been conducted on a software built by Java with a high fault probability. The results show that the predictive model built on clustering performs better than the class based models in terms of precision and recall. It is another important hypothesis to use the clustering technique in defect prediction.
+Tan et al. proposed a defect prediction method based on functional clustering of the program to improve the performance\cite{tan2011assessing}. For finding clusters, it uses Latent Semantic Indexing (LSI) to group the software into multiple clusters. It uses the linear regression and logistic regression for building the prediction models. It selects two-thirds of the dataset to train the prediction models and the remaining part for test. The prediction capability is justified by using Pearson and Spearman correlation coefficients of predictive and actual defects \cite{cohen2013applied}. To assess the effectiveness of the proposed model, an experiment has been conducted on a software built by Java with a high fault probability. The results show that the predictive model built on clustering performs better than the class based models in terms of precision and recall. It is another important hypothesis to use the clustering technique in defect prediction.
 %However, the used clustering technique was not automatic.
 
 The usage of the subtractive clustering algorithm and the fuzzy inference system for early detection of faults was proposed by Sidhu et al. \cite{sidhu2010subtractive}. This approach has been tested with defect datasets of NASA software projects named as PC1 and CM1. It uses the combined model of requirements metrics and code based metrics from the dataset. Results show that the accuracy of this model is better than other models considering accuracy, mean square error and root mean square error. Although this approach performs well, there is no defined rules to find the sufficient number of clusters using subtractive clustering algorithm and when to stop executing the algorithm. The prediction model's accuracy shows more researches are needed to perform on source codes' clustering for defect prediction. 
