@@ -93,59 +93,61 @@ This formula has the property that the prediction for Y is a straight-line funct
 \subsection{Machine learning Model}
 \section{Code Metrics}
 
-A software metric is a quantitative measure of a software system. There are lots of software metrics that have been used for defect prediction to improve software quality. Some of these code metrics are method level, class level, component level, process level, Cyclomatic complexity etc. The software code metrics have multidimensional usage in software industry such as schedule and budget planning, cost estimation, quality testing, software debugging, software performance optimization etc.
+A software metric or code metric is a quantitative measure of a software system. There are lots of software metrics that have been used for defect prediction to improve the software quality. Some of these code metrics are method level, class level, component level, process level, Cyclomatic complexity etc. The software code metrics have multidimensional usage in software industry such as schedule and budget planning, cost estimation, quality testing, software debugging, software performance optimization etc.
 
  %The methods level metrics are widely used for defect prediction for structured programming and Object oriented programming paradigm and The class level metrics are only used for Object oriented programs. All of the metrics properties are not significant for all cases. To analyze these, many reseaches have already been carried out to identify best set of metrics for defect prediction.
 
 \subsection{Object Oriented Design Metrics}
 \label{Code_Metrics_background_study}
-When the object oriented software development paradigm became popular, a lot of researches have been conducted to find the most important code metrics for the Object Oriented (OO) design. Chidamber and Kemerer proposed six code metrics for OO systems, popularly known as CK metrics \cite{chidamber1994metrics}. In addition to Ck metrics, there are also other metrics suite such as MOOD \cite{bansiya2002hierarchical}, QMOOD, L\&K etc. Among all the OO design metrics, the CK metrics is the most popular code metrics and widely used to measure the quality of OO designed systems. 
+When the object oriented software development paradigm became popular, a lot of researches have been conducted to find out the most important code metrics for the Object Oriented (OO) design. Chidamber and Kemerer proposed six important code metrics for the OO system, popularly known as CK metrics \cite{chidamber1994metrics}. In addition to Ck metrics, there are also other metrics suite such as MOOD \cite{bansiya2002hierarchical}, QMOOD, L\&K etc. Among all the OO design metrics, the CK metrics is the most popular code metrics and widely used to measure the quality of OO designed systems. The details description of the CK metrics are given below:
 
 %The DIT will be the maximum length from the node to the root of the tree. 
 \textbf{Weighted Methods per Class:}
-The Weighted Methods per class (WMC) is the sum of all methods by treating equal weights for all methods in a class. It indicates how much effort is required to develop and maintain a particular class. The low value of WMC points to greater polymorphism and the high value of WMC indicates that the class is complex, difficult to maintain and harder to reuse. The Classes with high value of WMC is often refactored into two or more classes too to make the source codes simple, easy to maintain.
+The Weighted Methods per class (WMC) is the sum of all methods that belong to a class. It indicates how much effort is required to develop and maintain a particular class. The low value of WMC points to greater polymorphism and the high value of WMC indicates the class is complex, difficult to maintain and harder to reuse. The Classes with high value of WMC is often refactored into two or more classes to make the source codes simple, easy to maintain.
 % the WMC value should be smaller than 40. 
 
 \textbf{Depth of Inheritance Tree:}
-The Depth of Inheritance Tree (DIT) simply counts the number of ancestors of a class. The high value of DIT means the class inherits greater number of methods which makes a class complicated and complex. To the Object Oriented programing (OOP) point of view, a class should maintain the single responsibility principle. When a class inherits a lot of classes, it violates the OOP principle. As a result, the designed system become deprived of taking the benefits of OOP principles. The OO designed system's class hierarchy is illustrated in Figure \ref{dit_codeMetrics}. 
+The Depth of Inheritance Tree (DIT) simply counts the number of ancestors of a class. The high value of DIT means the class inherits greater number of methods which makes a class complicated and complex. To the Object Oriented programing (OOP) point of view, a class should maintain the single responsibility principle. When a class inherits a lot of classes, it violates the OOP principle. As a result, the designed system become deprived of taking the benefits of OOP principles. 
+
+%The OO designed system's class hierarchy is illustrated in Figure \ref{dit_codeMetrics}. 
 \begin{figure}[h!]
   \centering
     \includegraphics[angel=0,height= 60mm,width=70mm \linewidth]{images/literature/Code_metricAnalysis.eps}
 		\caption{The class hierarchy of a OO system}
 		\label{dit_codeMetrics}
 \end{figure}
-From the above Figure \ref{dit_codeMetrics}, the DIT values of different classes are given below:
+From the Figure \ref{dit_codeMetrics}, the DIT values of different classes are given below:
 \begin{itemize}
 \item DIT ($C_{0}$) = 0
 \item DIT ($C_{1}$) = 0
 \item DIT ($C_{2}$) = 1
-\item  DIT ($C_{3}$) = 2
+\item DIT ($C_{3}$) = 2
 \item DIT ($C_{4}$) = 3
 \item DIT ($C_{5}$) = 4
 \end{itemize}
 
 \textbf{Number of Children:}
-The Number of Children (NOC) simply counts the immediate sub-classes of a given class. It provides the scope of properties of a class. Another point of view, It is also a measure of how many sub-classes are going to inherit the methods of a particular parent class. From the Figure \ref{dit_codeMetrics}, the NOC values of different classes are given below:
+The Number of Children (NOC) simply counts the immediate sub-classes of a given class. It provides the scope of a class. It is also a measure of how many sub-classes are going to inherit the methods of a particular parent class. From the Figure \ref{dit_codeMetrics}, the NOC values of different classes are given below:
 
 \begin{itemize}
-	\item NOC ($C_{0}$) = 1
+\item NOC ($C_{0}$) = 1
 \item NOC ($C_{1}$) = 1
 \item NOC ($C_{2}$) = 1
-\item  NOC ($C_{3}$) = 2
+\item NOC ($C_{3}$) = 2
 \item NOC ($C_{4}$) = 3
 \item NOC ($C_{5}$) = 4
 \end{itemize}
 
-The NOC value also gives the potential influence of a class on the design. The high NOC value ensures the high usage of the inheritance in a system and the greater possibility of the reusability. Sometimes, it may also be a case of misuse of sub-classing and increase the complexity of the system that requires more testing of the methods to ensure the quality of the software.
+The NOC value also gives the potential influence of a class on the system design. The high value NOC ensures the high usage of the inheritance and the greater possibility of the reusability in a system. Sometimes, it may also be a case of misuse of sub-classing and increase the complexity of a system that results more testing of the methods to ensure the quality of the software.
 
 \textbf{Response for a Class:} 
-The Response for Class (RFC) metric is the total number of methods that can potentially be executed in response to a message received by a class. It is the sum of the methods of a class and all distinct methods that are invoked directly within the class methods. If a class invokes large number of methods in a response, the testing and debugging of the class becomes more complicated and  the tester requires a greater level of understanding to test the method. 
+The Response for a Class (RFC) metric is the total number of methods that can be executed in response to a message received by a class. It is the sum of the methods of a class and all distinct methods that are invoked directly within the class methods. If a class invokes large number of methods in a response, the testing and debugging of the class becomes more complicated and  the tester requires a greater level of understanding to test the method. 
 
 %The larger the number of methods that can be invoked from a class, the greater the complexity of the class. A worst case value for possible responses will assist in appropriate allocation of testing time.
 
 
 \textbf{Coupling between Objects:}
-The Coupling between Objects (CBO) simply counts the number of classes to which one single class is connected. It has been introduced by Chidamber and Kemerer. A class can be coupled to other classes through parameters passing, shared variables, common database access or direct method calling etc. From the example in Figure \ref{CBO_codeMetrics}, the coupling value of those classes are listed below: 
+The Coupling between Objects (CBO) simply counts the number classes to which one single class is connected. A class can be coupled to other classes through parameters passing, shared variables, common database access or direct method calling etc. From the example in Figure \ref{CBO_codeMetrics}, the coupling value of those classes are listed below: 
 \begin{figure}[h!]
   \centering
     \includegraphics[angel=0,height= 70mm,width=90mm \linewidth]{images/literature/CBO.eps}
@@ -160,29 +162,32 @@ The Coupling between Objects (CBO) simply counts the number of classes to which 
 	\item CBO(D)=1
 \end{itemize}
 
-The High value of CBO is always detrimental to modular design and prevents reuse of the classes. When an class has high CBO value, it means that the class has high dependency to the other classes. So, the corresponding class has high possibility of having defects than others and needs more testing compared to others. On the contrary, the low value of CBO indicates the simplicity of the class and it is easy to reuse in another application. 
+The High value of CBO is always detrimental to modular design and prevents reuse of a classes. When a class has high CBO value, it means that the class has high dependency to the other classes. So, the corresponding class has high possibility of having defects than others and needs more testing compared to others. On the contrary, the low value of CBO indicates the simplicity of a class and it is easy to reuse in another application. 
 
 
 \textbf{Lack of Cohesion of Method:} 
-Cohesion measures how well the methods in a class are connected to each others. It actually means the number of methods that do not share common fields like methods, properties etc. A class is called cohesive class if it performs only one function. So, the lack of Cohesion means that the class performs more that one responsibility. From the OOP point of view, a class should performs only one responsibility.The LCOM value is used to determine whereas the software violates the single responsibility principle or not. 
+The cohesion measures how well the methods in a class are connected to each others. It actually means the number of methods that do not share common fields like methods, properties etc. A class is called cohesive class if it performs only one function. So, the lack of Cohesion means that the class performs more that one responsibility. From the OOP point of view, a class should perform only one responsibility. The LCOM value is used to determine whereas the class violates the single responsibility principle or not. 
 
 LCOM= 1 means that the class is cohesive class and LCOM \gt= 2 means that the class has more that one responsibility and should be split to make the design simple. High cohesion among the methods is always desirable because it helps to achieve encapsulation. Low cohesion indicates the inappropriate design and high complexity which leads to create fault prone software.   
 
 %The metric calculates whether the fields in an object are used across the method and properties or whether there is a split. A split means that some methods access some fields and some access other fields. That means that there is no interaction among these methods and so they should be in different classes. 
 \begin{figure}[h!]
   \centering
-    \includegraphics[angel=0,width=70mm \linewidth]{images/literature/lcom2.eps}
-		\caption{Lack of Cohesion}
-		\label{lcom2}
-\end{figure}
-A class consists of methods A through E and variables x and y. A calls B and B accesses x. Both C and D access y. D calls E, but E doesn't access any variables. This class has 2 unrelated components. The class can be split into the follow components such as {A, B, x} and {C, D, E, y}. So, it will be good, if the class is split into two classes. For this class, the LCOM value is 2. 
-\begin{figure}[h!]
-  \centering
     \includegraphics[angel=0,width=70mm \linewidth]{images/literature/lcom1.eps}
-		\caption{Lack of Cohesion}
+		\caption{A simple overview of lack of cohesion}
 		\label{lcom1}
 \end{figure}
-In the example on the right, we made C access x to increase cohesion. Now the class consists of a single component (LCOM4=1). each and every variables and methods are connected to each others. So the LCOM value for this class is 1. It is a cohesive class. 
+
+
+In the Figure \ref{lcom1}, a class consists of methods A through E and variables x and y. A calls B and B accesses x. Both C and D access y. D calls E, but E does not access any variables. This class has 2 unrelated components. The class can be split into the follow components such as {A, B, x} and {C, D, E, y}. So, it will be good to split the class into two classes. For this class, the LCOM value is 2. 
+\begin{figure}[h!]
+  \centering
+    \includegraphics[angel=0,width=70mm \linewidth]{images/literature/lcom2.eps}
+		\caption{A simple overview of a cohesive class}
+		\label{lcom2}
+\end{figure}
+
+In Figure \ref{lcom2}, Method C access x to increase cohesion. Now the class consists of a single component where each and every variables and methods are connected to each others. So the LCOM value for this class is 1. It is a cohesive class. 
 
 \subsection{ Other Code Metrics}
 Besides the CK metrics, the Number of Public methods and the Lines of Codes are popular code metrics, that have been employed for defect prediction. The short description of those are given below:
@@ -190,8 +195,10 @@ Besides the CK metrics, the Number of Public methods and the Lines of Codes are 
 \textbf{Number of Public Method:}
 The Number of Public Method (NPM) is the sum of public methods in a class. It provides the number of methods that can accessible from outside of the class. The high value of NPM indicates that the class is highly coupled with other classes because public methods is a interface by which classes communicates to each others. The high value of NPM also shows the corresponding class is too complex and has many responsibilities which complicates the design of a system.
 
-\textbf{Lines of Codes:}
-The Lines of Codes (LOC) simply counts the total number of lines from the source codes by avoiding pure whitespace and lines containing only comments. It measures the volume of the source codes. It can only be used to compare or estimate projects that use the same language, and is coded using the same coding standards. To change one is to change the volume of code. A better method to compare without regard to direct volume is to measure the complexity of the software. 
+\textbf{Lines of Code:}
+The Lines of Code (LOC) simply counts the total number of lines from the source codes by avoiding pure whitespace and lines containing only comments. It measures the volume of the source codes. It can only be used to compare projects, built by the same programing language and the same coding standards. It is typically used to predict the amount of effort that will be required to develop a program, as well as to estimate programming productivity or maintainability once the software is produced.
+
+% To change one is to change the volume of code. A better method to compare without regard to direct volume is to measure the complexity of the software. 
 \chapter{Literature Review}
 \section{Introduction}
 \section{Code Metrics Selection}
@@ -720,7 +727,7 @@ The eps value calculation for DBSCAN is most critical and important because the 
 \end{equation}}
 Hence, this experiment only uses eight code metrics, described in (ref{}), so, the eps value is calculated by summing the eight intercept values, generated from considering one independent variable at a time.  
 \begin{align}
-eps=\sum{$b_{i}$}
+$eps=\sum{$b_{i}$}$
  \end{align}
 
 \subsection{Prediction Process}
