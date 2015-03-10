@@ -64,10 +64,13 @@ Software defect prediction is a ..........................
 \chapter{Background Study and Discussion}
 \section{Introduction}
 \section{Defect }
-The software defect is any flaws, error that produces unexpected results. A software programmer, designer or others associated with the development of a software can make mistakes or error while designing and building the software. These mistakes or errors mean that there are flaws in the software. These are called defects.
+The software defect is any flaws or errors that produce unexpected results. A software programmer, designer or others associated with the development of a software can make mistakes or error while designing and building the software. These mistakes or errors mean that there are flaws in the software. These are called defects.
 
+The term defect may vary based on the perception of software developers, qa teams or managers. For example, bug databases of open source software contain users' request for bug corrections. These requests are frequently considered as feature requests or design decision manifestations by the developers of those systems. That means what one stakeholder considers as a defect may not necessarily be perceived as the same by other stakeholders. In essence, software defect is any kind of deviation from stakeholder's expectation.
 
-The perception what a defect varies in different contexts.   
+\section{Defect Predictors}
+A Defect Predictor is a method that help the software practitioners by predicting possible defects that the end product may contain. The Defect predictor uses the software code metrics and the past information to predict defects for the current project. The defect predictor model is applied to the software software project before start testing to guess where the defects might exist. This allows them to efficiently allocate their scarce resources. 
+
 \section{Software Defect Prediction Model}
 \subsection{Regression Analysis}
 In statistics, regression analysis is a statistical process for estimating the relationships among the variables. It helps to understand how the values of the dependent variables change when any one of the independent variables is varied, while the other independent variables are held fixed. Most commonly, regression analysis estimates the conditional expectation of the dependent variable given the independent variables – that is, the average value of the dependent variable when the independent variables are fixed. In all cases, the estimation target is a function of the independent variables called the regression function. In regression analysis, it is also of interest to characterize the variation of the dependent variable around the regression function which can be described by a probability distribution.
@@ -182,9 +185,10 @@ A class consists of methods A through E and variables x and y. A calls B and B a
 In the example on the right, we made C access x to increase cohesion. Now the class consists of a single component (LCOM4=1). each and every variables and methods are connected to each others. So the LCOM value for this class is 1. It is a cohesive class. 
 
 \subsection{ Other Code Metrics}
-Besides the CK metrics, the Number of Public methods and Number of 
+Besides the CK metrics, the Number of Public methods and the Lines of Codes are popular code metrics, that have been employed for defect prediction. The short description of those are given below:
 
-\textbf{Number of Public Methods:}
+\textbf{Number of Public Method:}
+The Number of Public Method (NPM) is the sum of public methods in a class. It provides the number of methods that can accessible from outside of the class. The high value of NPM indicates that the class is highly coupled with other classes because public methods is a interface by which classes communicates to each others. The high value of NPM also shows the corresponding class is too complex and has many responsibilities which complicates the design of a system.
 
 \textbf{Lines of Codes:}
 The Lines of Codes (LOC) simply counts the total number of lines from the source codes by avoiding pure whitespace and lines containing only comments. It measures the volume of the source codes. It can only be used to compare or estimate projects that use the same language, and is coded using the same coding standards. To change one is to change the volume of code. A better method to compare without regard to direct volume is to measure the complexity of the software. 
@@ -668,7 +672,7 @@ DBSCAN clustering algorithm is a density based clustering algorithm which finds 
 	\item {If a point is density-reachable from any point of the cluster, it is part of the cluster as well.}
 \end{enumerate}
 	
-DBSCAN algorithm requires two parameters to classify the dataset into different clusters. DBSCAN requires two parameters: ε (eps) and the minimum number of points required to form a dense region (minPts). It starts with an arbitrary starting point that has not been visited. This point's ε-neighborhood is retrieved, and if it contains sufficiently many points, a cluster is started. Otherwise, the point is labeled as noise. Note that this point might later be found in a sufficiently sized ε-environment of a different point and hence be made part of a cluster.
+DBSCAN algorithm requires two parameters to classify the dataset into different clusters. DBSCAN requires two parameters: $\epsilon$ (eps) and the minimum number of points required to form a dense region (minPts). It starts with an arbitrary starting point that has not been visited. This point's ε-neighborhood is retrieved, and if it contains sufficiently many points, a cluster is started. Otherwise, the point is labeled as noise. Note that this point might later be found in a sufficiently sized ε-environment of a different point and hence be made part of a cluster.
 
 \section{Methodology}
 More or less every machine learning algorithm uses existing knowledge to train the prediction model to predict the next items. Hence this defect prediction model uses statistical inference to predict defects, so its success depends on the knowledge it gathers from existing. 
@@ -736,7 +740,7 @@ When new objects are available to predict defects, its first classify this objec
 The previous step gives us a set of new item and their corresponding clustering information. In this steps, we iteratively select an item and learnt the prediction model from the corresponding dataset. Call the steps 3. 
 3.	Predict defects
 After the completion of learning treatment, it’s time to predict the defects for the datasets that are waiting in the prediction list. 
-
+\section{Results}
 \chapter{Conclusion and Future Research Direction}
 
 
