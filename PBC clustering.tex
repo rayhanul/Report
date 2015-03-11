@@ -73,41 +73,41 @@ A Defect Predictor is a method that help the software practitioners by predictin
 
 \section{Software Defect Prediction Model}
 \subsection{Regression Analysis}
-In statistics, regression analysis is a statistical process for estimating the relationships among the variables. It helps to understand how the values of the dependent variables change when any one of the independent variables is varied, while the other independent variables are held fixed. Most commonly, regression analysis estimates the conditional expectation of the dependent variable given the independent variables – that is, the average value of the dependent variable when the independent variables are fixed. In all cases, the estimation target is a function of the independent variables called the regression function. In regression analysis, it is also of interest to characterize the variation of the dependent variable around the regression function which can be described by a probability distribution.
+The regression analysis is a statistical process for estimating the relationships among the variables. It helps to understand how the values of the dependent variables change when the values of independent variables are changed. There are many techniques for carrying out the regression analysis such as linear regression and ordinary least squares regression, logistic regression, step wise regression, Nonparametric regression etc. 
 
-Many techniques for carrying out regression analysis have been developed. The most common method are such as linear regression and ordinary least squares regression, logistic regression, step wise regression,Nonparametric regression etc. 
-The performance of regression analysis methods in practice depends on the form of the data generating process, and how it relates to the regression approach being used. Since the true form of the data-generating process is generally not known, regression analysis often depends to some extent on making assumptions about this process.
-These assumptions are sometimes testable if a sufficient quantity of data is available. Regression models for prediction are often useful even when the assumptions are moderately violated, although they may not perform optimally. However, in many applications, especially with small effects or questions of causality based on observational data, regression methods can give misleading results.
+The performance of the regression analysis depends on the data used to train the regression model and how it relates to the regression model being used. Since the true form of the data is generally unknown, regression analysis often depends to some extent on making assumptions about this data.These assumptions are sometimes testable if a sufficient quantity of data is available. Regression models for prediction are often useful even when the assumptions are moderately violated, although they may not perform optimally. However, in many applications, especially with small effects or questions of causality based on observational data, regression methods can give misleading results.
 
+%when any one of the independent variables is varied, while the other independent variables are held fixed.
+
+%Most commonly, regression analysis estimates the conditional expectation of the dependent variable given the independent variables – that is, the average value of the dependent variable when the independent variables are fixed. In all cases, the estimation target is a function of the independent variables called the regression function. In regression analysis, it is also of interest to characterize the variation of the dependent variable around the regression function which can be described by a probability distribution.
 \subsubsection{Linear Regression Analysis}
 Linear regression analysis is the process of analyzing the relationships between variables, usually the variables are divided into dependent and independent variables.  Let Y denote the dependent variable whose values you wish to predict, and let $X_{1}$,...,$X_{k}$ denote the independent variables. The linear regression analysis predicts the value of dependent variable (Y) by analyzing the independent variables ($X_{1}$,...,$X_{k}$). Then the equation for computing the predicted value of $Y$ is:
 \begin{equation}
 \label{eq:linear_regression_analysis}
  Y=b_{1}X_{1}+b_{2}X_{2}+b_{3}X_{3}+...+b_{n}X_{n}+c
-\end{equation}}
+\end{equation}
 This formula has the property that the prediction for Y is a straight-line function of each of the X variables, holding the others fixed, and the contributions of different X variables to the predictions are additive.  The slopes of their individual straight-line relationships with Y are the constants $b_{1}$, $b_{2}$,..., $b_{k}$, the so-called coefficients of the variables. That is, $b_{i}$ is the change in the predicted value of Y per unit of change in $X_{i}$, other things being equal.  The additional constant c, the so-called intercept, is the prediction that the model would make if all the X’s were zero (if that is possible).   The coefficients and intercept are estimated by least squares, i.e., setting them equal to the unique values that minimize the sum of squared errors within the sample of data to which the model is fitted.
 
 
-\subsubsection{Logistic Regression Analysis}
 
-\subsection{Machine learning Model}
+
 \section{Code Metrics}
 
-A software metric or code metric is a quantitative measure of a software system. There are lots of software metrics that have been used for defect prediction to improve the software quality. Some of these code metrics are method level, class level, component level, process level, Cyclomatic complexity etc. The software code metrics have multidimensional usage in software industry such as schedule and budget planning, cost estimation, quality testing, software debugging, software performance optimization etc.
+A software metric or code metric is a quantitative measure of a software system. There are lots of software metrics that have been used for defect prediction to improve the software quality. Some of these code metrics are method level, class level, component level, process level, Cyclomatic complexity etc. The software code metrics have multidimensional usage in software industry such as schedule and budget planning, cost estimation, quality testing, software debugging, software performance optimization etc. The selected code metrics that have been used in this thesis are described below:
 
  %The methods level metrics are widely used for defect prediction for structured programming and Object oriented programming paradigm and The class level metrics are only used for Object oriented programs. All of the metrics properties are not significant for all cases. To analyze these, many reseaches have already been carried out to identify best set of metrics for defect prediction.
 
 \subsection{Object Oriented Design Metrics}
 \label{Code_Metrics_background_study}
-When the object oriented software development paradigm became popular, a lot of researches have been conducted to find out the most important code metrics for the Object Oriented (OO) design. Chidamber and Kemerer proposed six important code metrics for the OO system, popularly known as CK metrics \cite{chidamber1994metrics}. In addition to Ck metrics, there are also other metrics suite such as MOOD \cite{bansiya2002hierarchical}, QMOOD, L\&K etc. Among all the OO design metrics, the CK metrics is the most popular code metrics and widely used to measure the quality of OO designed systems. The details description of the CK metrics are given below:
+When the object oriented software development paradigm became popular, a lot of researches have been conducted to find out the most important code metrics for the Object Oriented (OO) designed system. One of the most important OO code metrics is CK metrics, was proposed by Chidamber and Kemerer \cite{chidamber1994metrics}. In addition to Ck metrics, there are also other metrics suite such as MOOD \cite{bansiya2002hierarchical}, QMOOD, L\&K etc. Among all the OO design metrics, the CK metrics is the most influential code metrics and widely used to measure the quality of OO designed systems. The details description of the CK metrics are given below:
 
 %The DIT will be the maximum length from the node to the root of the tree. 
 \textbf{Weighted Methods per Class:}
-The Weighted Methods per class (WMC) is the sum of all methods that belong to a class. It indicates how much effort is required to develop and maintain a particular class. The low value of WMC points to greater polymorphism and the high value of WMC indicates the class is complex, difficult to maintain and harder to reuse. The Classes with high value of WMC is often refactored into two or more classes to make the source codes simple, easy to maintain.
+The Weighted Methods per class (WMC) is the sum of all methods that belong to a class. It indicates how much effort is required to develop and maintain a particular class. The low value of WMC points to greater polymorphism and the high value indicates the class is complex, difficult to maintain and harder to reuse. The Classes with high value of WMC is often re-factored into two or more classes to make the source codes simple and maintainable.
 % the WMC value should be smaller than 40. 
 
 \textbf{Depth of Inheritance Tree:}
-The Depth of Inheritance Tree (DIT) simply counts the number of ancestors of a class. The high value of DIT means the class inherits greater number of methods which makes a class complicated and complex. To the Object Oriented programing (OOP) point of view, a class should maintain the single responsibility principle. When a class inherits a lot of classes, it violates the OOP principle. As a result, the designed system become deprived of taking the benefits of OOP principles. 
+The Depth of Inheritance Tree (DIT) simply counts the number of ancestors of a class. The high value of DIT means the class inherits greater number of methods which makes a class complicated and complex. To the Object Oriented programing (OOP) point of view, a class should maintain the single responsibility principle. When a class inherits a lot of classes, it violates the OOP principle. As a result, the designed system cannot utilize the benefits of the OOP principles. 
 
 %The OO designed system's class hierarchy is illustrated in Figure \ref{dit_codeMetrics}. 
 \begin{figure}[h!]
@@ -127,7 +127,7 @@ From the Figure \ref{dit_codeMetrics}, the DIT values of different classes are g
 \end{itemize}
 
 \textbf{Number of Children:}
-The Number of Children (NOC) simply counts the immediate sub-classes of a given class. It provides the scope of a class. It is also a measure of how many sub-classes are going to inherit the methods of a particular parent class. From the Figure \ref{dit_codeMetrics}, the NOC values of different classes are given below:
+The Number of Children (NOC) simply counts the immediate sub-classes of a given class. It is also a measure of how many sub-classes are going to inherit the methods of a particular parent class. From the Figure \ref{dit_codeMetrics}, the NOC values of different classes are given below:
 
 \begin{itemize}
 \item NOC ($C_{0}$) = 1
@@ -138,19 +138,19 @@ The Number of Children (NOC) simply counts the immediate sub-classes of a given 
 \item NOC ($C_{5}$) = 4
 \end{itemize}
 
-The NOC value also gives the potential influence of a class on the system design. The high value NOC ensures the high usage of the inheritance and the greater possibility of the reusability in a system. Sometimes, it may also be a case of misuse of sub-classing and increase the complexity of a system that results more testing of the methods to ensure the quality of the software.
+The NOC value also gives the potential influence of a class on the system designing. The high value of NOC ensures the high usage of the inheritance and the greater possibility of the reusability in a system. Sometimes, it may also be a case of misuse of sub-classing and increase the system complexity that results more testing of the methods to ensure the quality of a software.
 
 \textbf{Response for a Class:} 
-The Response for a Class (RFC) metric is the total number of methods that can be executed in response to a message received by a class. It is the sum of the methods of a class and all distinct methods that are invoked directly within the class methods. If a class invokes large number of methods in a response, the testing and debugging of the class becomes more complicated and  the tester requires a greater level of understanding to test the method. 
+The Response for a Class (RFC) metric is the total number of all methods that can be executed in response to a message received by a class. It is the sum of the methods of a class and all distinct methods that are invoked directly within the class methods. If a class invokes large number of methods in a response, the testing and debugging of the class becomes more complicated and  the tester requires a greater level of understanding to test the method. 
 
 %The larger the number of methods that can be invoked from a class, the greater the complexity of the class. A worst case value for possible responses will assist in appropriate allocation of testing time.
 
 
 \textbf{Coupling between Objects:}
-The Coupling between Objects (CBO) simply counts the number classes to which one single class is connected. A class can be coupled to other classes through parameters passing, shared variables, common database access or direct method calling etc. From the example in Figure \ref{CBO_codeMetrics}, the coupling value of those classes are listed below: 
+The Coupling between Objects (CBO) simply counts the number classes to which one single class is connected. A class can be coupled to other classes through parameters passing, shared variables, common database access or direct method calling etc. From the example in Figure \ref{CBO_codeMetrics}, the coupling value of these classes are listed below: 
 \begin{figure}[h!]
   \centering
-    \includegraphics[angel=0,height= 70mm,width=90mm \linewidth]{images/literature/CBO.eps}
+    \includegraphics[angle=0,height= 70mm,width=90mm \linewidth]{images/literature/CBO.eps}
 		\caption{The Class Coupling among different classes in a OO system}
 		\label{CBO_codeMetrics}
 \end{figure}
@@ -173,7 +173,7 @@ LCOM= 1 means that the class is cohesive class and LCOM \gt= 2 means that the cl
 %The metric calculates whether the fields in an object are used across the method and properties or whether there is a split. A split means that some methods access some fields and some access other fields. That means that there is no interaction among these methods and so they should be in different classes. 
 \begin{figure}[h!]
   \centering
-    \includegraphics[angel=0,width=70mm \linewidth]{images/literature/lcom1.eps}
+    \includegraphics[angle=0,width=70mm \linewidth]{images/literature/lcom1.eps}
 		\caption{A simple overview of lack of cohesion}
 		\label{lcom1}
 \end{figure}
@@ -182,7 +182,7 @@ LCOM= 1 means that the class is cohesive class and LCOM \gt= 2 means that the cl
 In the Figure \ref{lcom1}, a class consists of methods A through E and variables x and y. A calls B and B accesses x. Both C and D access y. D calls E, but E does not access any variables. This class has 2 unrelated components. The class can be split into the follow components such as {A, B, x} and {C, D, E, y}. So, it will be good to split the class into two classes. For this class, the LCOM value is 2. 
 \begin{figure}[h!]
   \centering
-    \includegraphics[angel=0,width=70mm \linewidth]{images/literature/lcom2.eps}
+    \includegraphics[angle=0,width=70mm \linewidth]{images/literature/lcom2.eps}
 		\caption{A simple overview of a cohesive class}
 		\label{lcom2}
 \end{figure}
@@ -220,7 +220,7 @@ It suggests that the cyclomatic complexity of a program should be smaller than 1
 Halstead Code Metrics \cite{halstead1977elements} is another way to measure the complexity of a program's source code. It measures the complexity and difficulty of the source codes using the number of distinct operators ($n_{1}$), the number of distinct operands ($n_{2}$), the total number of operators ($N_{1}$) and the total number of operands ($N_{2}$). It uses $n_{1}$, $n_{2}$, $N_{1}$ and $N_{2}$ to calculate the following measures: 
 
 \begin{itemize}
-	\item Program vocabulary: \eta = $\eta_1$ + $\eta_2$ \,
+	\item Program vocabulary: $\eta$ = $\eta_1$ + $\eta_2$ \,
 	\item Program length: N = $N_1$ +$N_2$ \,
 	\item Calculated program length: \hat{N} = $\eta_1 \log_2 \eta_1$ + $\eta_2 \log_2 \eta_2$ \, 
 	\item Volume: V = N $\times$ $\log_2 \eta$ \,
@@ -340,10 +340,10 @@ Let, a cluster X, is a subset of V, $b(X)$ is the set of border nodes of X, and 
 \begin{equation}
 \label{eq:function}
 \Omega(X,Y)=\sum e(c_{i},c_{j})| c_{i} \varepsilon X and c_{j} \varepsilon Y
-\end{equation}}
+\end{equation}
 \begin{equation}
 \label{eq:ration}
- F(x)=\frac{\Omega(b(X),X)}{\Omega(b(X),n(X))}}
+ F(x)=\frac{\Omega(b(X),X)}{\Omega(b(X),n(X))}
 \end{equation}
  
 To find group of related classes, this algorithm iteratively selects nodes from $n(X)$ and inserts  nodes in $X$ until $F(X)$ is maximized. The iterative selection of nodes ends when $n(X)$ equals to $0$ for each set of nodes.
@@ -354,7 +354,7 @@ K-means clustering algorithm divides a dataset into k clusters using an objectiv
 \begin{equation}
 \label{eq:k-means}
 J=\sum\limits_{j=0}^k\sum \limits_{i=0}^n \mid x_{i}^j-c_{j}\mid^2
-\end{equation}}
+\end{equation}
 
 This algorithm iteratively runs and computes RSS value to find clusters. In each iteration, it moves the cluster centers to minimize RSS value. This process continues until cluster centers do not move anymore.
 
@@ -443,7 +443,7 @@ A package is a group of related types, for example, classes, interfaces, enumera
 
 \begin{figure}[h!]
 \centering
-      \includegraphics[angel=0,width=70mm, height=60mm \linewidth]{javaheirarchy2.eps}
+      \includegraphics[angle=0,width=70mm, height=60mm \linewidth]{javaheirarchy2.eps}
 			\caption{Java project hierarchy}
 			\label{JavaStructure}
 \end{figure}
@@ -459,7 +459,7 @@ Where $Y$ is a dependent variable, $x_{1}...x_{n}$, are the independent variable
 
 \begin{figure}[h!]
 \center
-      \includegraphics[angel=0,width=90mm, height=50mm \linewidth]{model3.eps}
+      \includegraphics[angle=0,width=90mm, height=50mm \linewidth]{model3.eps}
 		\caption{Software defect prediction model using Package Based Clustering (PBC)}
 		\label{defectPModel}	
 \end{figure}
@@ -531,7 +531,8 @@ The Package Identification and Cluster formation process is performed by using f
 			\STATE $Search Each File For PackageName $  
 			\IF{$packageName Contains In  PackageContainer$}
 				\STATE $Add File To packageName$
-			\ELSE{ $Add New PackageName To PackageContainer$ }
+			\ELSE{  }
+			\STATE $Add New PackageName To PackageContainer$
 			\ENDIF
 	\ENDFOR
 	
@@ -575,7 +576,8 @@ In a nutshell, the PBC algorithm groups a software project based on package info
 			\STATE $Search Each File For PackageName $  
 			\IF{$packageName Contains In  PackageContainer$}
 				\STATE $Add File To packageName$
-			\ELSE{ $Add New PackageName To PackageContainer$ }
+			\ELSE{  }
+			\STATE{$Add New PackageName To PackageContainer$}
 			\ENDIF
 	\ENDFOR
 	
@@ -638,9 +640,9 @@ Table \ref{tab:title} puts in a nutshell the experimental clustering results obt
 
 Table \ref{results} summarizes the mean, variance and standard deviation of absolute residuals obtained in the experiments. From the regression model, it is well established that the better the prediction model is, the smaller residual value will be \cite{draper1981applied}. Hence the prediction model's success depends on clustering algorithms, so clustering algorithm can improve the accuracy of a prediction model by grouping software properly. From the TABLE \ref{results}, It is obvious that the prediction model predicts the minimum value of mean, variance and standard deviation of absolute residual for the PBC clustering algorithm. So it is obvious that software defect prediction based on package based clustering algorithm is better than the prediction model considering the BorderFlow, K-means and entire system.
  
- \begin{figure}[h!]
+ \begin{figure}[ht!]
   \centering
-    \includegraphics[angel=0,width=90mm \linewidth]{standard_deviation.eps}
+    \includegraphics[angle=0,width=90mm \linewidth]{standard_deviation.eps}
 		\caption{Comparison of the standard deviation of absolute residual}
 		\label{StandardDeviation}
 \end{figure}
@@ -648,7 +650,7 @@ Table \ref{results} summarizes the mean, variance and standard deviation of abso
 
 \begin{figure}[h!]
 \centering
-     \includegraphics[angel=0,width=90mm\linewidth]{mean.eps}
+     \includegraphics[angle=0,width=90mm\linewidth]{mean.eps}
 		 \caption{Comparison of the mean of absolute residual}
 		\label{MeanAbsoluteResidual}
 \end{figure}
@@ -695,21 +697,32 @@ The coefficients values are calculated by using linear regression which uses the
 \begin{equation}
 \label{eq:coeffModel}
  Y=b_{1}x_{1}+b_{2}x_{2}+b_{3}x_{3}+...+b_{n}x_{n}+c
-\end{equation}}
+\end{equation}
 here, Y is dependent variable, $b_{1}$...$b_{n}$ be the coefficient values of independent variables,$x_{1}$...$x{_n}$ respectively and c is intercept point of y-axis. 
 
  The coefficients values mean the impact of this particular independent to dependent variable.  The coefficients value can be positive or negative based on its impact on the independent variables to the dependent variable.
  
 To reduce the dimension of the data, the coefficients values are then multiplied to the corresponding variables values. This produces the new values that might have some positive and negative values. Then the positive and negative values are summed to produce PosValue and NegValue respectively. This produces only two values for each entry in the data. The PosValue and NegValue are calculated by using the following two equations respectively. 
- 
- \begin{align}
-PosValue=\sum{$b_{i}$$x_{i}$}
- \end{align}
+
+\begin{equation}
+\label{eq:PosValue}
+ PosValue=\sum{b_{i}x_{i}}
+\end{equation} 
 where $b_{i}$ is positive.
- \begin{align}
-NegValue=\sum{$b_{i}$$x_{i}$}
- \end{align}
+\begin{equation}
+\label{eq:NegValue}
+NegValue=\sum{b_{i}x_{i}}
+\end{equation}
 where $b_{i}$ is negative.
+
+ %\begin{align}
+%PosValue=\sum{$b_{i}$$x_{i}$}
+ %\end{align}
+%where $b_{i}$ is positive.
+ %\begin{align}
+%NegValue=\sum{$b_{i}$$x_{i}$}
+ %\end{align}
+%where $b_{i}$ is negative.
 
 \subsection{Cluster Formation}
 
@@ -724,12 +737,15 @@ The eps value calculation for DBSCAN is most critical and important because the 
 \begin{equation}
 \label{eq:epsGenerationModel}
  Y=bx+c
-\end{equation}}
+\end{equation}
 Hence, this experiment only uses eight code metrics, described in (ref{}), so, the eps value is calculated by summing the eight intercept values, generated from considering one independent variable at a time.  
-\begin{align}
-$eps=\sum{$b_{i}$}$
- \end{align}
-
+%\begin{align}
+%$eps=\sum{$b_{i}$}$
+ %\end{align}
+\begin{equation}
+\label{eq:totalepsCalculation}
+ eps=\sum{b_{i}}
+\end{equation}
 \subsection{Prediction Process}
 
 To perform prediction, 
