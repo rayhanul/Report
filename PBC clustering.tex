@@ -40,8 +40,8 @@
 
 \begin{document}
 \doublespacing
-
-\title{ A new Package Based Clustering for Enhancing Software Defect Prediction Accuracy}
+%A new Package Based Clustering for Enhancing Software Defect Prediction Accuracy
+\title{ Software Defect Prediction}
 \date{}
 \maketitle
 %\IEEEcompsoctitleabstractindextext{%
@@ -66,11 +66,19 @@ Software defect prediction is a ..........................
 
 Software Quality Assurance (SQA) is the set of activities that ensure that a software system meets a specific quality level. Software companies always find the quality of a software before its release. To meet this goals, many researches have already been conducted for building prediction models to predict the defects of a software. These prediction models are called Software Defect Prediction (SDP) model.
 
-SDP is the process of predicting the defects of a software by using the code metrics and bug history of the  targeted system. SDP helps practitioners in the software development process by identifying the quality of a software. 
+%SDP is the process of predicting the defects of a software by using the code metrics and bug history of the  targeted system. SDP helps practitioners in the software development process by identifying the quality of a software. 
+%
+%There are many SDP models for predicting the software defects such as statistical model or machine learning algorithms. Both two models are used so frequently by the researchers to predict the defect of a end products. The statistical model are linear regression, logistic regression, step wise regression etc. on the other hand, machine learning algorithms are Support vector machines, Bayesian network, Naive Bayes, Hidden Markov models etc. 
 
-There are many SDP models for predicting the software defects such as statistical model or machine learning algorithms. Both two models are used so frequently by the researchers to predict the defect of a end products. The statistical model are linear regression, logistic regression, step wise regression etc. on the other hand, machine learning algorithms are Support vector machines, Bayesian network, Naive Bayes, Hidden Markov models etc. 
+Software Defect Prediction (SDP) is the process of predicting the defects of a software by using the code metrics and bug history of the  targeted system. Most SDPs try to correctly classify software's component as being defective or not. Other SDPs aim to predict the number of defects that may appear in a software's files or subsystems. Before applying prediction model on the software system, the software project data is collected from software repositories. Then,  Statistical and Machine learning models are built to predict the defects that may exists in a software's files. Finally the accuracy and performance of those prediction models are evaluated by using precision, recall, F-measure, coefficient of determination etc. 
 
- 
+\begin{figure}[h!]
+\center
+      \includegraphics[angle=0,width=90mm, height=50mm,scale=1]{images/pdf/general_defect_prediction_model.eps}
+		\caption{Software defect prediction model}
+		\label{generalized_Defect_Prediction_Model}	
+\end{figure}
+
 \section{Defect }
 The software defect is any flaws or errors that produce unexpected results. A software programmer, designer or others associated with the development of a software can make mistakes or error while designing and building the software. These mistakes or errors mean that there are flaws in the software. These are called defects.
 
@@ -79,8 +87,8 @@ The term defect may vary based on the perception of software developers, QA team
 \section{Defect Predictors}
 A Defect Predictor is a method that help the software practitioners by predicting possible defects that the end product may contain. The Defect predictor uses the software code metrics and the past information to predict defects for the current project. According to Brooks \cite{brooks1995mythical}, half the cost of software development is in unit and systems testing. Harold and Tahat also conform that testing phase requires approximately $50\%$ of the whole project schedule \cite{harrold2000testing,tahat2001requirement}. The defect predictor model is applied to the software software project before start testing to identify where the defects might exist. This allows them to efficiently allocate their scarce resources. 
 
-\section{Software Defect Prediction Model}
-\subsection{Regression Analysis}
+\section{Regression Analysis as a Defect Prediction Model}
+
 The regression analysis is a statistical process for estimating the relationships among the variables. It helps to understand how the values of the dependent variables change when the values of independent variables are changed. There are many techniques for carrying out the regression analysis such as linear regression and ordinary least squares regression, logistic regression, step wise regression, Nonparametric regression etc. 
 
 The performance of the regression analysis depends on the data used to train the regression model and how it relates to the regression model being used. Since the true form of the data is generally unknown, regression analysis often depends to some extent on making assumptions about this data.These assumptions are sometimes testable if a sufficient quantity of data is available. Regression models for prediction are often useful even when the assumptions are moderately violated, although they may not perform optimally. However, in many applications, especially with small effects or questions of causality based on observational data, regression methods can give misleading results.
@@ -88,7 +96,7 @@ The performance of the regression analysis depends on the data used to train the
 %when any one of the independent variables is varied, while the other independent variables are held fixed.
 
 %Most commonly, regression analysis estimates the conditional expectation of the dependent variable given the independent variables – that is, the average value of the dependent variable when the independent variables are fixed. In all cases, the estimation target is a function of the independent variables called the regression function. In regression analysis, it is also of interest to characterize the variation of the dependent variable around the regression function which can be described by a probability distribution.
-\subsubsection{Linear Regression Analysis}
+\subsection{Linear Regression Analysis}
 Linear regression analysis is the process of analyzing the relationships between variables, usually the variables are divided into dependent and independent variables.  Let Y denote the dependent variable whose values you wish to predict, and let $X_{1}$,...,$X_{k}$ denote the independent variables. The linear regression analysis predicts the value of dependent variable (Y) by analyzing the independent variables ($X_{1}$,...,$X_{k}$). Then the equation for computing the predicted value of $Y$ is:
 \begin{equation}
 \label{eq:linear_regression_analysis}
@@ -120,7 +128,7 @@ The Depth of Inheritance Tree (DIT) simply counts the number of ancestors of a c
 %The OO designed system's class hierarchy is illustrated in Figure \ref{dit_codeMetrics}. 
 \begin{figure}[h!]
   \centering
-    \includegraphics[angel=0,height= 60mm,width=70mm \linewidth]{images/literature/Code_metricAnalysis.eps}
+    \includegraphics[angle=0,height= 60mm,width=70mm]{images/literature/Code_metricAnalysis.eps}
 		\caption{The class hierarchy of a OO system}
 		\label{dit_codeMetrics}
 \end{figure}
@@ -158,7 +166,7 @@ The Response for a Class (RFC) metric is the total number of all methods that ca
 The Coupling between Objects (CBO) simply counts the number classes to which one single class is connected. A class can be coupled to other classes through parameters passing, shared variables, common database access or direct method calling etc. From the example in Figure \ref{CBO_codeMetrics}, the coupling value of these classes are listed below: 
 \begin{figure}[h!]
   \centering
-    \includegraphics[angle=0,height= 70mm,width=90mm \linewidth]{images/literature/CBO.eps}
+    \includegraphics[angle=0,height= 70mm,width=90mm]{images/literature/CBO.eps}
 		\caption{The Class Coupling among different classes in a OO system}
 		\label{CBO_codeMetrics}
 \end{figure}
@@ -176,12 +184,12 @@ The High value of CBO is always detrimental to modular design and prevents reuse
 \textbf{Lack of Cohesion of Method:} 
 The cohesion measures how well the methods in a class are connected to each others. It actually means the number of methods that do not share common fields like methods, properties etc. A class is called cohesive class if it performs only one function. So, the lack of Cohesion means that the class performs more that one responsibility. From the OOP point of view, a class should perform only one responsibility. The LCOM value is used to determine whereas the class violates the single responsibility principle or not. 
 
-LCOM= 1 means that the class is cohesive class and LCOM \gt= 2 means that the class has more that one responsibility and should be split to make the design simple. High cohesion among the methods is always desirable because it helps to achieve encapsulation. Low cohesion indicates the inappropriate design and high complexity which leads to create fault prone software.   
+LCOM = 1 means that the class is cohesive class and LCOM $\geq$ 2 means that the class has more that one responsibility and should be split to make the design simple. High cohesion among the methods is always desirable because it helps to achieve encapsulation. Low cohesion indicates the inappropriate design and high complexity which leads to create fault prone software.   
 
 %The metric calculates whether the fields in an object are used across the method and properties or whether there is a split. A split means that some methods access some fields and some access other fields. That means that there is no interaction among these methods and so they should be in different classes. 
 \begin{figure}[h!]
   \centering
-    \includegraphics[angle=0,width=70mm \linewidth]{images/literature/lcom1.eps}
+    \includegraphics[angle=0,width=70mm]{images/literature/lcom1.eps}
 		\caption{A simple overview of lack of cohesion}
 		\label{lcom1}
 \end{figure}
@@ -190,7 +198,7 @@ LCOM= 1 means that the class is cohesive class and LCOM \gt= 2 means that the cl
 In the Figure \ref{lcom1}, a class consists of methods A through E and variables x and y. A calls B and B accesses x. Both C and D access y. D calls E, but E does not access any variables. This class has 2 unrelated components. The class can be split into the follow components such as {A, B, x} and {C, D, E, y}. So, it will be good to split the class into two classes. For this class, the LCOM value is 2. 
 \begin{figure}[h!]
   \centering
-    \includegraphics[angle=0,width=70mm \linewidth]{images/literature/lcom2.eps}
+    \includegraphics[angle=0,width=70mm]{images/literature/lcom2.eps}
 		\caption{A simple overview of a cohesive class}
 		\label{lcom2}
 \end{figure}
@@ -207,6 +215,9 @@ The Number of Public Method (NPM) is the sum of public methods in a class. It pr
 The Lines of Code (LOC) simply counts the total number of lines from the source codes by avoiding pure whitespace and lines containing only comments. It measures the volume of the source codes. It can only be used to compare projects, built by the same programing language and the same coding standards. It is typically used to predict the amount of effort that will be required to develop a program, as well as to estimate programming productivity or maintainability once the software is produced.
 
 % To change one is to change the volume of code. A better method to compare without regard to direct volume is to measure the complexity of the software. 
+
+\section{Conclusion}
+
 \chapter{Literature Review}
 \section{Introduction}
 \section{Code Metrics Selection}
@@ -230,7 +241,7 @@ Halstead Code Metrics \cite{halstead1977elements} is another way to measure the 
 \begin{itemize}
 	\item Program vocabulary: $\eta$ = $\eta_1$ + $\eta_2$ \,
 	\item Program length: N = $N_1$ +$N_2$ \,
-	\item Calculated program length: \hat{N} = $\eta_1 \log_2 \eta_1$ + $\eta_2 \log_2 \eta_2$ \, 
+	\item Calculated program length: \^{N} = $\eta_1 \log_2 \eta_1$ + $\eta_2 \log_2 \eta_2$ \, 
 	\item Volume: V = N $\times$ $\log_2 \eta$ \,
 	\item Difficulty : D = { $\eta_1 \over 2 $ } $\times$ { $N_2 \over \eta_2$ } \,
 	\item Effort: E =  D $\times$ V \,
@@ -451,7 +462,7 @@ A package is a group of related types, for example, classes, interfaces, enumera
 
 \begin{figure}[h!]
 \centering
-      \includegraphics[angle=0,width=70mm, height=60mm \linewidth]{javaheirarchy2.eps}
+      \includegraphics[angle=0,width=70mm, height=60mm]{javaheirarchy2.eps}
 			\caption{Java project hierarchy}
 			\label{JavaStructure}
 \end{figure}
@@ -467,7 +478,7 @@ Where $Y$ is a dependent variable, $x_{1}...x_{n}$, are the independent variable
 
 \begin{figure}[h!]
 \center
-      \includegraphics[angle=0,width=90mm, height=50mm \linewidth]{model3.eps}
+      \includegraphics[angle=0,width=90mm, height=50mm]{model3.eps}
 		\caption{Software defect prediction model using Package Based Clustering (PBC)}
 		\label{defectPModel}	
 \end{figure}
@@ -475,8 +486,7 @@ Where $Y$ is a dependent variable, $x_{1}...x_{n}$, are the independent variable
 
 
 \subsection{Selected Explanatory variables}
-
-Software defect prediction models relate the code metrics to defect proneness of a software. Hence PBC adopts some selected explanatory variables, which are the same as Basili et al. \cite{basili1996validation,di2011genetic}, identified eight significant object oriented code metrics, listed in Table \ref{defectPModel}. The first six metrics are proposed by Chidamber and Kemerer, popularly known as CK metrics \cite{chidamber1994metrics} and the next two are well known size metrics. In this paper, those eight code metrics are considered as explanatory variables for predicting defects (used in \textit{equation \ref{eq:defectPModel}}).
+Software defect prediction models relate the code metrics to defect proneness of a software. Hence PBC adopts some selected explanatory variables, which are the same as Basili et al. \cite{basili1996validation}, identified eight significant object oriented code metrics, listed in Table \ref{defectPModel}. The first six metrics are proposed by Chidamber and Kemerer, popularly known as CK metrics \cite{chidamber1994metrics} and the next two are well known size metrics. In this paper, those eight code metrics are considered as explanatory variables for predicting defects (used in \textit{equation \ref{eq:defectPModel}}).
 
 \begin{center}
 \captionof{table}{Selected Explanatory variables}
@@ -650,7 +660,7 @@ Table \ref{results} summarizes the mean, variance and standard deviation of abso
  
  \begin{figure}[ht!]
   \centering
-    \includegraphics[angle=0,width=90mm \linewidth]{standard_deviation.eps}
+    \includegraphics[angle=0,width=90mm]{standard_deviation.eps}
 		\caption{Comparison of the standard deviation of absolute residual}
 		\label{StandardDeviation}
 \end{figure}
@@ -658,7 +668,7 @@ Table \ref{results} summarizes the mean, variance and standard deviation of abso
 
 \begin{figure}[h!]
 \centering
-     \includegraphics[angle=0,width=90mm\linewidth]{mean.eps}
+     \includegraphics[angle=0,width=90mm]{mean.eps}
 		 \caption{Comparison of the mean of absolute residual}
 		\label{MeanAbsoluteResidual}
 \end{figure}
