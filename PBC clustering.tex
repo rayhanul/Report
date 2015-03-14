@@ -64,13 +64,13 @@ Software defect prediction is a ..........................
 \chapter{Background Study and Discussion}
 \section{Introduction}
 
-Software Quality Assurance (SQA) is the set of activities that ensure that a software system meets a specific quality level. Software companies always find the quality of a software before its release. To meet this goals, many researches have already been conducted for building prediction models to predict the defects of a software. These prediction models are called Software Defect Prediction (SDP) model.
+Software Defect Prediction (SDP) is the process of predicting the defects of a software by using the code metrics and bug history of the  targeted system to ensure the quality of a software. The Software Quality Assurance (SQA) is the set of activities that ensure a software system to meet a specific quality level. Software companies always concern the quality of a software and tries hard to find out all holes before its release. To meet this goals, many researches have already been conducted for building prediction models to predict the defects of a software. These prediction models are called SDP models.
 
 %SDP is the process of predicting the defects of a software by using the code metrics and bug history of the  targeted system. SDP helps practitioners in the software development process by identifying the quality of a software. 
 %
 %There are many SDP models for predicting the software defects such as statistical model or machine learning algorithms. Both two models are used so frequently by the researchers to predict the defect of a end products. The statistical model are linear regression, logistic regression, step wise regression etc. on the other hand, machine learning algorithms are Support vector machines, Bayesian network, Naive Bayes, Hidden Markov models etc. 
 
-Software Defect Prediction (SDP) is the process of predicting the defects of a software by using the code metrics and bug history of the  targeted system. Most SDPs try to correctly classify software's component as being defective or not. Other SDPs aim to predict the number of defects that may appear in a software's files or subsystems. Before applying prediction model on the software system, the software project data is collected from software repositories. Then,  Statistical and Machine learning models are built to predict the defects that may exists in a software's files. Finally the accuracy and performance of those prediction models are evaluated by using precision, recall, F-measure, coefficient of determination etc. 
+Most SDPs try to correctly classify software's component as being defective or not. Other SDPs aim to predict the number of defects that may appear in a software's files or subsystems. Before applying prediction model on the software system, the software project data is collected from the software repositories. Then, Statistical and Machine learning models are built to predict the defects that may exists in a software's files. Finally the accuracy and performance of those prediction models are evaluated by using precision, recall, F-measure, coefficient of determination etc. The general overview of SDP model is illustrated in Figure \ref{generalized_Defect_Prediction_Model}. 
 
 \begin{figure}[h!]
 \center
@@ -78,17 +78,19 @@ Software Defect Prediction (SDP) is the process of predicting the defects of a s
 		\caption{Software defect prediction model}
 		\label{generalized_Defect_Prediction_Model}	
 \end{figure}
-
+The rest of the Chapter is organized as follows: Section \ref{defination_defect} and \ref{defination_defect_Predictors} presents the defination of software defect and software defect predictors respectively. Section \ref{definition_Defect_Prediction_Model} discusses about the software defect prediction model used in this resarch. Section \ref{software_code_metrics_description} provides the detail description about the selected software code metrics.  
 \section{Defect }
+\label{defination_defect}
 The software defect is any flaws or errors that produce unexpected results. A software programmer, designer or others associated with the development of a software can make mistakes or error while designing and building the software. These mistakes or errors mean that there are flaws in the software. These are called defects.
 
 The term defect may vary based on the perception of software developers, QA teams or managers. For example, bug databases of open source software contain users' request for bug corrections. These requests are frequently considered as feature requests or design decision manifestations by the developers of those systems. That means what one stakeholder considers as a defect may not necessarily be perceived as the same by other stakeholders. In essence, software defect is any kind of deviation from stakeholder's expectation.
 
 \section{Defect Predictors}
+\label{defination_defect_Predictors}
 A Defect Predictor is a method that help the software practitioners by predicting possible defects that the end product may contain. The Defect predictor uses the software code metrics and the past information to predict defects for the current project. According to Brooks \cite{brooks1995mythical}, half the cost of software development is in unit and systems testing. Harold and Tahat also conform that testing phase requires approximately $50\%$ of the whole project schedule \cite{harrold2000testing,tahat2001requirement}. The defect predictor model is applied to the software software project before start testing to identify where the defects might exist. This allows them to efficiently allocate their scarce resources. 
 
 \section{Regression Analysis as a Defect Prediction Model}
-
+\label{definition_Defect_Prediction_Model}
 The regression analysis is a statistical process for estimating the relationships among the variables. It helps to understand how the values of the dependent variables change when the values of independent variables are changed. There are many techniques for carrying out the regression analysis such as linear regression and ordinary least squares regression, logistic regression, step wise regression, Nonparametric regression etc. 
 
 The performance of the regression analysis depends on the data used to train the regression model and how it relates to the regression model being used. Since the true form of the data is generally unknown, regression analysis often depends to some extent on making assumptions about this data.These assumptions are sometimes testable if a sufficient quantity of data is available. Regression models for prediction are often useful even when the assumptions are moderately violated, although they may not perform optimally. However, in many applications, especially with small effects or questions of causality based on observational data, regression methods can give misleading results.
@@ -97,18 +99,20 @@ The performance of the regression analysis depends on the data used to train the
 
 %Most commonly, regression analysis estimates the conditional expectation of the dependent variable given the independent variables – that is, the average value of the dependent variable when the independent variables are fixed. In all cases, the estimation target is a function of the independent variables called the regression function. In regression analysis, it is also of interest to characterize the variation of the dependent variable around the regression function which can be described by a probability distribution.
 \subsection{Linear Regression Analysis}
-Linear regression analysis is the process of analyzing the relationships between variables, usually the variables are divided into dependent and independent variables.  Let Y denote the dependent variable whose values you wish to predict, and let $X_{1}$,...,$X_{k}$ denote the independent variables. The linear regression analysis predicts the value of dependent variable (Y) by analyzing the independent variables ($X_{1}$,...,$X_{k}$). Then the equation for computing the predicted value of $Y$ is:
+Linear regression analysis is the process of analyzing the relationships between variables, usually the variables are divided into dependent and independent variables.  Let Y denote the dependent variable which value is predicted and $X_{1}$,...,$X_{k}$ denote the independent variables. The linear regression analysis predicts the value of dependent variable (Y) by analyzing the independent variables ($X_{1}$,...,$X_{k}$). Then the equation for computing the predicted value of $Y$ is:
 \begin{equation}
 \label{eq:linear_regression_analysis}
  Y=b_{1}X_{1}+b_{2}X_{2}+b_{3}X_{3}+...+b_{n}X_{n}+c
 \end{equation}
-This formula has the property that the prediction for Y is a straight-line function of each of the X variables, holding the others fixed, and the contributions of different X variables to the predictions are additive.  The slopes of their individual straight-line relationships with Y are the constants $b_{1}$, $b_{2}$,..., $b_{k}$, the so-called coefficients of the variables. That is, $b_{i}$ is the change in the predicted value of Y per unit of change in $X_{i}$, other things being equal.  The additional constant c, the so-called intercept, is the prediction that the model would make if all the X’s were zero (if that is possible).   The coefficients and intercept are estimated by least squares, i.e., setting them equal to the unique values that minimize the sum of squared errors within the sample of data to which the model is fitted.
+This formula is a straight-line function of each of the X variables, holding the others fixed, and the contributions of different X variables to the predictions are additive. The slopes of their individual straight-line relationships with Y are the constants $b_{1}$, $b_{2}$,..., $b_{k}$, the so-called coefficients of the variables. The coefficient ($b_{i}$) is the change in the predicted value of Y per unit of change in $X_{i}$. The additional constant c, the so-called intercept, is the prediction that the model would make if all the X’s are zero. 
+
+%The coefficients and intercept are estimated by least squares, i.e., setting them equal to the unique values that minimize the sum of squared errors within the sample of data to which the model is fitted.
 
 
 
 
 \section{Code Metrics}
-
+\label{software_code_metrics_description}
 A software metric or code metric is a quantitative measure of a software system. There are lots of software metrics that have been used for defect prediction to improve the software quality. Some of these code metrics are method level, class level, component level, process level, Cyclomatic complexity etc. The software code metrics have multidimensional usage in software industry such as schedule and budget planning, cost estimation, quality testing, software debugging, software performance optimization etc. The selected code metrics that have been used in this thesis are described below:
 
  %The methods level metrics are widely used for defect prediction for structured programming and Object oriented programming paradigm and The class level metrics are only used for Object oriented programs. All of the metrics properties are not significant for all cases. To analyze these, many reseaches have already been carried out to identify best set of metrics for defect prediction.
