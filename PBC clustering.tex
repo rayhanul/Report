@@ -92,7 +92,7 @@ A Defect Predictor is a method that help the software practitioners by predictin
 \section{Software Defect Prediction Model}
 The SDP uses a variety of modeling techniques to predict the defects of a software. These prediction model can be categorized to the statistical model and machine learning algorithms. These models are described below:
 
-\subsection{Statistical model}
+%\subsection{Statistical model}
 Statistical models formalize the relationship between the independent variables and the dependent variable to predict the dependent variable. A model is usually specified by mathematical equations that relate one or more independent variables and other dependent variables. Some of the mostly used statistical models are described below:
 
 %\section{Regression Analysis as a Defect Prediction Model}
@@ -104,7 +104,7 @@ Statistical models formalize the relationship between the independent variables 
 %when any one of the independent variables is varied, while the other independent variables are held fixed.
 
 %Most commonly, regression analysis estimates the conditional expectation of the dependent variable given the independent variables – that is, the average value of the dependent variable when the independent variables are fixed. In all cases, the estimation target is a function of the independent variables called the regression function. In regression analysis, it is also of interest to characterize the variation of the dependent variable around the regression function which can be described by a probability distribution.
-\subsubsection{Linear Regression Analysis}
+\subsection{Linear Regression Analysis}
 Linear regression analysis is the process of analyzing the relationships between variables, usually the variables are divided into dependent and independent variables.  Let Y denote the dependent variable which value is predicted and $X_{1}$,...,$X_{k}$ denote the independent variables. The linear regression analysis predicts the value of dependent variable (Y) by analyzing the independent variables ($X_{1}$,...,$X_{k}$). Then the equation for computing the predicted value of $Y$ is:
 \begin{equation}
 \label{eq:linear_regression_analysis}
@@ -114,7 +114,7 @@ This formula is a straight-line function of each of the X variables, holding the
 
 %The coefficients and intercept are estimated by least squares, i.e., setting them equal to the unique values that minimize the sum of squared errors within the sample of data to which the model is fitted.
 
-\subsubsection{Naive Bayes Classifier}
+\subsection{Naive Bayes Classifier}
 Naive Bayes is a simple probabilistic classifier, based on Bayes theorem. The classifier calculates a future probability for a class using the prior probability of that class. Given a set of variables $x_{1}, x_{2}, x_{3}..., x_{n}$ and $c_{1},c_{2},c_{3}...,c_{n}$ are the corresponding outcomes of those variables. The conditional probability of $c_{n}$ can be computed using bayesian theorem as follows:
 
 \begin{equation}
@@ -128,12 +128,12 @@ Posterior=\frac{prior * likelihood}{evidence}
 \label{eq:}
 \end{equation}
 
-\subsubsection{Support Vector Machine}
+\subsection{Support Vector Machine}
 
 The Support Vector Machine (SVM) is supervised learning model that analyzes data and recognize patterns, especially designed for binary classification. SVM utilizes mathematical programming to directly model the decision boundary between classes. Given a set of training examples  each of which belong to one of two categories, an SVM training algorithm builds a model that assigns new examples into one of the two categories.
 
 
-\subsubsection{Bayesian network}
+\subsection{Bayesian network}
 A Bayesian network is a graphical model that represents a set of random variables and their conditional dependencies via a directed acyclic graph. Actually, Bayesian network is a directed acyclic graph whoch nodes represent variable in Bayesian sense. Nodes are unknown variable, hypothesis or observable quantity. Edges from one node to others represent conditional dependencies among them. Nodes with no edges mean they are conditionally independent of each others. Each node in Bayesian network is associated with a probability function that takes input from its parent variables and gives the probability of the variable represented by the node. 
 Let take a simple Bayesian network example such as rain influences whether the sprinkler is activated, and both rain and the sprinkler influence whether the grass is wet.
 
@@ -143,6 +143,13 @@ Let take a simple Bayesian network example such as rain influences whether the s
 		\caption{The directed acyclic graph of a Bayesian network}
 		\label{Bayesian_network_graph}
 \end{figure}
+
+If the variables are G = Grass wet (yes/no), S = Sprinkler turned on (yes/no), and R = Raining (yes/no), the Bayesian model using conditional probability will be
+
+\begin{equation}
+P( R = T | G = T )=\frac{P(G = T,R = T)}{P(G = T)}=\frac{\sum_{S \epsilon {T,F}} P(G = T, S, R=T)}{ \sum_{S,R \epsilon {T,F}} P(G=T,S,R)}
+\label{eq:bayesian_equation}
+\end{equation} 
 
 \section{Code Metrics}
 \label{software_code_metrics_description}
