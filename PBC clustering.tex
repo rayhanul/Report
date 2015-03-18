@@ -751,27 +751,27 @@ DBSCAN clustering algorithm is a density based clustering algorithm which finds 
 DBSCAN algorithm requires two parameters to classify the dataset into different clusters. DBSCAN requires two parameters: $\epsilon$ (eps) and the minimum number of points required to form a dense region (minPts). It starts with an arbitrary starting point that has not been visited. This point's ε-neighborhood is retrieved, and if it contains sufficiently many points, a cluster is started. Otherwise, the point is labeled as noise. Note that this point might later be found in a sufficiently sized ε-environment of a different point and hence be made part of a cluster.
 
 \section{Methodology}
-More or less every machine learning algorithm uses existing knowledge to train the prediction model to predict the next items. Hence this defect prediction model uses statistical inference to predict defects, so its success depends on the knowledge it gathers from existing. 
+Every machine learning algorithm uses existing knowledge to train the prediction model to predict the next items. Hence, the proposed defect prediction model uses statistical inference to predict defects, so its success depends on the knowledge it gathers from existing Dataset.
+%The proposed approach uses statistical inference such as regression analysis for the prediction purpose because Catal shows that statistical model outperforms the expert estimations and experts cannot work on vary large datasets \cite{catal2009systematic}. 
+The simple regression analysis simply uses a set of independent variables  and one or more dependent variable. Hence, we have some available data, so we first analyze the coefficient values and intercept for the regression equation.
 
-We have chosen statistical inference such as regression analysis for prediction because \cite{catal2009systematic}shows that statistical model outperforms the expert estimations and experts cannot work on vary large datasets. In simple regression analysis, we have a set of independent variables and one dependent variable. Hence, we have some available data, so we first analyze the coefficient values and intercept for the regression equation.
+The success of the regression analysis depends on the best fit of the train data. In a research, Menzies et al. show that the prediction model that appears to be useful in global context is often obsolete in local context for defect prediction. So, to avoid conclusion instability, we have proposed an approach to divide the software code metrics into multiple groups. Then the prediction model is applied on each group to predict defects for the new Datasets.  
 
-The success of the regression analysis depends on the best fit of the train data. In a research, Menzies et al. show that the prediction model that appears to be useful in global context is often obsolete in local context for defect prediction. So, to avoid conclusion instability, we have proposed an approach to divide the software code metrics into multiple groups. Then the prediction model is applied on each group to predict defects for the new datasets.  
+The software Dataset used in the proposed technique contains eight independent variables that makes impossible to apply different clustering algorithms on the Dataset. So, to apply different clustering algorithms on the existing Dataset, the dimension of the Dataset are needed to reduced. Here, a new dimension reduction algorithm based on the coefficient value has been proposed along with a defect prediction model. The whole model can be further divided into the following below steps : 
 
 \subsection{Dimension reduction:} 
 As the considered Dataset contains eight independent variables, so the Dataset cannot be plotted in two dimensional space. This problem is solved here by reducing the dimension of the Dataset based on their significance to the dependent variable.  
 %To apply different clustering algorithm on the data, the dimensions of the data need to be reduced. In this thesis, the dimension of the data is reduced by using a new approach which is similar to principle component analysis (PCA). To reduce the dimension of the data, it uses the coefficients value of each attribute of the data. 
-
-The coefficients values are calculated by using the equation \ref{eq:coeffModel}. This equation is applied to the existing dataset to find out the coefficients values of each attributes in the dataset. The equation, that is used for finding coefficients is given below:   
+The significance of one independent variable to another dependent variable can be easily computer by using regression analysis. To find the level of significance, this approach uses the following equation \ref{eq:coeffModel} as the regression model. The equation \ref{eq:coeffModel} is applied to the existing dataset to find out the coefficients values of each attributes in the dataset. The equation, that is used for finding coefficients is given below:   
 \begin{equation}
 \label{eq:coeffModel}
  Y=b_{1}x_{1}+b_{2}x_{2}+b_{3}x_{3}+...+b_{n}x_{n}+c
 \end{equation}
 here, Y is dependent variable, $b_{1}$...$b_{n}$ be the coefficient values of independent variables,$x_{1}$...$x{_n}$ respectively and c is intercept point of y-axis. 
 
- The coefficients values mean the impact of the particular independent variable to dependent variable. The coefficients value can be positive or negative based on its impact of the independent variables to the dependent variable. 
+The coefficients values mean the impact of the particular independent variable to dependent variable. The coefficients value can be positive or negative based on its impact of the independent variables to the dependent variable. 
  
-To reduce the dimension of the data, the coefficients values are then multiplied to the corresponding variables' values. This produces the new values that might have some positive and negative values. Then the positive and negative values are summed to produce PosValue and NegValue respectively for each row in dataset. As a result, the final dataset contains only two values for each entry. The PosValue and NegValue are calculated by using the following two equations respectively. The whole procedure to reduce the dimention of the dataset is given in Algorithm \ref{dimention_reduction}.
-
+To reduce the dimension of the data, the coefficients values are then multiplied to the corresponding variables' values. This produces the new values that might have some positive and negative values. Then the positive and negative values are summed to produce PosValue and NegValue respectively for each row in dataset. As a result, the final dataset contains only two values for each entry. The PosValue and NegValue are calculated by using the following two equations respectively. 
 \begin{equation}
 \label{eq:PosValue}
  PosValue=\sum{b_{i}x_{i}}
@@ -783,22 +783,8 @@ NegValue=\sum{b_{i}x_{i}}
 \end{equation}
 where $b_{i}$ is negative.
 
+Now, the whole Dataset only have two values based on the positive and negative impact to the dependent variable. It is now easily plotable to two dimensional space and any clustering algorithm can be applied to the new Dataset to find out clusters according to the requirements. The whole procedure to reduce the dimention of the dataset is given in Algorithm \ref{dimention_reduction}.
 
-
-%\begin{algorithm}
-%%\caption{OO class identification}
-%\label{OO_class_identification}
-%\begin{algorithmic}[1]
-%%\REQUIRE  $ PackageName = 0$, $ ProgramClassList = 0$
-%
-	%\FOR{\textbf{each} $file$}
-		%\IF{$fileNameExtention = .Java$}
-				%\STATE Add file to $programClassList$
-		%\ENDIF
-	%\ENDFOR
-%
-%\end{algorithmic}
-%\end{algorithm}
 
 \begin{algorithm}
 \caption{Dimention Reduction Algorithm}
@@ -833,7 +819,7 @@ where $b_{i}$ is negative.
 
 \subsection{Cluster Formation}
 
-The dimension reduction process reduces the attributes of a dataset and makes only two dimensional data which can easily be illustrated in two dimensional plane. Hence the dimension reduction process reduces the dimension based on their impact value such as coefficient value, so the position of any class depends on its impact factor. It is expected that objects with same possibility of having defects get similar PosValue and NegValue value.
+The dimension reduction process reduces the attributes of a dataset and makes it only two dimensional which can easily be illustrated in two dimensional plane. Hence the dimension reduction process reduces the dimension based on their impact value such as coefficient value, so the position of any class depends on its impact factor to dependent variable. It is expected that objects with same possibility of having defects get similar PosValue and NegValue value.
  
 In the new value, the equal objects locates closer. So if the total software can be grouped based on the distance measure, then the equal objects will belong to same cluster. For this experiments, to group the whole software into multiple groups based on distance, the density based clustering algorithm (DBSCAN) is used. It is also needed to mention that DBSCAN is not the only solution to this approach. Any clustering algorithm can be used to find clusters in dimension reduced Dataset.
  
