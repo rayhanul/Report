@@ -64,14 +64,13 @@ Software defect prediction is a ..........................
 \chapter{Background Study and Discussion}
 \section{Introduction}
 
-Software Defect Prediction (SDP) is the process of predicting the defects of a software by using the code metrics and bug history of the  targeted system to ensure the quality of a software. The Software Quality Assurance (SQA) is the set of activities that ensure a software system to meet a specific quality level. Software companies always concern the quality of a software and tries hard to find out all holes before its release. To meet this goals, many researches have already been conducted for building prediction models to predict the defects of a software. These prediction models are called SDP models.
+Software Defect Prediction (SDP) is a process of predicting the software defects by using the software code metrics and bug history of the targeted software to ensure the quality. The Software Quality Assurance (SQA) is a set of activities that ensure a software system to meet a specific quality level. Software companies always concern to maintain the quality of a software and tries hard to find out all the holes before its release. To meet these goals, many researches have already been conducted for building prediction models to predict the software defects. These prediction models are popularly known as SDP models.
 
 %SDP is the process of predicting the defects of a software by using the code metrics and bug history of the  targeted system. SDP helps practitioners in the software development process by identifying the quality of a software. 
 %
-%There are many SDP models for predicting the software defects such as statistical model or machine learning algorithms. Both two models are used so frequently by the researchers to predict the defect of a end products. The statistical model are linear regression, logistic regression, step wise regression etc. on the other hand, machine learning algorithms are Support vector machines, Bayesian network, Naive Bayes, Hidden Markov models etc. 
-
-Most SDPs try to correctly classify software's component as being defective or not. Other SDPs aim to predict the number of defects that may appear in a software's files or subsystems. Before applying prediction model on the software system, the software project data is collected from the software repositories. Then, Statistical and Machine learning models are built to predict the defects that may exists in a software's files. Finally the accuracy and performance of those prediction models are evaluated by using precision, recall, F-measure, coefficient of determination etc. The general overview of SDP model is illustrated in Figure \ref{generalized_Defect_Prediction_Model}. 
-
+There are many SDP models for predicting the software defects such as statistical model or machine learning algorithms. Both models are used so frequently by the researchers to predict the defect of a end product. The statistical model are Linear regression, Logistic regression, Step Wise Regression etc. on the other hand, machine learning algorithms are Support vector machines, Bayesian network, Naive Bayes, Hidden Markov models etc.
+After selecting the prediction model from the statistical or machine learning models , the software project data is collected from the software repositories. Then, the selected model is applied on the Dataset to predict the defects that may exists in a software's files. Finally the accuracy and performance of those prediction models are evaluated by using precision, recall, F-measure, coefficient of determination etc. The general overview of SDP model is illustrated in Figure \ref{generalized_Defect_Prediction_Model}. 
+%Most of the SDPs try to correctly classify software's component as being defective or non-defective. Other SDPs aim to predict the number of defects that may appear in a software's files or subsystems.
 \begin{figure}[h!]
 \center
       \includegraphics[angle=0,width=90mm, height=50mm,scale=1]{images/pdf/general_defect_prediction_model.eps}
@@ -79,22 +78,23 @@ Most SDPs try to correctly classify software's component as being defective or n
 		\label{generalized_Defect_Prediction_Model}	
 \end{figure}
 The rest of the Chapter is organized as follows: Section \ref{defination_defect} and \ref{defination_defect_Predictors} presents the defination of software defect and software defect predictors respectively. Section \ref{definition_Defect_Prediction_Model} discusses about the software defect prediction model used in this resarch. Section \ref{software_code_metrics_description} provides the detail description about the selected software code metrics.  
-\section{Defect }
+\section{Software Defect }
 \label{defination_defect}
-The software defect is any flaws or errors that produce unexpected results. A software programmer, designer or others associated with the development of a software can make mistakes or error while designing and building the software. These mistakes or errors mean that there are flaws in the software. These are called defects.
+The software defect is any flaws or errors in a software that produce unexpected results. A software programmer, designer or others, associated with the development of a software can make mistakes or errors while designing or building the software. These mistakes or errors are called defect.
+%mean that there are flaws in the software. These
 
-The term defect may vary based on the perception of software developers, QA teams or managers. For example, bug databases of open source software contain users' request for bug corrections. These requests are frequently considered as feature requests or design decision manifestations by the developers of those systems. That means what one stakeholder considers as a defect may not necessarily be perceived as the same by other stakeholders. In essence, software defect is any kind of deviation from stakeholder's expectation.
+The term defect may vary based on the perception of the software developers, QA teams or Project Managers (PM). For example, bug databases of open source software contain users' request for bug corrections. These requests are frequently considered as feature requests by the developers of those systems. That means what one stakeholder considers as a defect may not be perceived as the same by other stakeholders. In essence, software defect is any kind of deviation from stakeholder's expectation.
 
-\section{Defect Predictors}
+\section{Software Defect Prediction}
 \label{defination_defect_Predictors}
-A Defect Predictor is a method that help the software practitioners by predicting possible defects that the end product may contain. The Defect predictor uses the software code metrics and the past information to predict defects for the current project. According to Brooks \cite{brooks1995mythical}, half the cost of software development is in unit and systems testing. Harold and Tahat also conform that testing phase requires approximately $50\%$ of the whole project schedule \cite{harrold2000testing,tahat2001requirement}. The defect predictor model is applied to the software software project before start testing to identify where the defects might exist. This allows them to efficiently allocate their scarce resources. 
+A Software Defect Prediction (SDP) is a method that help the software practitioners by predicting possible defects that the end product may contain. The software defect prediction model, also known as defect predictor uses the software code metrics and the past information to predict defects for the current project. According to Brooks \cite{brooks1995mythical}, half the cost of software development is in unit and systems testing. Harold and Tahat also conform that testing phase requires approximately $50\%$ of the whole project schedule \cite{harrold2000testing,tahat2001requirement}. The defect predictor model is applied to the software software project before starting testing to identify where the defects might exist. This allows PMs to efficiently allocate their scarce resources. 
 
-\section{Software Defect Prediction Model}
-The SDP uses a variety of modeling techniques to predict the defects of a software. These prediction model can be categorized to the statistical model and machine learning algorithms. These models are described below:
+The SDP model, though works well in predicting the software defect, there exists some critical steps and decisions that are needed to remember when building the defect prediction model. The various ways of defect prediction and challenges that should be in account when predicting defects are described below:
 
-%\subsection{Statistical model}
-Statistical models formalize the relationship between the independent variables and the dependent variable to predict the dependent variable. A model is usually specified by mathematical equations that relate one or more independent variables and other dependent variables. Some of the mostly used statistical models are described below:
-
+\subsection{Ways of the Software Defect Prediction}
+\label{Ways_Of_the_Software_Defect_Prediction}
+The SDP uses a variety of modeling techniques to predict the defects of a software. These prediction model can be categorized to the statistical model and machine learning algorithms. The statistical models formalize the relationship between the independent variables and the dependent variable to predict the dependent variable. On the other hand, machine learning algorithms learns from the experiences that it faces. Both models work well in predicting the defects. Some widely used models are described below:
+% A model is usually specified by mathematical equations that relate one or more independent variables and other dependent variables.
 %\section{Regression Analysis as a Defect Prediction Model}
 %\label{definition_Defect_Prediction_Model}
 %The regression analysis is a statistical process for estimating the relationships among the variables. It helps to understand how the values of the dependent variables change when the values of independent variables are changed. There are many techniques for carrying out the regression analysis such as linear regression and ordinary least squares regression, logistic regression, step wise regression, Nonparametric regression etc. 
@@ -104,8 +104,8 @@ Statistical models formalize the relationship between the independent variables 
 %when any one of the independent variables is varied, while the other independent variables are held fixed.
 
 %Most commonly, regression analysis estimates the conditional expectation of the dependent variable given the independent variables – that is, the average value of the dependent variable when the independent variables are fixed. In all cases, the estimation target is a function of the independent variables called the regression function. In regression analysis, it is also of interest to characterize the variation of the dependent variable around the regression function which can be described by a probability distribution.
-\subsection{Linear Regression Analysis}
-Linear regression analysis is the process of analyzing the relationships between variables, usually the variables are divided into dependent and independent variables.  Let Y denote the dependent variable which value is predicted and $X_{1}$,...,$X_{k}$ denote the independent variables. The linear regression analysis predicts the value of dependent variable (Y) by analyzing the independent variables ($X_{1}$,...,$X_{k}$). Then the equation for computing the predicted value of $Y$ is:
+\subsubsection{Linear Regression Analysis}
+Linear regression analysis is the process of analyzing the relationships between variables, usually the variables are divided into dependent and independent variables. Let Y denote the dependent variable which value is predicted and $X_{1}$,...,$X_{k}$ denote the independent variables. The linear regression analysis predicts the value of dependent variable (Y) by analyzing the independent variables ($X_{1}$,...,$X_{k}$). Then the equation for computing the predicted value of $Y$ is:
 \begin{equation}
 \label{eq:linear_regression_analysis}
  Y=b_{1}X_{1}+b_{2}X_{2}+b_{3}X_{3}+...+b_{n}X_{n}+c
@@ -114,27 +114,29 @@ This formula is a straight-line function of each of the X variables, holding the
 
 %The coefficients and intercept are estimated by least squares, i.e., setting them equal to the unique values that minimize the sum of squared errors within the sample of data to which the model is fitted.
 
-\subsection{Naive Bayes Classifier}
-Naive Bayes is a simple probabilistic classifier, based on Bayes theorem. The classifier calculates a future probability for a class using the prior probability of that class. Given a set of variables $x_{1}, x_{2}, x_{3}..., x_{n}$ and $c_{1},c_{2},c_{3}...,c_{n}$ are the corresponding outcomes of those variables. The conditional probability of $c_{n}$ can be computed using bayesian theorem as follows:
+\subsubsection{Naive Bayes Classifier}
+Naive Bayes is the simple probabilistic classifier, based on Bayes theorem. The classifier calculates a future probability for a class using the prior probability of that class. Given a set of variables $x_{1}, x_{2}, x_{3}..., x_{n}$ and $c_{1},c_{2},c_{3}...,c_{n}$ are the corresponding outcomes of those variables. The conditional probability of $c_{n}$ can be computed using Bayesian theorem as follows:
 
 \begin{equation}
 P(C_{k}|x)=\frac{P(C_{k}) P(x|C_{k})}{P(x)}
 \label{eq:Naive_Bayes_Classifier}
 \end{equation}
-The above equation can be formalized by using the following plain text.
+The above equation can also be formalized by using the following plain text.
 
 \begin{equation}
 Posterior=\frac{prior * likelihood}{evidence}
 \label{eq:}
 \end{equation}
 
-\subsection{Support Vector Machine}
+\subsubsection{Support Vector Machine}
 
-The Support Vector Machine (SVM) is supervised learning model that analyzes data and recognize patterns, especially designed for binary classification. SVM utilizes mathematical programming to directly model the decision boundary between classes. Given a set of training examples  each of which belong to one of two categories, an SVM training algorithm builds a model that assigns new examples into one of the two categories.
+The Support Vector Machine (SVM) is supervised learning model that analyzes data and recognize patterns, especially designed for binary classification. SVM utilizes mathematical programming to directly model the decision boundary between classes. Given a set of training examples each of which belong to one of two categories, an SVM training algorithm builds a model that assigns new examples into one of the two categories.
+The operation of the SVM algorithm is based on finding the hyperplane that gives the largest minimum distance to the training examples. This distance receives the important name of margin within SVM’s theory. Therefore, the optimal separating hyperplane maximizes the margin of the training data.
 
 
-\subsection{Bayesian network}
-A Bayesian network is a graphical model that represents a set of random variables and their conditional dependencies via a directed acyclic graph. Actually, Bayesian network is a directed acyclic graph whoch nodes represent variable in Bayesian sense. Nodes are unknown variable, hypothesis or observable quantity. Edges from one node to others represent conditional dependencies among them. Nodes with no edges mean they are conditionally independent of each others. Each node in Bayesian network is associated with a probability function that takes input from its parent variables and gives the probability of the variable represented by the node. 
+\subsubsection{Bayesian network}
+A Bayesian network is a graphical model that represents a set of random variables and their conditional dependencies via a directed acyclic graph. Actually, Bayesian network is a directed acyclic graph whoch nodes represent variable in Bayesian sense. Nodes are unknown variable, hypothesis or observable quantity. Edges from one node to others represent conditional dependencies among them. Nodes with no edges mean they are conditionally independent. Each node in Bayesian network is associated with a probability function that takes input from its parent variables and gives the probability of the variable represented by the node. 
+ 
 Let take a simple Bayesian network example such as rain influences whether the sprinkler is activated, and both rain and the sprinkler influence whether the grass is wet.
 
 \begin{figure}[h!]
@@ -151,12 +153,38 @@ P( R = T | G = T )=\frac{P(G = T,R = T)}{P(G = T)}=\frac{\sum_{S \epsilon {T,F}}
 \label{eq:bayesian_equation}
 \end{equation} 
 
-\subsection{K-Nearest Neighbor}
+\subsubsection{K-Nearest Neighbor}
 
-K-Nearest Neighbor (KNN) is is a type of instance based learning for classifying objects based on closest training examples in the feature space. The training examples are mapped into multidimensional feature space which is partitioned into regions by class labels. A point the space is assigned to the class if it is the most frequent class label among the k nearest training samples. A Euclidean distance is used to compute the closeness to the samples. The number of neighbors can be set as a parameter or be selected considering the mean squared error for the training set. 
+K-Nearest Neighbor (KNN) is a type of instance based learning for classifying objects based on closest training examples in the feature space. The training examples are mapped into multidimensional feature space which is partitioned into regions by class labels. A point the space is assigned to the class if it is the most frequent class label among the k nearest training samples. A Euclidean distance is used to compute the closeness to the samples. The number of neighbors can be set as a parameter or be selected considering the mean squared error for the training set. 
+
+\subsection{Challenges in Software Defect Prediction}
+Most of the SDP models use data from public sources and other use data from private sources. From the prediction model selection point of view, the SDPs use both statistical model and machine learning model for predicting the defect for a software. Although, The SDP models help a lot the software development team, the problems that always arise and have significant impact in software defect prediction process are described below :
+
+\subsubsection{Dataset Collection}
+
+Every SDP model uses software data such as software code mertics, defect information etc. for predicting the software defect. From the literature in SDP, it is obvious that most of the models use public data source from the defect repository and very few models use private data for SDP. The most popular data sources for SDPs are Promise Repository \cite{promise12} and NASA \cite{nasa2007respository}. 
+
+The SDP model using private Dataset can not be compared to other models because their datasets cannot reached. 
+To make any SDP model acceptable to others, it is always appreciated to use public data source for the defect prediction. So, software engineering research should public dataset such as Promise Repository \cite{promise12} for building the prediction model.
 
 
-\section{Code Metrics}
+ %and  however the number of SDP model using private data is also increasing. The majority of the SDP studies today are done on Java. 
+%
+%Since the large majority of SDP studies use repository data (i.e.,
+%75\% from source code and 69\% from defect repositories), it is worth investigating the
+%quality of the data stored in software repositories. As mentioned earlier, researchers
+%have have already begun looking in this direction (e.g., [25, 41, 154, 217]). We believe that this line of research is very important for future SDP work and encourage
+%researchers to further investigate what other types of data can be used to mitigate challenges related to noise in repository data.
+
+
+\subsubsection{Model Selection}
+There are lots of prediction model in literature used in SDP. some of those models are already described in section \ref{Ways_Of_the_Software_Defect_Prediction}. The model selection process for defect prediction is very much critical because its success depends on the selected model used for the prediction. Prior researches show that most of the SDP models use machine learning or statistical inferences such as Decision Tree, Linear Regression, Bayesian Network, Support Vector Machine, Logistic Regression etc. Before selecting a prediction model, it should be ensured that the prediction model should best fit the data and can explain the data accurately. 
+
+\subsubsection{Data Analysis}
+The success of software defect prediction process depends on the training process of the SDP model. Normally, the SDP model uses software code metrics and bug history as the training data. The software engineering data always contains some false information which mislead the training process. To provide the best data in the training process, many researches have been performed to find out best set of data. Some researches suggest to group the Dataset, so that the SDP model gets proper training Dataset. So, before applying SDP model to the Dataset, it is needed to ensure that the prediction model fit to the data.     
+
+
+\section{Software Code Metrics}
 \label{software_code_metrics_description}
 A software metric or code metric is a quantitative measure of a software system. There are lots of software metrics that have been used for defect prediction to improve the software quality. Some of these code metrics are method level, class level, component level, process level, Cyclomatic complexity etc. The software code metrics have multidimensional usage in software industry such as schedule and budget planning, cost estimation, quality testing, software debugging, software performance optimization etc. The selected code metrics that have been used in this thesis are described below:
 
@@ -885,7 +913,7 @@ The whole prediction process is illustrated in Algorithm \ref{prediction_process
 	\end{algorithm}
 	
 	
-\section{Results}
+\section{Results Analysis}
 
 
 
