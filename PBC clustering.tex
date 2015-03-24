@@ -64,12 +64,12 @@ Software defect prediction is a ..........................
 \chapter{Background Study and Discussion}
 \section{Introduction}
 
-Software Defect Prediction (SDP) is a process of predicting the software defects by using the software code metrics and bug history of the targeted software to ensure the quality. The Software Quality Assurance (SQA) is a set of activities that ensure a software system to meet a specific quality level. Software companies always concern to maintain the quality of a software and tries hard to find out all the holes before its release. To meet these goals, many researches have already been conducted for building prediction models to predict the software defects. These prediction models are popularly known as SDP models.
+Software Defect Prediction (SDP) is a process of predicting the defects by using the code metrics and bug history of the targeted software to ensure the quality. The Software Quality Assurance (SQA) is a set of activities that ensure a software system to meet a specific quality level. Software companies always concern to maintain the quality of a software and tries hard to find out all the holes before its release. To meet these goals, many researches have already been conducted for building prediction models to predict the software defects. These prediction models are popularly known as SDP models.
 
 %SDP is the process of predicting the defects of a software by using the code metrics and bug history of the  targeted system. SDP helps practitioners in the software development process by identifying the quality of a software. 
 %
-There are many SDP models for predicting the software defects such as statistical model or machine learning algorithms. Both models are used so frequently by the researchers to predict the defect of a end product. The statistical model are Linear regression, Logistic regression, Step Wise Regression etc. on the other hand, machine learning algorithms are Support vector machines, Bayesian network, Naive Bayes, Hidden Markov models etc.
-After selecting the prediction model from the statistical or machine learning models , the software project data is collected from the software repositories. Then, the selected model is applied on the Dataset to predict the defects that may exists in a software's files. Finally the accuracy and performance of those prediction models are evaluated by using precision, recall, F-measure, coefficient of determination etc. The general overview of SDP model is illustrated in Figure \ref{generalized_Defect_Prediction_Model}. 
+There are many SDP models for predicting the software defects such as statistical model or machine learning algorithms. Both models are used so frequently by the researchers to predict the defect of a end product. The statistical model are Linear regression, Logistic regression, Step Wise Regression etc. on the other hand, the machine learning algorithms are Support vector machines, Bayesian network, Naive Bayes, Hidden Markov models etc.
+After selecting the prediction model from the statistical or machine learning models, the software project data is collected from the software repositories. Then, the selected model is applied on the Dataset to predict the defects that may exists in a software's files. Finally the accuracy and performance of those prediction models are evaluated by using precision, recall, F-measure, coefficient of determination etc. The general overview of SDP model is illustrated in Figure \ref{generalized_Defect_Prediction_Model}. 
 %Most of the SDPs try to correctly classify software's component as being defective or non-defective. Other SDPs aim to predict the number of defects that may appear in a software's files or subsystems.
 \begin{figure}[h!]
 \center
@@ -78,20 +78,20 @@ After selecting the prediction model from the statistical or machine learning mo
 		\label{generalized_Defect_Prediction_Model}	
 \end{figure}
 The rest of the Chapter is organized as follows: Section \ref{defination_defect} and \ref{defination_defect_Predictors} presents the defination of software defect and software defect predictors respectively. Section \ref{definition_Defect_Prediction_Model} discusses about the software defect prediction model used in this resarch. Section \ref{software_code_metrics_description} provides the detail description about the selected software code metrics.  
-\section{Software Defect }
+\section{Defination of Software Defect and SDP }
 \label{defination_defect}
 The software defect is any flaws or errors in a software that produce unexpected results. A software programmer, designer or others, associated with the development of a software can make mistakes or errors while designing or building the software. These mistakes or errors are called defect.
 %mean that there are flaws in the software. These
 
 The term defect may vary based on the perception of the software developers, QA teams or Project Managers (PM). For example, bug databases of open source software contain users' request for bug corrections. These requests are frequently considered as feature requests by the developers of those systems. That means what one stakeholder considers as a defect may not be perceived as the same by other stakeholders. In essence, software defect is any kind of deviation from stakeholder's expectation.
 
-\section{Software Defect Prediction}
+\subsection{Software Defect Prediction}
 \label{defination_defect_Predictors}
-A Software Defect Prediction (SDP) is a method that help the software practitioners by predicting possible defects that the end product may contain. The software defect prediction model, also known as defect predictor uses the software code metrics and the past information to predict defects for the current project. According to Brooks \cite{brooks1995mythical}, half the cost of software development is in unit and systems testing. Harold and Tahat also conform that testing phase requires approximately $50\%$ of the whole project schedule \cite{harrold2000testing,tahat2001requirement}. The defect predictor model is applied to the software software project before starting testing to identify where the defects might exist. This allows PMs to efficiently allocate their scarce resources. 
+A Software Defect Prediction (SDP) is a method that help the software practitioners by predicting possible defects that the end product might contain. The software defect prediction model, also known as defect predictor uses the software code metrics and the past information to predict defects for the current project. According to Brooks \cite{brooks1995mythical}, half the cost of software development is in unit and systems testing. Harold and Tahat also conform that testing phase requires approximately $50\%$ of the whole project schedule \cite{harrold2000testing,tahat2001requirement}. The defect predictor model is applied to the software software project before starting testing to identify where the defects might exist. This allows PMs to efficiently allocate their scarce resources. 
 
 The SDP model, though works well in predicting the software defect, there exists some critical steps and decisions that are needed to remember when building the defect prediction model. The various ways of defect prediction and challenges that should be in account when predicting defects are described below:
 
-\subsection{Ways of the Software Defect Prediction}
+\subsection{Selected Defect Prediction Model}
 \label{Ways_Of_the_Software_Defect_Prediction}
 The SDP uses a variety of modeling techniques to predict the defects of a software. These prediction model can be categorized to the statistical model and machine learning algorithms. The statistical models formalize the relationship between the independent variables and the dependent variable to predict the dependent variable. On the other hand, machine learning algorithms learns from the experiences that it faces. Both models work well in predicting the defects. Some widely used models are described below:
 % A model is usually specified by mathematical equations that relate one or more independent variables and other dependent variables.
@@ -113,59 +113,63 @@ Linear regression analysis is the process of analyzing the relationships between
 This formula is a straight-line function of each of the X variables, holding the others fixed, and the contributions of different X variables to the predictions are additive. The slopes of their individual straight-line relationships with Y are the constants $b_{1}$, $b_{2}$,..., $b_{k}$, the so-called coefficients of the variables. The coefficient ($b_{i}$) is the change in the predicted value of Y per unit of change in $X_{i}$. The additional constant c, the so-called intercept, is the prediction that the model would make if all the X’s are zero. 
 
 %The coefficients and intercept are estimated by least squares, i.e., setting them equal to the unique values that minimize the sum of squared errors within the sample of data to which the model is fitted.
+%
+\subsection{Other Defect Prediction Model}
 
-\subsubsection{Naive Bayes Classifier}
-Naive Bayes is the simple probabilistic classifier, based on Bayes theorem. The classifier calculates a future probability for a class using the prior probability of that class. Given a set of variables $x_{1}, x_{2}, x_{3}..., x_{n}$ and $c_{1},c_{2},c_{3}...,c_{n}$ are the corresponding outcomes of those variables. The conditional probability of $c_{n}$ can be computed using Bayesian theorem as follows:
-
-\begin{equation}
-P(C_{k}|x)=\frac{P(C_{k}) P(x|C_{k})}{P(x)}
-\label{eq:Naive_Bayes_Classifier}
-\end{equation}
-The above equation can also be formalized by using the following plain text.
-
-\begin{equation}
-Posterior=\frac{prior * likelihood}{evidence}
-\label{eq:}
-\end{equation}
-
-\subsubsection{Support Vector Machine}
-
-The Support Vector Machine (SVM) is supervised learning model that analyzes data and recognize patterns, especially designed for binary classification. SVM utilizes mathematical programming to directly model the decision boundary between classes. Given a set of training examples each of which belong to one of two categories, an SVM training algorithm builds a model that assigns new examples into one of the two categories.
-The operation of the SVM algorithm is based on finding the hyperplane that gives the largest minimum distance to the training examples. This distance receives the important name of margin within SVM’s theory. Therefore, the optimal separating hyperplane maximizes the margin of the training data.
-
-
-\subsubsection{Bayesian network}
-A Bayesian network is a graphical model that represents a set of random variables and their conditional dependencies via a directed acyclic graph. Actually, Bayesian network is a directed acyclic graph whoch nodes represent variable in Bayesian sense. Nodes are unknown variable, hypothesis or observable quantity. Edges from one node to others represent conditional dependencies among them. Nodes with no edges mean they are conditionally independent. Each node in Bayesian network is associated with a probability function that takes input from its parent variables and gives the probability of the variable represented by the node. 
- 
-Let take a simple Bayesian network example such as rain influences whether the sprinkler is activated, and both rain and the sprinkler influence whether the grass is wet.
-
-\begin{figure}[h!]
-  \centering
-    \includegraphics[angle=0,height= 60mm,width=60mm]{images/literature/bayesian_network.eps}
-		\caption{The directed acyclic graph of a Bayesian network}
-		\label{Bayesian_network_graph}
-\end{figure}
-
-If the variables are G = Grass wet (yes/no), S = Sprinkler turned on (yes/no), and R = Raining (yes/no), the Bayesian model using conditional probability will be
-
-\begin{equation}
-P( R = T | G = T )=\frac{P(G = T,R = T)}{P(G = T)}=\frac{\sum_{S \epsilon {T,F}} P(G = T, S, R=T)}{ \sum_{S,R \epsilon {T,F}} P(G=T,S,R)}
-\label{eq:bayesian_equation}
-\end{equation} 
-
-\subsubsection{K-Nearest Neighbor}
-
-K-Nearest Neighbor (KNN) is a type of instance based learning for classifying objects based on closest training examples in the feature space. The training examples are mapped into multidimensional feature space which is partitioned into regions by class labels. A point the space is assigned to the class if it is the most frequent class label among the k nearest training samples. A Euclidean distance is used to compute the closeness to the samples. The number of neighbors can be set as a parameter or be selected considering the mean squared error for the training set. 
+%\subsubsection{Naive Bayes Classifier}
+%Naive Bayes is the simple probabilistic classifier, based on Bayes theorem. The classifier calculates a future probability for a class using the prior probability of that class. Given a set of variables $x_{1}, x_{2}, x_{3}..., x_{n}$ and $c_{1},c_{2},c_{3}...,c_{n}$ are the corresponding outcomes of those variables. The conditional probability of $c_{n}$ can be computed using Bayesian theorem as follows:
+%
+%\begin{equation}
+%P(C_{k}|x)=\frac{P(C_{k}) P(x|C_{k})}{P(x)}
+%\label{eq:Naive_Bayes_Classifier}
+%\end{equation}
+%The above equation can also be formalized by using the following plain text.
+%
+%\begin{equation}
+%Posterior=\frac{prior * likelihood}{evidence}
+%\label{eq:}
+%\end{equation}
+%
+%\subsubsection{Support Vector Machine}
+%
+%The Support Vector Machine (SVM) is supervised learning model that analyzes data and recognize patterns, especially designed for binary classification. SVM utilizes mathematical programming to directly model the decision boundary between classes. Given a set of training examples each of which belong to one of two categories, an SVM training algorithm builds a model that assigns new examples into one of the two categories.
+%The operation of the SVM algorithm is based on finding the hyperplane that gives the largest minimum distance to the training examples. This distance receives the important name of margin within SVM’s theory. Therefore, the optimal separating hyperplane maximizes the margin of the training data.
+%
+%
+%\subsubsection{Bayesian network}
+%A Bayesian network is a graphical model that represents a set of random variables and their conditional dependencies via a directed acyclic graph. Actually, Bayesian network is a directed acyclic graph whoch nodes represent variable in Bayesian sense. Nodes are unknown variable, hypothesis or observable quantity. Edges from one node to others represent conditional dependencies among them. Nodes with no edges mean they are conditionally independent. Each node in Bayesian network is associated with a probability function that takes input from its parent variables and gives the probability of the variable represented by the node. 
+ %
+%Let take a simple Bayesian network example such as rain influences whether the sprinkler is activated, and both rain and the sprinkler influence whether the grass is wet.
+%
+%\begin{figure}[h!]
+  %\centering
+    %\includegraphics[angle=0,height= 60mm,width=60mm]{images/literature/bayesian_network.eps}
+		%\caption{The directed acyclic graph of a Bayesian network}
+		%\label{Bayesian_network_graph}
+%\end{figure}
+%
+%If the variables are G = Grass wet (yes/no), S = Sprinkler turned on (yes/no), and R = Raining (yes/no), the Bayesian model using conditional probability will be
+%
+%\begin{equation}
+%P( R = T | G = T )=\frac{P(G = T,R = T)}{P(G = T)}=\frac{\sum_{S \epsilon {T,F}} P(G = T, S, R=T)}{ \sum_{S,R \epsilon {T,F}} P(G=T,S,R)}
+%\label{eq:bayesian_equation}
+%\end{equation} 
+%
+%\subsubsection{K-Nearest Neighbor}
+%
+%K-Nearest Neighbor (KNN) is a type of instance based learning for classifying objects based on closest training examples in the feature space. The training examples are mapped into multidimensional feature space which is partitioned into regions by class labels. A point the space is assigned to the class if it is the most frequent class label among the k nearest training samples. A Euclidean distance is used to compute the closeness to the samples. The number of neighbors can be set as a parameter or be selected considering the mean squared error for the training set. 
 
 \subsection{Challenges in Software Defect Prediction}
-Most of the SDP models use data from public sources and other use data from private sources. From the prediction model selection point of view, the SDPs use both statistical model and machine learning model for predicting the defect for a software. Although, The SDP models help a lot the software development team, the problems that always arise and have significant impact in software defect prediction process are described below :
+
+Most of the SDP models use both statistical model and machine learning model for predicting the defect for a software. These models usually use public Dataset and others use private Dataset for predicting defects. Although, The SDP models help a lot the software development team, the problems that always arise and have significant impact in software defect prediction process are described below :
+
 
 \subsubsection{Dataset Collection}
 
 Every SDP model uses software data such as software code mertics, defect information etc. for predicting the software defect. From the literature in SDP, it is obvious that most of the models use public data source from the defect repository and very few models use private data for SDP. The most popular data sources for SDPs are Promise Repository \cite{promise12} and NASA \cite{nasa2007respository}. 
 
-The SDP model using private Dataset can not be compared to other models because their datasets cannot reached. 
-To make any SDP model acceptable to others, it is always appreciated to use public data source for the defect prediction. So, software engineering research should public dataset such as Promise Repository \cite{promise12} for building the prediction model.
+The SDP model using private Dataset can not be compared to other models because their Datasets cannot reached. 
+To make any SDP model acceptable to others, it is always appreciated to use public data source for the defect prediction. So, software engineering research should public Dataset such as Promise Repository \cite{promise12} for building the prediction model.
 
 
  %and  however the number of SDP model using private data is also increasing. The majority of the SDP studies today are done on Java. 
@@ -186,21 +190,21 @@ The success of software defect prediction process depends on the training proces
 
 \section{Software Code Metrics}
 \label{software_code_metrics_description}
-A software metric or code metric is a quantitative measure of a software system. There are lots of software metrics that have been used for defect prediction to improve the software quality. Some of these code metrics are method level, class level, component level, process level, Cyclomatic complexity etc. The software code metrics have multidimensional usage in software industry such as schedule and budget planning, cost estimation, quality testing, software debugging, software performance optimization etc. The selected code metrics that have been used in this thesis are described below:
+The software metric or code metric is a quantitative measure of a software system. There are lots of software metrics, for example, method level, class level, component level, process level, Cyclomatic complexity etc.,  that have been used for defect prediction to improve the software quality. The software code metrics have multidimensional usage in software industry such as defect prediction, schedule and budget planning, cost estimation, quality testing, software debugging, software performance optimization etc. In this thesis, the well known Object Oriented and size metrics, have been used for defect prediction, are described below:
 
  %The methods level metrics are widely used for defect prediction for structured programming and Object oriented programming paradigm and The class level metrics are only used for Object oriented programs. All of the metrics properties are not significant for all cases. To analyze these, many reseaches have already been carried out to identify best set of metrics for defect prediction.
 
 \subsection{Object Oriented Design Metrics}
 \label{Code_Metrics_background_study}
-When the object oriented software development paradigm became popular, a lot of researches have been conducted to find out the most important code metrics for the Object Oriented (OO) designed system. One of the most important OO code metrics is CK metrics, was proposed by Chidamber and Kemerer \cite{chidamber1994metrics}. In addition to Ck metrics, there are also other metrics suite such as MOOD \cite{bansiya2002hierarchical}, QMOOD, L\&K etc. Among all the OO design metrics, the CK metrics is the most influential code metrics and widely used to measure the quality of OO designed systems. The details description of the CK metrics are given below:
+When the object oriented software development paradigm became popular, a lot of researches have been conducted to find out the most important code metrics for the Object Oriented (OO) designed system. One of the most important OO code metrics is CK metrics, was proposed by Chidamber and Kemerer \cite{chidamber1994metrics}. In addition to CK metrics, there are also other metrics suite such as MOOD \cite{bansiya2002hierarchical}, QMOOD \cite{olague2007empirical}, L\&K \cite{abreu1994object} etc. Among all the OO design metrics, the CK metrics is the most influential code metrics and widely used to measure the quality of OO designed systems \cite{catal2009systematic,he2015empirical,okutan2014software}. The details description of the CK metrics are given below:
 
 %The DIT will be the maximum length from the node to the root of the tree. 
-\textbf{Weighted Methods per Class:}
-The Weighted Methods per class (WMC) is the sum of all methods that belong to a class. It indicates how much effort is required to develop and maintain a particular class. The low value of WMC points to greater polymorphism and the high value indicates the class is complex, difficult to maintain and harder to reuse. The Classes with high value of WMC is often re-factored into two or more classes to make the source codes simple and maintainable.
+\textbf{Weighted Methods per Class (WMC)}
+The WMC is the sum of all methods that belong to a class \cite{chidamber1994metrics}. It indicates how much effort is required to develop and maintain a particular class. The low value of WMC points to greater polymorphism and the high value indicates the class is complex, difficult to maintain and reuse. The classes with high value of WMC is often re-factored into two or more classes to make the source codes simple and maintainable.
 % the WMC value should be smaller than 40. 
 
-\textbf{Depth of Inheritance Tree:}
-The Depth of Inheritance Tree (DIT) simply counts the number of ancestors of a class. The high value of DIT means the class inherits greater number of methods which makes a class complicated and complex. To the Object Oriented programing (OOP) point of view, a class should maintain the single responsibility principle. When a class inherits a lot of classes, it violates the OOP principle. As a result, the designed system cannot utilize the benefits of the OOP principles. 
+\textbf{Depth of Inheritance Tree (DIT)}
+The DIT simply counts the number of ancestors of a class \cite{chidamber1994metrics}. The high value of DIT means the class inherits greater number of methods which makes a class complicated and complex. To the Object Oriented programing (OOP) point of view, a class should maintain the single responsibility principle. When a class inherits a lot of classes, it is most likely that the class inherits a lot of methods which is the violation of the OOP principle. As a result, the designed system cannot utilize the benefits of the OOP principles. 
 
 %The OO designed system's class hierarchy is illustrated in Figure \ref{dit_codeMetrics}. 
 \begin{figure}[h!]
@@ -219,8 +223,8 @@ From the Figure \ref{dit_codeMetrics}, the DIT values of different classes are g
 \item DIT ($C_{5}$) = 4
 \end{itemize}
 
-\textbf{Number of Children:}
-The Number of Children (NOC) simply counts the immediate sub-classes of a given class. It is also a measure of how many sub-classes are going to inherit the methods of a particular parent class. From the Figure \ref{dit_codeMetrics}, the NOC values of different classes are given below:
+\textbf{Number of Children (NOC)}
+The NOC simply counts the immediate sub-classes of a given class \cite{chidamber1994metrics}. It is also a measure of how many sub-classes are going to be inherited by the methods of a particular parent class. From the Figure \ref{dit_codeMetrics}, the NOC values of different classes are given below:
 
 \begin{itemize}
 \item NOC ($C_{0}$) = 1
@@ -233,14 +237,14 @@ The Number of Children (NOC) simply counts the immediate sub-classes of a given 
 
 The NOC value also gives the potential influence of a class on the system designing. The high value of NOC ensures the high usage of the inheritance and the greater possibility of the reusability in a system. Sometimes, it may also be a case of misuse of sub-classing and increase the system complexity that results more testing of the methods to ensure the quality of a software.
 
-\textbf{Response for a Class:} 
-The Response for a Class (RFC) metric is the total number of all methods that can be executed in response to a message received by a class. It is the sum of the methods of a class and all distinct methods that are invoked directly within the class methods. If a class invokes large number of methods in a response, the testing and debugging of the class becomes more complicated and  the tester requires a greater level of understanding to test the method. 
+\textbf{Response for a Class (RFC)} 
+The RFC metric is the total number of all methods that can be executed in response to a message received by a class \cite{chidamber1994metrics}. It is the sum of the methods of a class and all distinct methods that are invoked directly within the class methods. If a class invokes large number of methods in a response, the testing and debugging of the class becomes more complicated and  the tester requires a greater level of understanding to test the method. 
 
 %The larger the number of methods that can be invoked from a class, the greater the complexity of the class. A worst case value for possible responses will assist in appropriate allocation of testing time.
 
 
-\textbf{Coupling between Objects:}
-The Coupling between Objects (CBO) simply counts the number classes to which one single class is connected. A class can be coupled to other classes through parameters passing, shared variables, common database access or direct method calling etc. From the example in Figure \ref{CBO_codeMetrics}, the coupling value of these classes are listed below: 
+\textbf{Coupling Between Objects (CBO)}
+The CBO simply counts the number classes to which one single class is connected \cite{chidamber1994metrics}. A class can be coupled to other classes through parameters passing, shared variables, common database access or direct method calling etc. From the example in Figure \ref{CBO_codeMetrics}, the coupling value of these classes are listed below: 
 \begin{figure}[h!]
   \centering
     \includegraphics[angle=0,height= 70mm,width=90mm]{images/literature/CBO.eps}
@@ -258,10 +262,10 @@ The Coupling between Objects (CBO) simply counts the number classes to which one
 The High value of CBO is always detrimental to modular design and prevents reuse of a classes. When a class has high CBO value, it means that the class has high dependency to the other classes. So, the corresponding class has high possibility of having defects than others and needs more testing compared to others. On the contrary, the low value of CBO indicates the simplicity of a class and it is easy to reuse in another application. 
 
 
-\textbf{Lack of Cohesion of Method:} 
-The cohesion measures how well the methods in a class are connected to each others. It actually means the number of methods that do not share common fields like methods, properties etc. A class is called cohesive class if it performs only one function. So, the lack of Cohesion means that the class performs more that one responsibility. From the OOP point of view, a class should perform only one responsibility. The LCOM value is used to determine whereas the class violates the single responsibility principle or not. 
+\textbf{Lack of Cohesion of Method (LCOM)} 
+The cohesion measures how well the methods in a class are connected to each others \cite{chidamber1994metrics}. It actually means the number of methods that do not share common fields like methods, properties etc. A class is called cohesive class if it performs only one function. So, the lack of cohesion means that the class performs more than one responsibility. From the OOP point of view, a class should perform only one responsibility. The LCOM value is used to determine whether the class violates the single responsibility principle or not. 
 
-LCOM = 1 means that the class is cohesive class and LCOM $\geq$ 2 means that the class has more that one responsibility and should be split to make the design simple. High cohesion among the methods is always desirable because it helps to achieve encapsulation. Low cohesion indicates the inappropriate design and high complexity which leads to create fault prone software.   
+LCOM = 1 means that the class is cohesive class and LCOM $\geq$ 2 means that the class has more than one responsibility and should be split to make the design simple. High cohesion among the methods is always desirable because it helps to achieve encapsulation. Low cohesion indicates the inappropriate design and high complexity which leads to create fault prone software.   
 
 %The metric calculates whether the fields in an object are used across the method and properties or whether there is a split. A split means that some methods access some fields and some access other fields. That means that there is no interaction among these methods and so they should be in different classes. 
 \begin{figure}[h!]
@@ -272,7 +276,7 @@ LCOM = 1 means that the class is cohesive class and LCOM $\geq$ 2 means that the
 \end{figure}
 
 
-In the Figure \ref{lcom1}, a class consists of methods A through E and variables x and y. A calls B and B accesses x. Both C and D access y. D calls E, but E does not access any variables. This class has 2 unrelated components. The class can be split into the follow components such as {A, B, x} and {C, D, E, y}. So, it will be good to split the class into two classes. For this class, the LCOM value is 2. 
+In the Figure \ref{lcom1}, a class consists of methods A through E and variables x and y. A calls B and B accesses x. Both C and D access y. D calls E, but E does not access any variables. This class has 2 unrelated components. The class can be split into the following components such as {A, B, x} and {C, D, E, y}. So, it will be good to split the class into two classes. For this class, the LCOM value is 2. 
 \begin{figure}[h!]
   \centering
     \includegraphics[angle=0,width=70mm]{images/literature/lcom2.eps}
@@ -282,19 +286,22 @@ In the Figure \ref{lcom1}, a class consists of methods A through E and variables
 
 In Figure \ref{lcom2}, Method C access x to increase cohesion. Now the class consists of a single component where each and every variables and methods are connected to each others. So the LCOM value for this class is 1. It is a cohesive class. 
 
-\subsection{ Other Code Metrics}
+\subsection{ Software size metrics}
 Besides the CK metrics, the Number of Public methods and the Lines of Codes are popular code metrics, that have been employed for defect prediction. The short description of those are given below:
 
-\textbf{Number of Public Method:}
-The Number of Public Method (NPM) is the sum of public methods in a class. It provides the number of methods that can accessible from outside of the class. The high value of NPM indicates that the class is highly coupled with other classes because public methods is a interface by which classes communicates to each others. The high value of NPM also shows the corresponding class is too complex and has many responsibilities which complicates the design of a system.
+\textbf{Number of Public Method (NPM)}
+The NPM is the sum of public methods in a class. It provides the number of methods that can accessible from outside of the class. The high value of NPM indicates that the class is highly coupled with other classes because public methods is a interface by which classes communicates to each others. The high value of NPM also shows that the corresponding class is too complex and has many responsibilities which complicates the design of a system.
 
-\textbf{Lines of Code:}
-The Lines of Code (LOC) simply counts the total number of lines from the source codes by avoiding pure whitespace and lines containing only comments. It measures the volume of the source codes. It can only be used to compare projects, built by the same programing language and the same coding standards. It is typically used to predict the amount of effort that will be required to develop a program, as well as to estimate programming productivity or maintainability once the software is produced.
+\textbf{Lines of Code (LOC)}
+The LOC simply counts the total number of lines from the source codes by avoiding pure whitespace and lines containing only comments. It measures the volume of the source codes. It can only be used to compare projects, built by the same programing language and the same coding standards. It is typically used to predict the amount of effort that will be required to develop a program, as well as to estimate programming productivity or maintainability once the software is produced.
 
 % To change one is to change the volume of code. A better method to compare without regard to direct volume is to measure the complexity of the software. 
 
-\section{Conclusion}
+\subsection{Other Code Metrics}
+Besides the above discussed code metrics, there are also other code metrics such as Halstead Metrics, McCabe metrics and Cyclomatic complexity etc. All of those code metrics are frequently used for defect prediction. The McCabe metrics is used to capture the structural complexity of the source codes \cite{mccabe1976complexity}. It includes cyclomatic complexity v(g), design complexity ev(g) and essential complexity iv(g). Cyclomatic complexity measures the number of linearly independent paths of a program execution which is widely used to understand the source codes complexity. The Halstead Code Metrics \cite{halstead1977elements} is another way to measure the complexity of a program's source code. It measures the complexity and difficulty of the source codes using the number of distinct operators ($n_{1}$), the number of distinct operands ($n_{2}$), the total number of operators ($N_{1}$) and the total number of operands ($N_{2}$). It can be used to calculate the program's length, difficulty, effort, bug and volume etc. 
 
+\section{Conclusion}
+In this chapter, the software defect, its prediction process, widely used defect prediction model and the software code metrics used in the defect prediction are described briefly.  
 \chapter{Literature Review}
 \section{Introduction}
 \section{Code Metrics Selection}
@@ -356,7 +363,7 @@ Peng He et al. \cite{he2015empirical} performed an experiment on 34 release of 1
 The above discussions on the software code metrics show the class level metrics, especially CK metrics suite, is the most popular and widely used metrics in the software defect prediction. Among the CK metrics, the CBO, RFC, LCOM, WMC are seem to be most significant and NOC and DIT are less significant metrics. The widely used size metrics LOC and NPM are also significant in defect prediction. Many researches also show that the other metrics such as CE and CBM have positive impact in defect prediction. So, To incorporate all the previously investigated experiments, the CK metrics along with CE and LOC, NPM should be used as selected code metrics for the defect prediction.     
 
  %CK metrics are not significant.to use class level metrics to predict defects. At the same time, numerous comparisons among different software metrics have also been made to select metric or combination of metrics that perform better in defect prediction.
-\chapter{PBC}
+\chapter{Package Based Clustering}
 
 \section{Introduction}
 
@@ -765,9 +772,25 @@ We presented and experimented a new clustering technique for defect prediction u
 
 As future work, to validate the observations and PBC algorithm, the dataset used by the prediction model needs to be extended and the research can also be extended to measure the quality of a software using different code metrics.  
 
-\chapter{ DbScan}
+\chapter{Dimension Reduction}
 \section{Introduction}
 
+\section{Related work}
+
+Dimension Reduction (DR) is the process of reducing a set of variables into minimum number of variables that can explain the data perfectly. The approach involves finding a way of representing correlated variables together to form a new smaller set of derived variables with minimum loss of information. It removes redundancy or duplication from a set of correlated variables. There are lots of ways to perform DR in a Dataset such as principal component analysis, feature selection etc.
+
+Principal Component Analysis (PCA) uses an orthogonal transformation to convert a set of correlated observations into a set linearly uncorrelated variables called principal components \cite{abdi2010principal,wold1987principal,jolliffe2002principal}. It reduces the dimension of a Dataset into minimum number of dimensions that can describes all the varibality of the data. To reduce the dimension, it first subtract the mean of each dimension from the Dataset and generates covariance matrices of all variables. Then it calculates the eigenvector and eigenvalue of the covariance matrices. Finally it choose components and feature vector from the eigenvalue and eigenvector. Normally, the total number of principal component is less than or equal number of original dimension of the Dataset.The first principal component is the linear combination of n-variables that has maximum variance, so it gives as much variation in the data as possible. just like first component, the second principal component is also the linear combination of n-variables maximize the remaining variation as possible, with the constraint that the correlation between the first and second component is $0$. like first and second component, the i-th principal component maximize the remaining variation of the data. For the software engineering Data like PROMISE Repository, it the first and second component can only describe the 30-50\% varibality of the Dataset. So, it will not wise decision to really on the only two dimensions.
+
+
+%As the goal of PCA is to give minimum dimensional data that can represent the multidimensional data. 
+
+%The first principal component will have the greatest variance, the second will show the second most variance not described by the first, and so forth
+The Factor Analysis (FA) is way of reducing the dimension of a Dataset, like PCA. It is based on the correlation matrix of the variables. It produces latent variables by joining a set of observed variables. It test the hypothesis of latent by using regression analysis. To reduce the dimension from a Dataset, it first generates correlation matrix. It then determine the number of factors needed to represent the whole Dataset. Finally it transforms the factor to make them understandable.
+
+
+For the software engineering data, the existing PCA poorly reduce the dimension and the factor analysis technique which slightly depends on PCA can identify factor properly because of the poor fit of PCA. In thesis, it produces latent variables by joining the coefficient values with positive significance and coefficient values with negative significant. 
+
+%It is a statistical method used to describe variability among the correlated variables. 
 \section{DBSCAN}
  
 DBSCAN clustering algorithm is a density based clustering algorithm which finds clusters by checking density reachability of different points. A point q is called density reachable to another point, p, if and only if there is a sequence of n points such as $p_{1}$, $p_{2}$… $p_{n}$ with $p_{1}=p$ and $p_{n}=q$ where each   is directly density-reachable from Pi. The clusters, generated from DBSCAN, satisfy the following two property:
@@ -776,21 +799,21 @@ DBSCAN clustering algorithm is a density based clustering algorithm which finds 
 	\item {If a point is density-reachable from any point of the cluster, it is part of the cluster as well.}
 \end{enumerate}
 	
-DBSCAN algorithm requires two parameters to classify the dataset into different clusters. DBSCAN requires two parameters: $\epsilon$ (eps) and the minimum number of points required to form a dense region (minPts). It starts with an arbitrary starting point that has not been visited. This point's ε-neighborhood is retrieved, and if it contains sufficiently many points, a cluster is started. Otherwise, the point is labeled as noise. Note that this point might later be found in a sufficiently sized ε-environment of a different point and hence be made part of a cluster.
+DBSCAN algorithm requires two parameters to classify the dataset into different clusters. DBSCAN requires two parameters: $\epsilon$ (eps) and the minimum number of points required to form a dense region (minPts). It starts with an arbitrary starting point that has not been visited. This point's ε-neighborhood is retrieved, and if it contains sufficiently many points, a cluster is started. Otherwise, the point is labeled as noise. Note that this point might later be found in a sufficiently sized $\epsilon$-environment of a different point and hence be made part of a cluster.
 
 \section{Methodology}
 Every machine learning algorithm uses existing knowledge to train the prediction model to predict the next items. Hence, the proposed defect prediction model uses statistical inference to predict defects, so its success depends on the knowledge it gathers from existing Dataset.
 %The proposed approach uses statistical inference such as regression analysis for the prediction purpose because Catal shows that statistical model outperforms the expert estimations and experts cannot work on vary large datasets \cite{catal2009systematic}. 
-The simple regression analysis simply uses a set of independent variables  and one or more dependent variable. Hence, we have some available data, so we first analyze the coefficient values and intercept for the regression equation.
+The simple regression analysis simply uses a set of independent variables and one or more dependent variable. Hence, we have some available data, so we first analyze the coefficient values and intercept for the regression equation.
 
 The success of the regression analysis depends on the best fit of the train data. In a research, Menzies et al. show that the prediction model that appears to be useful in global context is often obsolete in local context for defect prediction. So, to avoid conclusion instability, we have proposed an approach to divide the software code metrics into multiple groups. Then the prediction model is applied on each group to predict defects for the new Datasets.  
 
 The software Dataset used in the proposed technique contains eight independent variables that makes impossible to apply different clustering algorithms on the Dataset. So, to apply different clustering algorithms on the existing Dataset, the dimension of the Dataset are needed to reduced. Here, a new dimension reduction algorithm based on the coefficient value has been proposed along with a defect prediction model. The whole model can be further divided into the following below steps : 
 
-\subsection{Dimension reduction:} 
+\subsection{Dimension Reduction} 
 As the considered Dataset contains eight independent variables, so the Dataset cannot be plotted in two dimensional space. This problem is solved here by reducing the dimension of the Dataset based on their significance to the dependent variable.  
 %To apply different clustering algorithm on the data, the dimensions of the data need to be reduced. In this thesis, the dimension of the data is reduced by using a new approach which is similar to principle component analysis (PCA). To reduce the dimension of the data, it uses the coefficients value of each attribute of the data. 
-The significance of one independent variable to another dependent variable can be easily computer by using regression analysis. To find the level of significance, this approach uses the following equation \ref{eq:coeffModel} as the regression model. The equation \ref{eq:coeffModel} is applied to the existing dataset to find out the coefficients values of each attributes in the dataset. The equation, that is used for finding coefficients is given below:   
+The significance of one independent variable to the dependent variable can be easily computed by using regression analysis. To find the significance level, this approach uses the following equation \ref{eq:coeffModel} as the regression model. The equation \ref{eq:coeffModel} is applied to the existing Dataset to find out the coefficients values of each attributes in the Dataset. The equation, that is used for finding coefficients is given below:   
 \begin{equation}
 \label{eq:coeffModel}
  Y=b_{1}x_{1}+b_{2}x_{2}+b_{3}x_{3}+...+b_{n}x_{n}+c
@@ -885,20 +908,24 @@ The whole procedure of calculating the eps value for DBSCAN is given in Algorith
 	
 	
 \subsection{Prediction Process}
-The prediction model's success depends on the data used for the training of the prediction model. To perform prediction more accurately, the data used for prediction has already been analyzed by using the Algorithm \ref{dimention_reduction} and \ref{eps_calculation_algorithm}. It's now time to predict the defects of the software using the selected prediction process.The proposed prediction process further can be divided into two steps.
+The prediction model's success depends on the data used for the training of the prediction model. To perform prediction more accurately, the data used for prediction has already been analyzed by using the Algorithm \ref{dimention_reduction} and \ref{eps_calculation_algorithm}. It's now time to predict the defects of the software using the selected prediction process.
 
-\begin{itemize}
-	\item Predicting cluster
-	\item predicting defects
-\end{itemize}
+%The proposed prediction process further can be divided into two steps.
+%
+%\begin{itemize}
+	%\item Predicting cluster
+	%\item predicting defects
+%\end{itemize}
+%
+%\subsubsection{	Predicting cluster}
 
-\subsubsection{	Predicting cluster}
-The proposed model tries to find the better way to train the prediction model. Hence this proposed approach divides the whole Dataset into clusters to minimize the data variability. So, before predicting defect of a OO class or file, it first identify the cluster where the selected file belongs to. When the identification of training data for a OO file is completed, the prediction model use these data to learn to further analysis. 
+The proposed model tries to find out the better way to train the prediction model. Hence this proposed approach divides the whole Dataset into clusters to minimize the data variability. So, before predicting defect of a OO class or file, it is important to identify the cluster where the selected file belongs to. To predict the potential cluster where a OO class might exist, it first build a cluster prediction model using the used clustering technique. Then it uses the statistical prediction model to identify the potential cluster where the selected OO file might belong to. When the identification of training data for a OO file is completed, the prediction model use these data to learn to further analysis.
 %
 %When new objects are available to predict defects, its first classify this objects to the existing clusters that have been calculated. Our cluster prediction approach assigns the new items to different clusters using the following algorithms.  
 %2.	Learning from this cluster
 %The previous step gives us a set of new item and their corresponding clustering information. In this steps, we iteratively select an item and learnt the prediction model from the corresponding dataset. Call the steps 3. 
-\subsubsection{Predict defects}
+%\subsubsection{Predict defects}
+
 To predict defects for a OO class or a whole software, the prediction model first learns from the selected data for the specific class or a whole software. After the completion of learning treatment, the prediction model predicts the defects for the selected OO classes.
 
 The whole prediction process is illustrated in Algorithm \ref{prediction_process}.
@@ -909,10 +936,17 @@ The whole prediction process is illustrated in Algorithm \ref{prediction_process
 		\begin{algorithmic}[1]
 			\REQUIRE  $ Dataset$, $coefficient_value$, $interceptPoint=0$,$eps=0$, $intercept, c$
 			
+			\FOR{ each OO class to be predicted}
+					\STATE{ Find the cluster where it belongs to}
+					\STATE{Train the prediction model using the selected cluster's data}
+					\STATE {Predict defect for the OO file}
+			\ENDFOR
 		\end{algorithmic}
 	\end{algorithm}
-	
-	
+
+\section{Experimental Setup}
+The experiments have been performed using R environment \cite{survival-package} and the software Dataset have been collected from the PROMISE Repositiry \cite{promise12}.
+To perform this experiments on the defect Dataset both within porject and cross projects, the software 
 \section{Results Analysis}
 
 
