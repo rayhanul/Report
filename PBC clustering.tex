@@ -11,6 +11,9 @@
 \usepackage[a4paper,margin=1in,footskip=.5cm]{geometry}
 \usepackage{listings}
 \usepackage{color}
+\usepackage{makeidx}
+\usepackage{multirow}
+\usepackage{rotating}
 
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
@@ -38,12 +41,22 @@
 \newcolumntype{C}[1]{>{\Centering}m{#1}}
 \renewcommand\tabularxcolumn[1]{C{#1}}
 
+
+
+
 \begin{document}
 \doublespacing
 %A new Package Based Clustering for Enhancing Software Defect Prediction Accuracy
 \title{ Software Defect Prediction}
 \date{}
 \maketitle
+
+
+
+
+
+
+
 %\IEEEcompsoctitleabstractindextext{%
 %
 %\begin{abstract}
@@ -60,6 +73,7 @@
 %
 %\IEEEpeerreviewmaketitle
 \chapter{Introduction}
+\index{Introduction}
 Software defect prediction is a ..........................
 \chapter{Background Study and Discussion}
 \section{Introduction}
@@ -698,7 +712,7 @@ In this section, the experimental environment setup and the results analysis of 
 
 To perform data analysis, a tool based on the above description of the proposed technique was implemented.The prominent clustering algorithms such as BorderFlow and K-means was implemented by using Java and R language respectively. The linear regression model was built by using the R statistical environment. An open source software named as JEdit 3.2 was collected from promise repository \cite{promise12} to use in the experiment.
 
-To perform the experiment, three clustering algorithms such as BorderFlow, K-means and the proposed PBC algorithm was applied on the dataset JEdit 3.2. These three clustering algorithms divided the selected software into multiple clusters using their approach. The BorderFlow clustering algorithm was implemented as mentioned in \cite{scanniello2013class}. To find out the number of clusters using k-means, the center (n) value was iteratively changed to minimize the RSS. The proposed PBC was implemented as described in Algorithm \ref{PackageLevel} by using Java to classify all OO classes into multiple clusters.
+To perform the experiment, three clustering algorithms such as BorderFlow, K-means and the proposed PBC algorithm was applied on the Dataset JEdit 3.2. These three clustering algorithms divided the selected software into multiple clusters using their approach. The BorderFlow clustering algorithm was implemented as mentioned in \cite{scanniello2013class}. To find out the number of clusters using k-means, the center (n) value was iteratively changed to minimize the RSS. The proposed PBC was implemented as described in Algorithm \ref{PackageLevel} by using Java to classify all OO classes into multiple clusters.
 
 %
 %We implement three clustering algorithms such as BorderFlow, K-means and the proposed PBC algorithm on the dataset JEdit 3.2. The BorderFlow clustering algorithm is implemented as mentioned in \cite{scanniello2013class}. To find out the number of clusters using k-means, we iteratively change the center value (n) to minimize the RSS. The proposed PBC described in Algorithm \ref{PackageLevel}, is implemented by using Java. It takes a software project implemented by using Java, then it identifies all OO classes. It reads all OO classes and searches for package name in the OO class. After finding package name from the OO class, it classifies all OO classes into multiple clusters.
@@ -774,55 +788,94 @@ As future work, to validate the observations and PBC algorithm, the dataset used
 
 \chapter{Dimension Reduction}
 \section{Introduction}
+SDP models use software code metrics and defect information from the defect directory such as Mozilla defect directory \cite{BugzillaforMozilla} to predict defects. The effectiveness of a SDP model depends on the learning procedure of SDP model. The better learning can make the SDP model to predict software defect more accurately. Usually, the software engineering Dataset contains a lots of variabilities among the Dataset. These variablities always hinders the learning procedure. So, if it is possible to group the software engineering Dataset based on their similarities, it will definitely help the SDP model to learn better from the existing knowledge.
+
+Software's Dataset grouping based on their similarities can be accomplished by using various clustering algorithms such as DBSCAN \cite{ester1996density}, K-means, C-means etc. These clustering algorithms need to plot the Dataset in the two-dimensional space to apply the clustering technique. As, the code mertics have eight properties, so it is totally impossible to plot them into two-dimensional space. To plot these Dataset in two dimensional space, the dimensions of the Dataset are needed to reduced. In this thesis, the dimensions of Dataset are reduced by applying the factor analysis technique using coefficient value.
+
+There exists some prominent dimension reduction algorithms such as program component analysis, factor analysis to reduce the dimensions of a Dataset. The program component analysis technique uses covariance metrics to produce the components from the Dataset. The total numbers of component returned by program component analysis is less or equal to the dimension of the Dataset. Then the component that can describe the most of the variabilities are used instead of using the whole Dataset. The factor analysis technique uses the correlation matrix to produces latent variables by minimizing the dimensions of a Dataset.      
+
+
+In this thesis, FA technique has been modified by using coefficient values instead of using correlation matrix to produce the latent variables. The coefficient values show the significant of independent variables to the dependent variable. As the dimension reduction technique reduce the dimension based on their coefficient value, so the new latent variables' values are based on their significant to the dependent variables. When the new Dataset values are plotted in the two dimensional space, the similar objects are close to each others. 
+
+The experiment has been performed on some open source software such as JEdit, Ant, Xalan etc. from the Promise Repository \cite{promise12}. The proposed technique reduces the dimensions of the Dataset for the different clustering algorithms. After reducing the dimension, the clustering algorithms such as DBSCAN \cite{ester1996density}, Where clustering \cite{menzies2011local,menzies2013local} have been applied to the dimension reduced Dataset to group these into multiple clusters. Then the linear regression model has been applied to each cluster to find out predicted defects. To show the importance and effectiveness of dimension reduction for clustering algorithms, the other clustering approaches also implemented such as BorderFlow and no clustering approach that considers the whole Dataset. The Where clustering approach \cite{menzies2011local,menzies2013local} is also applied to the dimension reduced Dataset by PCA to show which dimension reduction technique is better for software engineering Dataset. Finally, results are compared to show how clustering affects the defect prediction model.
+
+ %using coefficient values on 
+
+
+Results show that the dimension reduction technique using the coefficient values outperforms to others. 
+
+
 
 \section{Related work}
 
-Dimension Reduction (DR) is the process of reducing a set of variables into minimum number of variables that can explain the data perfectly. The approach involves finding a way of representing correlated variables together to form a new smaller set of derived variables with minimum loss of information. It removes redundancy or duplication from a set of correlated variables. There are lots of ways to perform DR in a Dataset such as principal component analysis, feature selection etc.
+Dimension Reduction (DR) is a process of reducing a set of variables into minimum number of variables that can explain the data perfectly. The goal of this approach is to find a set of correlated variables to form a new smaller set of latent variables with minimum loss of information. There are lots of ways to perform DR in a Dataset such as Principal Component Analysis (PCA), Feature Selection (FA) etc.
 
-Principal Component Analysis (PCA) uses an orthogonal transformation to convert a set of correlated observations into a set linearly uncorrelated variables called principal components \cite{abdi2010principal,wold1987principal,jolliffe2002principal}. It reduces the dimension of a Dataset into minimum number of dimensions that can describes all the varibality of the data. To reduce the dimension, it first subtract the mean of each dimension from the Dataset and generates covariance matrices of all variables. Then it calculates the eigenvector and eigenvalue of the covariance matrices. Finally it choose components and feature vector from the eigenvalue and eigenvector. Normally, the total number of principal component is less than or equal number of original dimension of the Dataset.The first principal component is the linear combination of n-variables that has maximum variance, so it gives as much variation in the data as possible. just like first component, the second principal component is also the linear combination of n-variables maximize the remaining variation as possible, with the constraint that the correlation between the first and second component is $0$. like first and second component, the i-th principal component maximize the remaining variation of the data. For the software engineering Data like PROMISE Repository, it the first and second component can only describe the 30-50\% varibality of the Dataset. So, it will not wise decision to really on the only two dimensions.
+The PCA uses an orthogonal transformation to convert a set of correlated observations into a set linearly uncorrelated variables called principal components \cite{abdi2010principal,wold1987principal,jolliffe2002principal}. It reduces the dimension of a Dataset into minimum number of dimensions that can describes all the varibality of the data. To reduce the dimension, it first subtract the mean of each dimension from the Dataset and generates covariance matrices of the Dataset using all variables. Then it calculates the eigenvector and eigenvalue of the covariance matrices. Finally it chooses components and feature vector from the eigenvalue and eigenvector. Normally, the total number of principal component is less or equal to the number of original dimension of the Dataset.The first principal component is the linear combination of n-variables that has maximum variance, so it gives as much variation in the data as possible. Just like first component, the second principal component is also the linear combination of n-variables maximize the remaining variation as possible, with the constraint that the correlation between the first and second component is $0$. Like first and second component, the i-th principal component maximize the remaining variation of the data. For the software engineering Data like Promise Repository \cite{promise12}, the first and second component can only describe the 30-50\% varibality of the Dataset. So, it will not wise decision to rely on the only first two dimensions because it can only describe 30-50\% of the total variabilities.
 
 
 %As the goal of PCA is to give minimum dimensional data that can represent the multidimensional data. 
 
 %The first principal component will have the greatest variance, the second will show the second most variance not described by the first, and so forth
-The Factor Analysis (FA) is way of reducing the dimension of a Dataset, like PCA. It is based on the correlation matrix of the variables. It produces latent variables by joining a set of observed variables. It test the hypothesis of latent by using regression analysis. To reduce the dimension from a Dataset, it first generates correlation matrix. It then determine the number of factors needed to represent the whole Dataset. Finally it transforms the factor to make them understandable.
+The Factor Analysis (FA) is another way of reducing the dimension of a Dataset, like PCA \cite{malinowski2002factor,kim1978introduction}. It is based on the correlation matrix of the variables whether PCA uses covariance matrix. It produces latent variables by joining a set of observed variables. It tests the hypothesis of latent by using regression analysis. To reduce the dimension from a Dataset, it first generates correlation matrix and then determines the number of factors needed to represent the whole Dataset. Finally it transforms the factor into latent variables to make them understandable.
 
 
-For the software engineering data, the existing PCA poorly reduce the dimension and the factor analysis technique which slightly depends on PCA can identify factor properly because of the poor fit of PCA. In thesis, it produces latent variables by joining the coefficient values with positive significance and coefficient values with negative significant. 
+For the software engineering data, the existing PCA poorly reduces the dimension and the factor analysis technique which slightly depends on PCA cannot identify factor properly because of the poor fit of PCA. In this experiment, the dimension of a Dataset is reduced by using the significant of independent variables to the dependent variables. It produces latent variables by joining the coefficient values with positive significance and coefficient values with negative significant. 
 
 %It is a statistical method used to describe variability among the correlated variables. 
-\section{DBSCAN}
+
+\section{Why Dimension reduction is important in Software Engineering Data}
+
+As the described problem, it has been already mentioned that clustering on software engineering Dataset based on their similarity may improve the defect prediction accuracy. 
+
+lets consider an examination, consisting of five subjects, the first two covering mathematics, the next two on literature, and a comprehensive fifth exam. The overall grade is calculated from the five subject. It seems reasonable that the five grades for a given student will be related. Some students are good at both subjects, some are good at only one, etc. if It is possible to  The goal of this analysis is to determine if there is quantitative evidence that the students' grades on the five different exams are largely determined by only two types of ability.
+
+  
+\section{Clustering approaches}
  
-DBSCAN clustering algorithm is a density based clustering algorithm which finds clusters by checking density reachability of different points. A point q is called density reachable to another point, p, if and only if there is a sequence of n points such as $p_{1}$, $p_{2}$… $p_{n}$ with $p_{1}=p$ and $p_{n}=q$ where each   is directly density-reachable from Pi. The clusters, generated from DBSCAN, satisfy the following two property:
+\subsection{DBSCAN}
+DBSCAN clustering algorithm is a density based clustering approach which finds clusters by checking density reachability of different points. A point q is called density reachable to another point, p, if and only if there is a sequence of n points such as $p_{1}$, $p_{2}$… $p_{n}$ with $p_{1}=p$ and $p_{n}=q$ where each is directly density-reachable from Pi. The clusters, generated from DBSCAN, satisfy the following two property:
 \begin{enumerate}
 	\item {All points within the cluster are mutually density-connected.}
 	\item {If a point is density-reachable from any point of the cluster, it is part of the cluster as well.}
 \end{enumerate}
 	
-DBSCAN algorithm requires two parameters to classify the dataset into different clusters. DBSCAN requires two parameters: $\epsilon$ (eps) and the minimum number of points required to form a dense region (minPts). It starts with an arbitrary starting point that has not been visited. This point's ε-neighborhood is retrieved, and if it contains sufficiently many points, a cluster is started. Otherwise, the point is labeled as noise. Note that this point might later be found in a sufficiently sized $\epsilon$-environment of a different point and hence be made part of a cluster.
+DBSCAN algorithm requires two parameters to classify the dataset into different clusters. DBSCAN requires two parameters: $\epsilon$ (eps) and the minimum number of points required to form a dense region (minPts). It starts with an arbitrary starting point that has not been visited. This point's $\epsilon$-neighborhood is retrieved, and if it contains sufficiently many points, a cluster is started. Otherwise, the point is labeled as noise. 
 
-\section{Methodology}
-Every machine learning algorithm uses existing knowledge to train the prediction model to predict the next items. Hence, the proposed defect prediction model uses statistical inference to predict defects, so its success depends on the knowledge it gathers from existing Dataset.
+%Note that this point might later be found in a sufficiently sized $\epsilon$-environment of a different point and hence be made part of a cluster.
+
+\subsection{WHERE Cluster}
+
+The WHERE clustering algorithm finds the software artifacts with similar properties. It uses FASTMAP heuristic to find out 
+
+\section{Proposed Methodology}
+%Every machine learning algorithm uses existing knowledge to train the prediction model. The proposed defect prediction model uses statistical inference to predict defects, so its success depends on the knowledge it gathers from existing Dataset.
 %The proposed approach uses statistical inference such as regression analysis for the prediction purpose because Catal shows that statistical model outperforms the expert estimations and experts cannot work on vary large datasets \cite{catal2009systematic}. 
-The simple regression analysis simply uses a set of independent variables and one or more dependent variable. Hence, we have some available data, so we first analyze the coefficient values and intercept for the regression equation.
 
-The success of the regression analysis depends on the best fit of the train data. In a research, Menzies et al. show that the prediction model that appears to be useful in global context is often obsolete in local context for defect prediction. So, to avoid conclusion instability, we have proposed an approach to divide the software code metrics into multiple groups. Then the prediction model is applied on each group to predict defects for the new Datasets.  
+%Hence, we have some available data, so we first analyze the coefficient values and intercept for the regression equation.
 
-The software Dataset used in the proposed technique contains eight independent variables that makes impossible to apply different clustering algorithms on the Dataset. So, to apply different clustering algorithms on the existing Dataset, the dimension of the Dataset are needed to reduced. Here, a new dimension reduction algorithm based on the coefficient value has been proposed along with a defect prediction model. The whole model can be further divided into the following below steps : 
+The simple regression analysis simply uses a set of independent variables and one or more dependent variable.  The success of the regression analysis depends on the best fit of the train data. In a research, Menzies et al. show that the prediction model that appears to be useful in global context is often obsolete in local context for defect prediction. So, to avoid conclusion instability, we have proposed an approach to divide the software code metrics into multiple groups. Then the prediction model is applied on each group to predict defects for the new Datasets.  
 
-\subsection{Dimension Reduction} 
-As the considered Dataset contains eight independent variables, so the Dataset cannot be plotted in two dimensional space. This problem is solved here by reducing the dimension of the Dataset based on their significance to the dependent variable.  
-%To apply different clustering algorithm on the data, the dimensions of the data need to be reduced. In this thesis, the dimension of the data is reduced by using a new approach which is similar to principle component analysis (PCA). To reduce the dimension of the data, it uses the coefficients value of each attribute of the data. 
-The significance of one independent variable to the dependent variable can be easily computed by using regression analysis. To find the significance level, this approach uses the following equation \ref{eq:coeffModel} as the regression model. The equation \ref{eq:coeffModel} is applied to the existing Dataset to find out the coefficients values of each attributes in the Dataset. The equation, that is used for finding coefficients is given below:   
+The software Dataset used in the proposed technique contains eight independent variables that makes impossible to apply different clustering algorithms on the Dataset. So, to apply different clustering algorithms on the existing Dataset, the dimension of the Dataset are needed to reduced. As described above the well known dimension reduction approach such as PCA and FA cannot reduce the dimension properly. Here, a new dimension reduction algorithm based on the FA using coefficient value has been proposed along with a defect prediction model. The whole model can be further divided into the following below steps : 
+
+\subsection{Dimension Reduction Approach} 
+%As the considered Dataset contains eight independent variables, so the Dataset cannot be plotted in two dimensional space. This problem is solved here by reducing the dimension of the Dataset based on their significance to the dependent variable. 
+ 
+%To apply different clustering algorithm on the data, the dimensions of the data need to be reduced. In this thesis, the dimension of the data is reduced by using a new approach which is similar to principle component analysis (PCA). To reduce the dimension of the data, it uses the coefficients value of each attribute of the data.
+
+FA reduces the dimension of a Dataset by producing latent variables. Hence the FA using correlation matrix cannot work properly in software engineering Dataset. Here FA is modified by using the coefficient values to produce latent variables. The coefficient values show The significance of one independent variable to the dependent variable. It can easily be calculated by using regression analysis. 
+
+To calculate the coefficient values, the regression analysis using the equation \ref{eq:coeffModel} has been applied to the available Dataset. 
 \begin{equation}
 \label{eq:coeffModel}
  Y=b_{1}x_{1}+b_{2}x_{2}+b_{3}x_{3}+...+b_{n}x_{n}+c
 \end{equation}
 here, Y is dependent variable, $b_{1}$...$b_{n}$ be the coefficient values of independent variables,$x_{1}$...$x{_n}$ respectively and c is intercept point of y-axis. 
 
-The coefficients values mean the impact of the particular independent variable to dependent variable. The coefficients value can be positive or negative based on its impact of the independent variables to the dependent variable. 
+%The significance of one independent variable to the dependent variable can be easily computed by using regression analysis. To find the significance level, this approach uses the following equation \ref{eq:coeffModel} as the regression model. The equation \ref{eq:coeffModel} is applied to the existing Dataset to find out the coefficients values of each attributes in the Dataset. The equation, that is used for finding coefficients is given below:   The coefficients values mean the impact of the particular independent variable to dependent variable.
+
+The coefficients value can be positive or negative based on the impact of the independent variables to the dependent variable. if the coefficients values positive, it means that the dependent variable's value increase with the increase of independent variable's value. if the coefficients values negative, it means that the dependent variable's value decrease with the increase of independent variable's value. 
  
-To reduce the dimension of the data, the coefficients values are then multiplied to the corresponding variables' values. This produces the new values that might have some positive and negative values. Then the positive and negative values are summed to produce PosValue and NegValue respectively for each row in dataset. As a result, the final dataset contains only two values for each entry. The PosValue and NegValue are calculated by using the following two equations respectively. 
+To reduce the dimension of the Dataset, the coefficient values are then multiplied to the corresponding variable value. This produces the new values that might have some positive and negative values. Then the positive and negative values are summed to produce two latent variables, named as PosValue and NegValue respectively for each row in dataset. As a result, the final Dataset contains only two values for each entry. The PosValue and NegValue are calculated by using the equation \cite{eq:PosValue} and \cite{eq:NegValue} respectively. 
 \begin{equation}
 \label{eq:PosValue}
  PosValue=\sum{b_{i}x_{i}}
@@ -834,7 +887,7 @@ NegValue=\sum{b_{i}x_{i}}
 \end{equation}
 where $b_{i}$ is negative.
 
-Now, the whole Dataset only have two values based on the positive and negative impact to the dependent variable. It is now easily plotable to two dimensional space and any clustering algorithm can be applied to the new Dataset to find out clusters according to the requirements. The whole procedure to reduce the dimention of the dataset is given in Algorithm \ref{dimention_reduction}.
+Now, the whole Dataset only have two values based on the positive and negative impact of independent variables to the dependent variable. It is now easily plottable to two dimensional space and any clustering algorithm can be applied to the new Dataset to find out clusters according to the requirements. The whole procedure to reduce the dimension of the Dataset is given in Algorithm \ref{dimention_reduction}.
 
 
 \begin{algorithm}
@@ -868,21 +921,23 @@ Now, the whole Dataset only have two values based on the positive and negative i
 \end{algorithmic}
 \end{algorithm}
 
+When the new Dataset is plot, considering the PosValue as x-axis and NegValue as y-axis. It distributes the OO class in such a way that similar classes are close to each other and dissimilar classes are far from each others. The defective classes are situated far from origin (0,0) and the non-defective classes are close to origin.  
+
 \subsection{Cluster Formation}
 
-The dimension reduction process reduces the attributes of a dataset and makes it only two dimensional which can easily be illustrated in two dimensional plane. Hence the dimension reduction process reduces the dimension based on their impact value such as coefficient value, so the position of any class depends on its impact factor to dependent variable. It is expected that objects with same possibility of having defects get similar PosValue and NegValue value.
+The dimension reduction process reduces the attributes of a Dataset and makes it only two dimensional which can easily be illustrated in two dimensional plane. Hence the dimension reduction process reduces the dimension based on their impact value such as coefficient value, so the position of any class depends on its impact factor to dependent variable. It is expected that objects with same possibility of having defects get similar PosValue and NegValue value.
  
 In the new value, the equal objects locates closer. So if the total software can be grouped based on the distance measure, then the equal objects will belong to same cluster. For this experiments, to group the whole software into multiple groups based on distance, the density based clustering algorithm (DBSCAN) is used. It is also needed to mention that DBSCAN is not the only solution to this approach. Any clustering algorithm can be used to find clusters in dimension reduced Dataset.
  
 The DBSCAN clustering algorithm groups the whole software based on the distance measurement. To make the algorithm workable, a distance needs to be measured manually. For this experiments, the distance, which is known as eps value for DBSCAN, is calculated using the intercept point generated from prediction model.
 
-The eps value calculation for DBSCAN is most critical and important because the success of this cluttering algorithm depends on eps value. In this experiments the eps value is calculated by summing all intercept value from the prediction model, described in equation \ref{eq:epsGenerationModel}, considering only one independent variable at a time. 
+The eps value calculation for DBSCAN is most critical and important because the success of this cluttering algorithm depends on it. In this experiment, the eps value is calculated by summing all intercept value from the prediction model, described in equation \ref{eq:epsGenerationModel}, considering only one independent variable at a time. 
 
 \begin{equation}
 \label{eq:epsGenerationModel}
  Y=bx+c
 \end{equation}
-Hence, this experiment only uses eight code metrics, described in (ref{}), so, the eps value is calculated by summing the eight intercept values, generated from considering one independent variable at a time.  
+Hence, this experiment only uses eight code metrics, described in \ref{Code_Metrics_background_study}, so, the eps value is calculated by summing the eight intercept values, generated from considering one independent variable at a time.  
 The whole procedure of calculating the eps value for DBSCAN is given in Algorithm \ref{eps_calculation_algorithm}. 
 
 \begin{equation}
@@ -908,7 +963,7 @@ The whole procedure of calculating the eps value for DBSCAN is given in Algorith
 	
 	
 \subsection{Prediction Process}
-The prediction model's success depends on the data used for the training of the prediction model. To perform prediction more accurately, the data used for prediction has already been analyzed by using the Algorithm \ref{dimention_reduction} and \ref{eps_calculation_algorithm}. It's now time to predict the defects of the software using the selected prediction process.
+%The prediction model's success depends on the data used for the training of the prediction model. To perform prediction more accurately, the data used for prediction has already been analyzed by using the Algorithm \ref{dimention_reduction}. It's now time to predict the defects of the software using the selected prediction process.
 
 %The proposed prediction process further can be divided into two steps.
 %
@@ -919,7 +974,7 @@ The prediction model's success depends on the data used for the training of the 
 %
 %\subsubsection{	Predicting cluster}
 
-The proposed model tries to find out the better way to train the prediction model. Hence this proposed approach divides the whole Dataset into clusters to minimize the data variability. So, before predicting defect of a OO class or file, it is important to identify the cluster where the selected file belongs to. To predict the potential cluster where a OO class might exist, it first build a cluster prediction model using the used clustering technique. Then it uses the statistical prediction model to identify the potential cluster where the selected OO file might belong to. When the identification of training data for a OO file is completed, the prediction model use these data to learn to further analysis.
+The proposed model tries to find out the better way to train the prediction model. The proposed dimesion reduction approach divides the whole Dataset into mulitple clusters to minimize the data variability. So, before predicting defect of a OO class or file, it is important to identify the cluster where the selected file belongs to. To predict the potential cluster where a OO class might exist, it first build a cluster prediction model using the used clustering technique. Then it uses the statistical prediction model to identify the potential cluster where the selected OO file might belong to. When the identification of training data for a OO file is completed, the prediction model use these data to learn to further analysis.
 %
 %When new objects are available to predict defects, its first classify this objects to the existing clusters that have been calculated. Our cluster prediction approach assigns the new items to different clusters using the following algorithms.  
 %2.	Learning from this cluster
@@ -944,11 +999,86 @@ The whole prediction process is illustrated in Algorithm \ref{prediction_process
 		\end{algorithmic}
 	\end{algorithm}
 
-\section{Experimental Setup}
-The experiments have been performed using R environment \cite{survival-package} and the software Dataset have been collected from the PROMISE Repositiry \cite{promise12}.
-To perform this experiments on the defect Dataset both within porject and cross projects, the software 
-\section{Results Analysis}
+\section{Experimental Setup and Results Anlaysis}
 
+In this section, the experimental environment setup and the results analysis of the proposed SDP model using dimension reduction for clustering algorithms will be analyzed. Finally, the effectiveness of the proposed SDP will be measured by taking the mean, variance and standard deviation of absolute residuals of the prediction model. 
+
+\subsection{Experimental Setup}
+
+To perform clustering algorithms on the Dataset, a tool based on the aforementioned dimension reduction technique was implemented to make the two-dimensional Dataset . A lots of open source software such as JEdit, POI, Xalan, Camel, Ant, Tomcat and Synapse were collected from promise repository \cite{promise12} to use in this experiment. After reducing the dimension of the above Dataset, the prominent clustering algorithms such as DBSCAN and  Where clustering approach were applied on the dimension reduced Dataset. Other clustering approach such as BorderFlow was also applied to the available Dataset. The BorderFlow clustering algorithm was implemented as mentioned in \cite{scanniello2013class}. The where clustering approach was also applied to the Dataset using Tim menzies approach that uses PCA for reducing the dimension \cite{menzies2011local,menzies2013local}.
+ 
+The DBSCAN \cite{ester1996density} and Where clustering technique \cite{menzies2011local,menzies2013local} were implemented by using R script. The BorderFlow clustering algorithm was implemented by using Java and the prediction model using linear regression analysis was built by using the R statistical environment. These clustering algorithms divided the selected software's Dataset into multiple clusters using their approaches. Finally, the prediction model was then applied to each cluster to predict defects. 
+
+%To perform the experiment, three clustering algorithms such as BorderFlow, DBSCAN and Where were applied on the available Dataset. These three clustering algorithms divided the selected software's Dataset into multiple clusters using their approaches. The BorderFlow clustering algorithm was implemented as mentioned in \cite{scanniello2013class}. The DBSCAN and Where clustering approach have been applied to the Dataset after reducing the dimension of the Dataset according to proposed technique. The where cluster was also applied to the Dataset using Tim menzies approach that uses PCA for reducing the dimension.
+
+
+\subsection{Results Anlaysis}
+The descriptive statistics of the absolute residuals are summarized in Table \ref{dimReducedTable} to compare the different defect prediction approaches. It includes n projects statistical description of Absolute residuals (AR). Here, the performance of different clustering technique are analyzed based on the AR values.
+%
+%The experiments have been performed using R environment \cite{survival-package} and the software Dataset have been collected from the PROMISE Repositiry \cite{promise12}.
+%To perform this experiments on the defect Dataset both within porject and cross projects, the software 
+%\section{Results Analysis}
+
+\begin{table}[h]
+\label{dimReducedTable}
+\captionof{table}{The mean, Variance and Standard deviation of AR} \label{results} 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
+\hline
+\multirow{2}{*}{Dataset} & \multicolumn{3}{c|}{DBSCAN}                             & \multicolumn{3}{c|}{Where}                                & \multicolumn{3}{c|}{Tim Menzies}                          & \multicolumn{3}{c|}{BorderFlow}                           & \multicolumn{3}{c|}{Entire System}                       \\ \cline{2-16} 
+                         & MAR               & MdAR              & StDev           & MAR               & MdAR              & StDev             & MAR               & MdAR              & StDev             & MAR               & MdAR              & StDev             & MAR               & MdAR             & StDev             \\ \hline
+Xalan-2.4 & 0.28392811 & 0.12198353 & 0.457161045 & 0.30610816 & 0.168271448 & 0.44228084 & 0.338213884 & 0.153404025 & 0.477041564 & 0.18216919 & 0.11778425 & 0.35865286 & 0.31240664 & 0.14950500 & 0.50215394 \\ \hline
+Xalan-2.5  &  0.621290206 &	0.5329312 &	0.518163806 & 0.839792835 &	0.561608325	& 0.881358511 & 0.801374581 &
+	0.511094539	& 0.816273652 & 0.964380065 &	0.520583723	&1.543990905 & 0.664628077 &	0.523784587	&0.56850671   \\ \hline
+Xalan-2.6  &   0.721258769	&0.571328058	&0.545263761&
+1.144100232	&0.940572791	&0.930836974&
+1.521553864	&0.892520813	&1.859690378&
+0.770118563	&0.429367917	&1.062586007&
+0.685554999	&0.510605331	&0.645265273\\ \hline
+Xalan-2.7  & 0.664452516&	0.572281351&	0.4070094&
+0.388827782&    0.26339485&	0.37005634&
+0.625071619&	0.625169449&	0.45225035&
+1.369998553&	1.30029219&     0.391908662&
+0.433593607&	0.259546618&	0.498686479 \\ \hline
+		Ant-1.7 &0.459996674&	0.242778721&	0.544256052&
+0.649938729&	0.480072346&	0.602460821&
+0.713764409&	0.29944726&	1.0726034&
+0.563805013&	0.205148353&	0.789651157&
+0.492987016&	0.186967476&	0.861398133		\\ \hline
+Ant-1.6&0.48514463&	0.295516961&	0.586733347&
+0.997017809&	1.025944722&	0.699260297&
+0.995684125&	0.631867097&	0.981090322&
+		&&&
+0.590749031	&0.253418183&	0.820902069\\ \hline
+
+Ant-1.5 &0.132165751&	0.102811787&	0.122078028
+&0.302755629&	0.056316226&	0.673084118
+&0.400237104&	0.146037508&	0.473479935
+&0.117396886&	0.084381425&	0.197389864
+&0.199592294&	0.106753045&	0.242312833\\ \hline
+
+Ant-1.4 &0.270270749&	0.196350826&	0.222423142&
+2.850568371&	0.171613643&	7.680442405&
+0.641258283&	0.450989282&	0.576476231&
+0.213644458&	0.213330504&	0.137297361&
+0.421370627&	0.325435599&	0.410650741   \\ \hline
+
+Ant-1.3  &0.2543912&	0.151580992&	0.317828876&
+0.399617194&	0.177575989&	0.50175148&
+1.060736999&	0.263067249&	2.825350021&
+0.176936539&	0.078760314&	0.340531208&
+0.581794897&	0.328314056&	0.799701618    \\ \hline
+
+\end{tabular}
+\end{table}
+
+
+
+%\rotatebox{180}{
+    %\begin{tabular}{ll}
+    %First First & First Second\\
+    %Second First & Second Second
+    %\end{tabular}
+%}
 
 
 \chapter{Conclusion and Future Research Direction}
