@@ -14,6 +14,8 @@
 \usepackage{makeidx}
 \usepackage{multirow}
 \usepackage{rotating}
+\usepackage{lscape}
+
 
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
@@ -786,27 +788,46 @@ We presented and experimented a new clustering technique for defect prediction u
 
 As future work, to validate the observations and PBC algorithm, the dataset used by the prediction model needs to be extended and the research can also be extended to measure the quality of a software using different code metrics.  
 
-\chapter{Dimension Reduction}
+\chapter{Code Metrics Similarity Analysis using Dimension Reduction technique}
 \section{Introduction}
-SDP models use software code metrics and defect information from the defect directory such as Mozilla defect directory \cite{BugzillaforMozilla} to predict defects. The effectiveness of a SDP model depends on the learning procedure of SDP model. The better learning can make the SDP model to predict software defect more accurately. Usually, the software engineering Dataset contains a lots of variabilities among the Dataset. These variablities always hinders the learning procedure. So, if it is possible to group the software engineering Dataset based on their similarities, it will definitely help the SDP model to learn better from the existing knowledge.
 
-Software's Dataset grouping based on their similarities can be accomplished by using various clustering algorithms such as DBSCAN \cite{ester1996density}, K-means, C-means etc. These clustering algorithms need to plot the Dataset in the two-dimensional space to apply the clustering technique. As, the code mertics have eight properties, so it is totally impossible to plot them into two-dimensional space. To plot these Dataset in two dimensional space, the dimensions of the Dataset are needed to reduced. In this thesis, the dimensions of Dataset are reduced by applying the factor analysis technique using coefficient value.
-
-There exists some prominent dimension reduction algorithms such as program component analysis, factor analysis to reduce the dimensions of a Dataset. The program component analysis technique uses covariance metrics to produce the components from the Dataset. The total numbers of component returned by program component analysis is less or equal to the dimension of the Dataset. Then the component that can describe the most of the variabilities are used instead of using the whole Dataset. The factor analysis technique uses the correlation matrix to produces latent variables by minimizing the dimensions of a Dataset.      
+Source codes similarity analysis to group the software into multiple clusters can improve the performance and accuracy of a SDP model. The effectiveness of a SDP model depends on the learning procedure because the better learning increases the prediction accuracy of a SDP model. Usually, the software engineering Dataset are multidimensional and always contains a lots of variabilities that always hinders the learning procedure. To minimize these variabilities, multiple clustering algorithms can be applied on the Dataset to group these into multiple clusters. Due to the multidimensionality of the Dataset, clustering algorithms cannot perform properly and sometimes it seems to be impossible to group these Dataset into multiple clusters. So, if it is possible to minimize the dimension of the software engineering Dataset using the dimension reduction approach, it will definitely help the clustering algorithms to group the Dataset based on their similarity. 
 
 
-In this thesis, FA technique has been modified by using coefficient values instead of using correlation matrix to produce the latent variables. The coefficient values show the significant of independent variables to the dependent variable. As the dimension reduction technique reduce the dimension based on their coefficient value, so the new latent variables' values are based on their significant to the dependent variables. When the new Dataset values are plotted in the two dimensional space, the similar objects are close to each others. 
 
-The experiment has been performed on some open source software such as JEdit, Ant, Xalan etc. from the Promise Repository \cite{promise12}. The proposed technique reduces the dimensions of the Dataset for the different clustering algorithms. After reducing the dimension, the clustering algorithms such as DBSCAN \cite{ester1996density}, Where clustering \cite{menzies2011local,menzies2013local} have been applied to the dimension reduced Dataset to group these into multiple clusters. Then the linear regression model has been applied to each cluster to find out predicted defects. To show the importance and effectiveness of dimension reduction for clustering algorithms, the other clustering approaches also implemented such as BorderFlow and no clustering approach that considers the whole Dataset. The Where clustering approach \cite{menzies2011local,menzies2013local} is also applied to the dimension reduced Dataset by PCA to show which dimension reduction technique is better for software engineering Dataset. Finally, results are compared to show how clustering affects the defect prediction model.
+
+%SDP models use software code metrics and defect information from the defect directory such as Mozilla defect directory \cite{BugzillaforMozilla} to predict defects. The effectiveness of a SDP model depends on the learning procedure of SDP model. The better learning can make the SDP model to predict software defect more accurately. Usually, the software engineering Dataset contains a lots of variabilities among the Dataset. These variablities always hinders the learning procedure. So, if it is possible to group the software engineering Dataset based on their similarities, it will definitely help the SDP model to learn better from the existing knowledge.
+
+Due to the multidimensionality of the software engineering Dataset, many prominent clustering algorithms such as DBSCAN, K-means cannot divide these Dataset into clusters. To make enable these Dataset for these clustering approaches, the dimensions of the Dataset need to be reduced. If the Dimension of the Dataset is reduced based on the impact of independent variables to the dependent variable, the new Dataset gets closer value for similar objects. So, the clustering algorithm can perform better in dimension reduced Dataset to group these into multiple clusters based on their similarity. 
+
+%The dimension reduction algorithms such as PCA, FA can be used to reduce the dimension of the Dataset. For the software engineering Dataset,
+
+%The Dimension reduction process of the Software engineering Dataset is critical and it is always needed to ensure that dimensional reduced Dataset should represent the main Dataset.  
+
+
+
+
+%Software's Dataset grouping based on their similarities can be accomplished by using various clustering algorithms such as DBSCAN \cite{ester1996density}, K-means, C-means etc. These clustering algorithms need to plot the Dataset in the two-dimensional space to apply the clustering technique. As, the code metrics have eight properties, so it is totally impossible to plot them into two-dimensional space. To plot these Dataset in two dimensional space, the dimensions of the Dataset are needed to reduced. In this thesis, the dimensions of Dataset are reduced by applying the factor analysis technique using coefficient value.
+
+Software engineering Dataset can be reduced by using various dimension reduction techniques such as principal component analysis (PCA), factor analysis (FA) etc. The PCA uses covariance metrics, its eigenvector and eigenvalue for reducing the dimensions. On the other hand, the FA uses correlation metrics to reduce the dimensions of the Dataset. In the recent year, many researches have used dimension reduction technique to reduce the dimension of the Dataset. Nagappan et al. reduces the dimension of the software engineering Dataset by using PCA to select the best attributes for the prediction model \cite{nagappan2005use,nagappan2006mining,nagappan2007using}. Then it uses those selected attributes for predicting the failure pronness of the software using the code churn and all dependencies' information. Zimmermenn et al. performed an experiments for predicting defects using network analysis of dependency graphs among various pieces of codes \cite{zimmermann2008predicting}. For that purpose, it selects the best set of attributes by reducing the multicollinearity among the Dataset using PCA for the prediction model. Menzies et al. have used PCA to reduce the dimension of the Dataset \cite{menzies2011local,menzies2013local}. It plots the Dataset considering the most variability component as x-axis and the next component as y-axis to apply the WHERE clustering algorithm to find out the similar objects from the Dataset. Although, it uses only two components for plotting the Dataset into two dimensions, it does not clarify whether only two dimensions can describe all the variances.
+
+
+%There exists some prominent dimension reduction algorithms such as program component analysis, factor analysis to reduce the dimensions of a Dataset. The program component analysis technique uses covariance metrics to produce the components from the Dataset. The total numbers of component returned by program component analysis is less or equal to the dimension of the Dataset. Then the component that can describe the most of the variabilities are used instead of using the whole Dataset. The factor analysis technique uses the correlation matrix to produces latent variables by minimizing the dimensions of a Dataset.      
+
+
+In this thesis, the dimension of the software engineering Dataset is reduced by using coefficient values  to produce the latent variables. The coefficient values show the significance of independent variables to the dependent variable. If the dimension reduction technique reduces the dimension based on the coefficient values, the produced latent variables' values will be based on their significance to the dependent variables. So, the new dimension reduced Dataset contains closer values for similar objects. If the new dimension reduced Dataset is plotted in the two dimensional space, the similar objects are closer to each others. As a result, different clustering technique can accurately identify clusters from the software engineering Dataset with similar properties.
+
+The experiment has been performed on some open source software such as jEdit, Ant, Xalan etc. from the Promise Repository \cite{promise12}. The proposed technique reduces the dimensions of the Dataset for the different clustering algorithms. After reducing the dimension, the clustering algorithms such as DBSCAN \cite{ester1996density}, Where clustering \cite{menzies2011local,menzies2013local} have been applied to the dimension reduced Dataset to group these into multiple clusters. Then the linear regression model has been applied to each cluster to find out predicted defects. To show the importance and effectiveness of the dimension reduction approach for clustering algorithms, these two clustering approaches also applied to the dimension reduced Dataset by PCA. Finally, results are compared to show how dimension reduction affects clustering and the clustering affects the defect prediction model.
 
  %using coefficient values on 
+ % implemented such as BorderFlow and no clustering approach that considers the whole Dataset. The Where clustering approach \cite{menzies2011local,menzies2013local} is also applied to the dimension reduced Dataset by PCA to show which dimension reduction technique is better for software engineering Dataset.
 
-
-Results show that the dimension reduction technique using the coefficient values outperforms to others. 
+Results show that the dimension reduction technique using the coefficient values outperforms others. 
 
 
 
 \section{Related work}
+
 
 Dimension Reduction (DR) is a process of reducing a set of variables into minimum number of variables that can explain the data perfectly. The goal of this approach is to find a set of correlated variables to form a new smaller set of latent variables with minimum loss of information. There are lots of ways to perform DR in a Dataset such as Principal Component Analysis (PCA), Feature Selection (FA) etc.
 
@@ -816,12 +837,34 @@ The PCA uses an orthogonal transformation to convert a set of correlated observa
 %As the goal of PCA is to give minimum dimensional data that can represent the multidimensional data. 
 
 %The first principal component will have the greatest variance, the second will show the second most variance not described by the first, and so forth
-The Factor Analysis (FA) is another way of reducing the dimension of a Dataset, like PCA \cite{malinowski2002factor,kim1978introduction}. It is based on the correlation matrix of the variables whether PCA uses covariance matrix. It produces latent variables by joining a set of observed variables. It tests the hypothesis of latent by using regression analysis. To reduce the dimension from a Dataset, it first generates correlation matrix and then determines the number of factors needed to represent the whole Dataset. Finally it transforms the factor into latent variables to make them understandable.
+The Factor Analysis (FA) is another way of reducing the dimension of a Dataset, like PCA \cite{malinowski2002factor,kim1978introduction}. It is based on the correlation matrix of the variables whether PCA uses covariance matrix. It produces latent variables by joining a set of observed variables. To produce latent variables, it uses the available data, common factors and mean of the data. Then it produces the factor model just like regression's equation, to produce factor loadings. Finally it transforms the factor into latent variables to minimize the dimensions.
+
+ %To reduce the dimension from a Dataset, it first generates correlation matrix and then determines the number of factors needed to represent the whole Dataset.
+
+
+
+%It is a statistical method used to describe variability among the correlated variables. 
+
+
+Nagappan et al. performed an experiment on Windows $2003$ to identify the relationship among software dependencies, churn measures and post-release failures \cite{nagappan2005use,nagappan2007using}. This experiment differs significantly from the previous work as it integrates the architectural dependencies to investigate the propagation of churn across the system. The Code churn is a measure of the amount of code change taking place within a software unit over time. It reduces the multicollinearity among the metrics by using the PCA technique. Then, it analyzes the software dependence ratios and churn measures as early indicators of failure proneness of a software by using logistic regression. Results can predict the post release failures and failure-proneness of the binaries and also show which binaries needs more testing and the code inspections etc.
+
+
+
+Nagappan et al. proposed a failure prediction model for investigating the relationship between failure-prone software entities and their complexity measures \cite{nagappan2006mining}. It uses linear regression analysis as the predictor models for identifying failure prone components. It performed an emperical study on five Microsoft software systems. It shows that there is no single set of complexity metrics that could act as a best defect predictor and multicollinearity exists among the complexity metrics. To overcome the multicollinearity problem, it uses principal component analysis to select minimum numbers of metrics for the prediction model. It selects only those metrics properties for which the cumulative variance is 96\%. After selecting the best set of metrics properties, it uses these properties to identify the relation among complexity metrics and failure-proneness. Results shows that complexity metrics can successfully predict post release defects. 
+
+
+
+Zimmermen et al. proposed a defect prediction model using network analysis of dependency graphs among various pieces of codes \cite{zimmermann2008predicting}. It uses multiple linear regression analysis as a prediction model for predicting defects. It uses PCA to reduce the multicollinearity among the Dataset and to select the best set of attributes for the defect prediction model. It selects only those principal components, for those the cumulative sample variance greater than 95\%. It performed the experiments on Windows Server $2003$ and results show that complexity metrics and Network measures can predict 30\% and 60\% of these critical binaries respectively.  
+
+
+Menzies et al. 
 
 
 For the software engineering data, the existing PCA poorly reduces the dimension and the factor analysis technique which slightly depends on PCA cannot identify factor properly because of the poor fit of PCA. In this experiment, the dimension of a Dataset is reduced by using the significant of independent variables to the dependent variables. It produces latent variables by joining the coefficient values with positive significance and coefficient values with negative significant. 
 
-%It is a statistical method used to describe variability among the correlated variables. 
+
+ %The overall goal of this analysis is to use the software dependence ratios and churn measures as early indicators of failure proneness modeled using logistic regression techniques.
+ %In order to identify the relationship between the software dependence ratios, churn measures and post-release failures , It uses Spearman rank correlation between the measures and the post-release failures.
 
 \section{Why Dimension reduction is important in Software Engineering Data}
 
@@ -1007,21 +1050,25 @@ In this section, the experimental environment setup and the results analysis of 
 
 To perform clustering algorithms on the Dataset, a tool based on the aforementioned dimension reduction technique was implemented to make the two-dimensional Dataset . A lots of open source software such as JEdit, POI, Xalan, Camel, Ant, Tomcat and Synapse were collected from promise repository \cite{promise12} to use in this experiment. After reducing the dimension of the above Dataset, the prominent clustering algorithms such as DBSCAN and  Where clustering approach were applied on the dimension reduced Dataset. Other clustering approach such as BorderFlow was also applied to the available Dataset. The BorderFlow clustering algorithm was implemented as mentioned in \cite{scanniello2013class}. The where clustering approach was also applied to the Dataset using Tim menzies approach that uses PCA for reducing the dimension \cite{menzies2011local,menzies2013local}.
  
-The DBSCAN \cite{ester1996density} and Where clustering technique \cite{menzies2011local,menzies2013local} were implemented by using R script. The BorderFlow clustering algorithm was implemented by using Java and the prediction model using linear regression analysis was built by using the R statistical environment. These clustering algorithms divided the selected software's Dataset into multiple clusters using their approaches. Finally, the prediction model was then applied to each cluster to predict defects. 
+The DBSCAN \cite{ester1996density} and Where clustering technique \cite{menzies2011local,menzies2013local} were implemented by using R script. The BorderFlow clustering algorithm was implemented by using Java. The SDP model using linear regression analysis was built by the R statistical environment. These clustering algorithms divided the selected software's Dataset into multiple clusters using their approaches. Finally, the SDP model was then applied to each cluster to predict defects. 
 
 %To perform the experiment, three clustering algorithms such as BorderFlow, DBSCAN and Where were applied on the available Dataset. These three clustering algorithms divided the selected software's Dataset into multiple clusters using their approaches. The BorderFlow clustering algorithm was implemented as mentioned in \cite{scanniello2013class}. The DBSCAN and Where clustering approach have been applied to the Dataset after reducing the dimension of the Dataset according to proposed technique. The where cluster was also applied to the Dataset using Tim menzies approach that uses PCA for reducing the dimension.
 
 
 \subsection{Results Anlaysis}
+
+The results of different SDP model using different clustering algorithms are compared by using the mean, median and standard deviation of the absolute residuals (AR).  
+
 The descriptive statistics of the absolute residuals are summarized in Table \ref{dimReducedTable} to compare the different defect prediction approaches. It includes n projects statistical description of Absolute residuals (AR). Here, the performance of different clustering technique are analyzed based on the AR values.
 %
 %The experiments have been performed using R environment \cite{survival-package} and the software Dataset have been collected from the PROMISE Repositiry \cite{promise12}.
 %To perform this experiments on the defect Dataset both within porject and cross projects, the software 
 %\section{Results Analysis}
 
+\begin{landscape}
 \begin{table}[h]
 \label{dimReducedTable}
-\captionof{table}{The mean, Variance and Standard deviation of AR} \label{results} 
+\captionof{table}{The mean, median and standard deviation of AR} \label{results} 
 \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
 \hline
 \multirow{2}{*}{Dataset} & \multicolumn{3}{c|}{DBSCAN}                             & \multicolumn{3}{c|}{Where}                                & \multicolumn{3}{c|}{Tim Menzies}                          & \multicolumn{3}{c|}{BorderFlow}                           & \multicolumn{3}{c|}{Entire System}                       \\ \cline{2-16} 
@@ -1070,15 +1117,8 @@ Ant-1.3  &0.2543912&	0.151580992&	0.317828876&
 
 \end{tabular}
 \end{table}
+\end{landscape}
 
-
-
-%\rotatebox{180}{
-    %\begin{tabular}{ll}
-    %First First & First Second\\
-    %Second First & Second Second
-    %\end{tabular}
-%}
 
 
 \chapter{Conclusion and Future Research Direction}
